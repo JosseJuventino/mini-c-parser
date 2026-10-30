@@ -1,0 +1,361 @@
+[1] (nivel 1) El niño come la manzana.
+    fenómeno: SVO básica
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[2] (nivel 1) La niña lee el libro.
+    fenómeno: SVO básica
+    La             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> lee          Gender=Fem|Number=Sing
+    lee            VERB   ROOT       -> lee          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> lee          Gender=Masc|Number=Sing
+    .              PUNCT  punct      -> lee          PunctType=Peri
+
+[3] (nivel 1) El gato come la comida.
+    fenómeno: SVO básica
+    El             DET    det        -> gato         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    gato           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> comida       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    comida         NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[4] (nivel 1) Los niños comen las manzanas.
+    fenómeno: Concordancia plural (det-sust, sujeto-verbo)
+    Los            DET    det        -> niños        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    niños          NOUN   nsubj      -> comen        Gender=Masc|Number=Plur
+    comen          VERB   ROOT       -> comen        Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    las            DET    det        -> manzanas     Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    manzanas       NOUN   obj        -> comen        Gender=Fem|Number=Plur
+    .              PUNCT  punct      -> comen        PunctType=Peri
+
+[5] (nivel 1) Las niñas leen los libros.
+    fenómeno: Concordancia plural femenino/masculino
+    Las            DET    det        -> niñas        Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    niñas          NOUN   nsubj      -> leen         Gender=Fem|Number=Plur
+    leen           VERB   ROOT       -> leen         Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET    det        -> libros       Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    libros         NOUN   obj        -> leen         Gender=Masc|Number=Plur
+    .              PUNCT  punct      -> leen         PunctType=Peri
+
+[6] (nivel 1) El perro come la manzana.
+    fenómeno: SVO básica
+    El             DET    det        -> perro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    perro          PROPN  nsubj      -> come         
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[7] (nivel 1) Los gatos comen la comida.
+    fenómeno: Concordancia plural
+    Los            DET    det        -> gatos        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    gatos          NOUN   nsubj      -> comen        Gender=Masc|Number=Plur
+    comen          VERB   ROOT       -> comen        Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> comida       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    comida         NOUN   obj        -> comen        Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> comen        PunctType=Peri
+
+[8] (nivel 1) La niña come la manzana.
+    fenómeno: Concordancia femenino singular
+    La             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> come         Gender=Fem|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[9] (nivel 1) El niño lee los libros.
+    fenómeno: Objeto plural
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> lee          Gender=Masc|Number=Sing
+    lee            VERB   ROOT       -> lee          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET    det        -> libros       Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    libros         NOUN   obj        -> lee          Gender=Masc|Number=Plur
+    .              PUNCT  punct      -> lee          PunctType=Peri
+
+[10] (nivel 1) Las niñas ven la casa.
+    fenómeno: SVO básica plural
+    Las            DET    det        -> niñas        Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    niñas          NOUN   nsubj      -> ven          Gender=Fem|Number=Plur
+    ven            VERB   ROOT       -> ven          Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> casa         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    casa           NOUN   obj        -> ven          Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> ven          PunctType=Peri
+
+[11] (nivel 2) El niño pequeño come la manzana roja.
+    fenómeno: Adjetivos (sujeto y objeto)
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    pequeño        ADJ    amod       -> niño         Gender=Masc|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    roja           ADJ    amod       -> manzana      Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[12] (nivel 2) La niña lee el libro grande.
+    fenómeno: Adjetivo en objeto
+    La             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> lee          Gender=Fem|Number=Sing
+    lee            VERB   ROOT       -> lee          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> lee          Gender=Masc|Number=Sing
+    grande         ADJ    amod       -> libro        Number=Sing
+    .              PUNCT  punct      -> lee          PunctType=Peri
+
+[13] (nivel 2) Los perros grandes comen la comida fresca.
+    fenómeno: Adjetivos plurales
+    Los            DET    det        -> perros       Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    perros         NOUN   nsubj      -> comen        Gender=Masc|Number=Plur
+    grandes        ADJ    amod       -> comen        Number=Plur
+    comen          VERB   ROOT       -> comen        Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> comida       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    comida         NOUN   obj        -> comen        Gender=Fem|Number=Sing
+    fresca         ADJ    amod       -> comida       Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> comen        PunctType=Peri
+
+[14] (nivel 2) El niño come rápidamente la manzana.
+    fenómeno: Adverbio
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    rápidamente    ADV    advmod     -> come         
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[15] (nivel 2) La niña lee tranquilamente el libro.
+    fenómeno: Adverbio
+    La             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> lee          Gender=Fem|Number=Sing
+    lee            VERB   ROOT       -> lee          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    tranquilamente ADV    advmod     -> lee          
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> lee          Gender=Masc|Number=Sing
+    .              PUNCT  punct      -> lee          PunctType=Peri
+
+[16] (nivel 2) El niño come la manzana en la casa.
+    fenómeno: Frase preposicional
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    en             ADP    case       -> casa         
+    la             DET    det        -> casa         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    casa           NOUN   obl        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[17] (nivel 2) La niña lee el libro en la casa.
+    fenómeno: Frase preposicional
+    La             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> lee          Gender=Fem|Number=Sing
+    lee            VERB   ROOT       -> lee          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> lee          Gender=Masc|Number=Sing
+    en             ADP    case       -> casa         
+    la             DET    det        -> casa         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    casa           NOUN   obl        -> lee          Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> lee          PunctType=Peri
+
+[18] (nivel 2) El niño comió la manzana.
+    fenómeno: Otro tiempo verbal (pretérito)
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> comió        Gender=Masc|Number=Sing
+    comió          VERB   ROOT       -> comió        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> comió        Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> comió        PunctType=Peri
+
+[19] (nivel 2) Las niñas leyeron los libros.
+    fenómeno: Pretérito plural
+    Las            DET    det        -> niñas        Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    niñas          NOUN   nsubj      -> leyeron      Gender=Fem|Number=Plur
+    leyeron        VERB   ROOT       -> leyeron      Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    los            DET    det        -> libros       Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    libros         NOUN   obj        -> leyeron      Gender=Masc|Number=Plur
+    .              PUNCT  punct      -> leyeron      PunctType=Peri
+
+[20] (nivel 2) El perro grande come rápidamente la comida en la casa.
+    fenómeno: Adjetivo, adverbio y frase preposicional combinados
+    El             DET    det        -> perro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    perro          PROPN  nsubj      -> come         
+    grande         ADJ    amod       -> perro        Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    rápidamente    ADV    advmod     -> come         
+    la             DET    det        -> comida       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    comida         NOUN   obj        -> come         Gender=Fem|Number=Sing
+    en             ADP    case       -> casa         
+    la             DET    det        -> casa         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    casa           NOUN   nmod       -> comida       Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[21] (nivel 3) Vi al hombre con el telescopio.
+    fenómeno: Ambigüedad estructural (adjunción de la frase preposicional)
+    Vi             VERB   ROOT       -> Vi           Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin
+    al             ADP    case       -> hombre       Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    hombre         NOUN   obj        -> Vi           Gender=Masc|Number=Sing
+    con            ADP    case       -> telescopio   
+    el             DET    det        -> telescopio   Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    telescopio     NOUN   obl        -> Vi           Gender=Masc|Number=Sing
+    .              PUNCT  punct      -> Vi           PunctType=Peri
+
+[22] (nivel 3) El niño que corre come la manzana.
+    fenómeno: Cláusula relativa sobre el sujeto
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    que            PRON   nsubj      -> corre        PronType=Int,Rel
+    corre          VERB   acl        -> niño         Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[23] (nivel 3) La manzana que el niño comió estaba fresca.
+    fenómeno: Relativa con hueco (dependencia a distancia)
+    La             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   ROOT       -> manzana      Gender=Fem|Number=Sing
+    que            PRON   obj        -> fresca       PronType=Int,Rel
+    el             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> fresca       Gender=Masc|Number=Sing
+    comió          VERB   flat       -> niño         Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    estaba         AUX    cop        -> fresca       Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin
+    fresca         ADJ    acl        -> manzana      Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> manzana      PunctType=Peri
+
+[24] (nivel 3) Comemos la manzana.
+    fenómeno: Sujeto omitido (pro-drop)
+    Comemos        VERB   ROOT       -> Comemos      Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> Comemos      Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> Comemos      PunctType=Peri
+
+[25] (nivel 3) La manzana come el niño.
+    fenómeno: Orden libre (objeto antes que sujeto)
+    La             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   nsubj      -> come         Gender=Fem|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   obj        -> come         Gender=Masc|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[26] (nivel 3) Se la dio ayer.
+    fenómeno: Clíticos y sujeto omitido
+    Se             PRON   iobj       -> dio          Case=Dat|Person=3|PrepCase=Npr|PronType=Prs|Reflex=Yes
+    la             PRON   obj        -> dio          Case=Acc|Gender=Fem|Number=Sing|Person=3|PrepCase=Npr|PronType=Prs
+    dio            VERB   ROOT       -> dio          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    ayer           ADV    advmod     -> dio          
+    .              PUNCT  punct      -> dio          PunctType=Peri
+
+[27] (nivel 3) El niño dijo que la niña lee el libro.
+    fenómeno: Subordinada completiva
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> dijo         Gender=Masc|Number=Sing
+    dijo           VERB   ROOT       -> dijo         Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ  mark       -> lee          
+    la             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> lee          Gender=Fem|Number=Sing
+    lee            VERB   ccomp      -> dijo         Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> lee          Gender=Masc|Number=Sing
+    .              PUNCT  punct      -> dijo         PunctType=Peri
+
+[28] (nivel 3) El niño que dijo que la niña que corre lee el libro come la manzana.
+    fenómeno: Subordinadas anidadas
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   ROOT       -> niño         Gender=Masc|Number=Sing
+    que            PRON   nsubj      -> dijo         PronType=Int,Rel
+    dijo           VERB   acl        -> niño         Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ  mark       -> come         
+    la             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> come         Gender=Fem|Number=Sing
+    que            PRON   obj        -> corre        PronType=Int,Rel
+    corre          VERB   acl        -> niña         Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    lee            VERB   compound   -> corre        Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> lee          Gender=Masc|Number=Sing
+    come           VERB   ccomp      -> dijo         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> niño         PunctType=Peri
+
+[29] (nivel 3) El niño al que la niña dio el libro come la manzana.
+    fenómeno: Relativa con preposición y hueco
+    El             DET    det        -> niño         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niño           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    al             ADP    case       -> que          Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    que            PRON   obj        -> dio          PronType=Int,Rel
+    la             DET    det        -> niña         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> dio          Gender=Fem|Number=Sing
+    dio            VERB   acl        -> niño         Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> dio          Gender=Masc|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[30] (nivel 3) Juan y María comen manzanas y leen libros.
+    fenómeno: Coordinación y sujeto compuesto
+    Juan           PROPN  nsubj      -> comen        
+    y              CCONJ  cc         -> María        
+    María          PROPN  conj       -> Juan         
+    comen          NOUN   ROOT       -> comen        Gender=Masc|Number=Sing
+    manzanas       ADJ    obj        -> comen        Gender=Fem|Number=Plur
+    y              CCONJ  cc         -> leen         
+    leen           VERB   conj       -> comen        Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    libros         NOUN   obj        -> leen         Gender=Masc|Number=Plur
+    .              PUNCT  punct      -> comen        PunctType=Peri
+
+[31] (nivel A) Los niño come la manzana.
+    fenómeno: Error de número (det-sust y sujeto-verbo)
+    Los            DET    det        -> niño         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    niño           NOUN   nsubj      -> come         Gender=Masc|Number=Sing
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[32] (nivel A) El niña lee el libro.
+    fenómeno: Error de género (det-sust)
+    El             DET    det        -> niña         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    niña           NOUN   nsubj      -> lee          Gender=Fem|Number=Sing
+    lee            VERB   ROOT       -> lee          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET    det        -> libro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN   obj        -> lee          Gender=Masc|Number=Sing
+    .              PUNCT  punct      -> lee          PunctType=Peri
+
+[33] (nivel A) Las niñas lee los libros.
+    fenómeno: Error de número (sujeto-verbo)
+    Las            DET    det        -> niñas        Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    niñas          NOUN   nsubj      -> lee          Gender=Fem|Number=Plur
+    lee            VERB   ROOT       -> lee          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET    det        -> libros       Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    libros         NOUN   obj        -> lee          Gender=Masc|Number=Plur
+    .              PUNCT  punct      -> lee          PunctType=Peri
+
+[34] (nivel A) El perro grandes come la comida.
+    fenómeno: Error de número (sust-adj)
+    El             DET    det        -> perro        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    perro          PROPN  nsubj      -> come         
+    grandes        ADJ    amod       -> perro        Number=Plur
+    come           VERB   ROOT       -> come         Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET    det        -> comida       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    comida         NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
+[35] (nivel A) Niño el come la manzana.
+    fenómeno: Orden de palabras inválido
+    Niño           PROPN  nsubj      -> come         
+    el             DET    det        -> come         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    come           NOUN   ROOT       -> come         Gender=Masc|Number=Sing
+    la             DET    det        -> manzana      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    manzana        NOUN   obj        -> come         Gender=Fem|Number=Sing
+    .              PUNCT  punct      -> come         PunctType=Peri
+
