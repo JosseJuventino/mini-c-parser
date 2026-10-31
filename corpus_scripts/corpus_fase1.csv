@@ -1,0 +1,36 @@
+id	nivel	oracion	gramatical	fenomeno	esperado_parser_propio
+1	1	Marcela come los dulces.	si	SVO básica con nombre propio	acepta
+2	1	Jose escribe el parser.	si	SVO básica con nombre propio	acepta
+3	1	Erika corrige la tarea.	si	SVO básica con nombre propio	acepta
+4	1	Diego ve el fantasma.	si	SVO básica con nombre propio	acepta
+5	1	Alison lee el examen.	si	SVO básica con nombre propio	acepta
+6	1	Jaime explica la gramática.	si	SVO básica con nombre propio	acepta
+7	1	El profesor corrige los exámenes.	si	Concordancia singular-plural (det-sust, objeto plural)	acepta
+8	1	Los esqueletos reprueban los exámenes.	si	Concordancia plural (sujeto y objeto)	acepta
+9	1	Los fantasmas ven las calabazas.	si	Concordancia plural masculino/femenino	acepta
+10	1	La calabaza reprueba el examen.	si	Concordancia femenino singular	acepta
+11	2	El esqueleto elegante escribe el código nuevo.	si	Adjetivos (sujeto y objeto)	acepta
+12	2	Los fantasmas pequeños comen los dulces azules.	si	Adjetivos plurales	acepta
+13	2	Diego escribe rápidamente el informe.	si	Adverbio	acepta
+14	2	Marcela corrige tranquilamente la tarea.	si	Adverbio	acepta
+15	2	Erika come los dulces en la clase.	si	Frase preposicional	acepta
+16	2	En Halloween los fantasmas comen los dulces.	si	Frase preposicional al inicio (orden)	depende de si P3 la incluye
+17	2	Jaime explicó la gramática.	si	Otro tiempo verbal (pretérito)	acepta
+18	2	Los fantasmas comieron los dulces.	si	Pretérito plural	acepta
+19	2	Las calabazas verdes duermen furiosamente.	si	Sentido absurdo pero gramatical (estilo del ejemplo de Chomsky)	
+20	2	El esqueleto pequeño escribe rápidamente el código verde en la clase.	si	Adjetivos, adverbio y frase preposicional combinados	acepta
+21	3	Marcela vio al fantasma con el telescopio.	si	Ambigüedad estructural (adjunción de la frase preposicional)	falla o da una sola lectura
+22	3	El profesor que explica la gramática corrige los exámenes.	si	Cláusula relativa sobre el sujeto	depende de si P3 la incluye
+23	3	El examen que Jaime corrigió asustó a José.	si	Relativa con hueco y objeto con 'a' personal	falla
+24	3	Escribimos el parser.	si	Sujeto omitido (pro-drop)	falla
+25	3	Los exámenes corrigen los esqueletos.	si	Orden libre y ambigüedad de roles (absurdo)	falla
+26	3	Jaime se la explicó ayer.	si	Clíticos	falla
+27	3	Marcela dijo que el fantasma corrige el examen.	si	Subordinada completiva	depende de si P3 la incluye
+28	3	El fantasma que vio al esqueleto que escribe el código reprobó el examen.	si	Relativas anidadas	falla
+29	3	El esqueleto al que Jaime explicó la gramática come los dulces.	si	Relativa con preposición y hueco	falla
+30	3	Alison y José escriben el parser y corrigen los exámenes.	si	Coordinación y sujeto compuesto	falla
+31	A	Los fantasma come los dulces.	no	Error de número (det-sust y sujeto-verbo)	rechaza
+32	A	El calabaza escribe el código.	no	Error de género (det-sust)	rechaza
+33	A	Los esqueletos escribe el código.	no	Error de número (sujeto-verbo)	rechaza
+34	A	Jaime corrige los examen.	no	Error de número en el objeto (det-sust)	rechaza
+35	A	Parser el escribe Diego.	no	Orden de palabras inválido	rechaza
