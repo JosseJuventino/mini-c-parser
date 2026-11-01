@@ -1,7 +1,7 @@
 ANÁLISIS DE spaCy
 Corpus: corpus_fase1.csv  (35 oraciones)
 spaCy 3.8.18  |  modelo es_core_news_sm 3.8.0
-Fecha: 2026-10-31 18:07
+Fecha: 2026-10-31 21:25
 ======================================================================
 
 [1] (nivel 1) Marcela come los dulces.
