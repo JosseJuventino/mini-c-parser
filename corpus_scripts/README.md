@@ -12,8 +12,9 @@ El programa también genera una representación textual del árbol de dependenci
 
 | Archivo | Descripción |
 |---|---|
-| `corpus_fase1.csv` | Corpus de entrada con 35 oraciones en español, elaboradas para observar distintos fenómenos lingüísticos. |
+| `corpus_fase1.csv` | Corpus de entrada con 16 oraciones en español, elaboradas para observar distintos fenómenos lingüísticos. |
 | `analizar_oraciones.py` | Lee el corpus, procesa cada oración con spaCy y guarda los resultados en un archivo de texto. |
+| `demo_nlp.py` | Demostración en vivo: muestra en pantalla el análisis de spaCy de oraciones seleccionadas del corpus o de una oración escrita por el usuario. |
 
 Los resultados generados por el programa, como `analisis_spacy.txt`, no se incluyen en el repositorio: se producen al ejecutar el script y están contemplados en `.gitignore`.
 
@@ -72,6 +73,26 @@ El programa acepta como entrada:
 Al inicio del archivo de resultados se registra el nombre del corpus, la cantidad de oraciones procesadas, las versiones de spaCy y del modelo, y la fecha de ejecución.
 
 Para cada oración, el programa presenta los datos disponibles del corpus y una tabla con el análisis de cada palabra. Finalmente, incluye el árbol de dependencias correspondiente.
+
+### Demostración en vivo (`demo_nlp.py`)
+
+Con el entorno virtual activo, ejecuta:
+
+```bash
+python demo_nlp.py                    # recorre las oraciones elegidas, con pausa
+python demo_nlp.py --rapido           # sin pausas
+python demo_nlp.py "El niño come."    # analiza una oración cualquiera
+```
+
+Sin argumentos, la demostración recorre cinco oraciones seleccionadas del corpus. Después de cada una espera que se presione Enter, lo que permite explicar cada resultado antes de continuar; no se hace pausa tras la última oración. Con la opción `--rapido` se muestran todas seguidas. Si se escribe una oración entre comillas, se analiza únicamente esa.
+
+Para cada oración, la demostración muestra:
+
+1. **La oración y una nota** sobre lo que se busca observar.
+2. **Una tabla palabra por palabra**, con el texto, la categoría gramatical (`pos_`), la relación sintáctica (`dep_`) y el token del que depende (`head`). Los signos de puntuación se omiten.
+3. **El árbol de dependencias**, construido con la misma función recursiva `arbol()` y a partir de la raíz (`ROOT`).
+
+A diferencia de `analizar_oraciones.py`, la demostración no muestra rasgos morfológicos y no genera archivos.
 
 ## Formato del corpus
 
@@ -138,16 +159,7 @@ En el árbol generado por el programa:
 - El token cuya etiqueta de dependencia es `ROOT` se toma como raíz del árbol.
 - Los tokens hijos (`children`) permiten recorrer los elementos que dependen de cada nodo.
 
-El script construye el árbol mediante la función recursiva `arbol()`. Esta función recibe un token, muestra su texto y sus etiquetas de dependencia y categoría gramatical, y luego recorre sus hijos. La sangría aumenta en cada llamada recursiva para representar visualmente los distintos niveles de dependencia. Los signos de puntuación se omiten en esta representación.
-
-### Organización del reporte generado
-
-Para cada oración, el archivo `analisis_spacy.txt` presenta:
-
-1. **Identificación de la oración:** muestra su identificador y, si está disponible, su nivel.
-2. **Información del corpus:** muestra la clasificación indicada en `gramatical` y el fenómeno lingüístico, cuando esas columnas contienen datos.
-3. **Tabla de análisis por token:** presenta la palabra, su categoría gramatical, su relación sintáctica, el token del que depende y sus rasgos morfológicos.
-4. **Árbol de dependencias:** presenta de forma jerárquica las relaciones sintácticas identificadas por el modelo.
+Los scripts `analizar_oraciones.py` y `demo_nlp.py` construyen el árbol mediante la función recursiva `arbol()`. Esta función recibe un token, muestra su texto y sus etiquetas de dependencia y categoría gramatical, y luego recorre sus hijos. La sangría aumenta en cada llamada recursiva para representar visualmente los distintos niveles de dependencia. Los signos de puntuación se omiten en esta representación.
 
 ## Qué esperar de los resultados
 
@@ -156,10 +168,12 @@ Para cada oración, el archivo `analisis_spacy.txt` presenta:
 - Las etiquetas y relaciones obtenidas pueden no coincidir con el análisis esperado. Por ejemplo, el modelo puede asignar una categoría gramatical o una característica morfológica incorrecta.
 - El árbol de dependencias representa la estructura que predice el modelo para la oración procesada.
 - Los resultados dependen del modelo y de su versión. Por ello, distintas versiones o modelos pueden producir análisis diferentes.
+- En las pruebas de la demostración, la oración con ambigüedad estructural recibe una única interpretación: el modelo no señala que existe otra lectura posible.
+- Al analizar oraciones escritas libremente, el modelo también puede cometer errores de etiquetado. Por ejemplo, en una prueba realizada con «Los niños comen.», etiquetó «comen» como adjetivo.
 
 ## Limitaciones
 
-- El corpus contiene 35 oraciones. Su tamaño permite observar el comportamiento del modelo ante los ejemplos seleccionados, pero no permite generalizar los resultados a todo el español ni obtener conclusiones estadísticas amplias.
+- El corpus contiene 16 oraciones. Su tamaño permite observar el comportamiento del modelo ante los ejemplos seleccionados, pero no permite generalizar los resultados a todo el español ni obtener conclusiones estadísticas amplias.
 - Las oraciones fueron elaboradas para el proyecto y representan un conjunto limitado de construcciones lingüísticas.
 - `es_core_news_sm` es la versión pequeña del modelo de español; sus predicciones pueden presentar errores de etiquetado morfológico o de análisis sintáctico.
-- El análisis generado depende de las predicciones del modelo y no constituye una verificación definitiva de la estructura o gramatica de las oraciones.
+- El análisis generado depende de las predicciones del modelo y no constituye una verificación definitiva de la estructura sintáctica o de la gramaticalidad de las oraciones.

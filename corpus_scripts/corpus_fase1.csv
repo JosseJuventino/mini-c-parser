@@ -1,36 +1,17 @@
 ﻿id;nivel;oracion;gramatical;fenomeno
 1;1;Marcela come los dulces.;si;SVO básica con nombre propio
-2;1;Jose escribe el parser.;si;SVO básica con nombre propio
-3;1;Erika corrige la tarea.;si;SVO básica con nombre propio
-4;1;Diego ve el fantasma.;si;SVO básica con nombre propio
-5;1;Alison lee el examen.;si;SVO básica con nombre propio
-6;1;Jaime explica la gramática.;si;SVO básica con nombre propio
-7;1;El profesor corrige los exámenes.;si;Concordancia singular-plural (det-sust, objeto plural)
-8;1;Los esqueletos reprueban los exámenes.;si;Concordancia plural (sujeto y objeto)
-9;1;Los fantasmas ven las calabazas.;si;Concordancia plural masculino/femenino
-10;1;La calabaza reprueba el examen.;si;Concordancia femenino singular
-11;2;El esqueleto elegante escribe el código nuevo.;si;Adjetivos (sujeto y objeto)
-12;2;Los fantasmas pequeños comen los dulces azules.;si;Adjetivos plurales
-13;2;Diego escribe rápidamente el informe.;si;Adverbio
-14;2;Marcela corrige tranquilamente la tarea.;si;Adverbio
-15;2;Erika come los dulces en la clase.;si;Frase preposicional
-16;2;En Halloween los fantasmas comen los dulces.;si;Frase preposicional al inicio (orden)
-17;2;Jaime explicó la gramática.;si;Otro tiempo verbal (pretérito)
-18;2;Los fantasmas comieron los dulces.;si;Pretérito plural
-19;2;Las calabazas verdes duermen furiosamente.;si;Sentido absurdo pero gramatical (estilo del ejemplo de Chomsky)
-20;2;El esqueleto pequeño escribe rápidamente el código verde en la clase.;si;Adjetivos, adverbio y frase preposicional combinados
-21;3;Marcela vio al fantasma con el telescopio.;si;Ambigüedad estructural (adjunción de la frase preposicional)
-22;3;El profesor que explica la gramática corrige los exámenes.;si;Cláusula relativa sobre el sujeto
-23;3;El examen que Jaime corrigió asustó a Jose.;si;Relativa con hueco y objeto con 'a' personal
-24;3;Escribimos el parser.;si;Sujeto omitido (pro-drop)
-25;3;Los exámenes corrigen los esqueletos.;si;Orden libre y ambigüedad de roles (absurdo)
-26;3;Jaime se la explicó ayer.;si;Clíticos
-27;3;Marcela dijo que el fantasma corrige el examen.;si;Subordinada completiva
-28;3;El fantasma que vio al esqueleto que escribe el código reprobó el examen.;si;Relativas anidadas
-29;3;El esqueleto al que Jaime explicó la gramática come los dulces.;si;Relativa con preposición y hueco
-30;3;Alison y Jose escriben el parser y corrigen los exámenes.;si;Coordinación y sujeto compuesto
-31;A;Los fantasma come los dulces.;no;Error de número (det-sust y sujeto-verbo)
-32;A;El calabaza escribe el código.;no;Error de género (det-sust)
-33;A;Los esqueletos escribe el código.;no;Error de número (sujeto-verbo)
-34;A;Jaime corrige los examen.;no;Error de número en el objeto (det-sust)
-35;A;Parser el escribe Diego.;no;Orden de palabras inválido
+2;1;El profesor corrige los exámenes.;si;Concordancia singular-plural (det-sust, objeto plural)
+3;1;Los fantasmas ven las calabazas.;si;Concordancia plural masculino/femenino
+4;2;Los fantasmas pequeños comen los dulces nuevos.;si;Adjetivos plurales (concordancia sustantivo-adjetivo)
+5;2;Las calabazas pequeñas duermen furiosamente.;si;Adjetivo y adverbio
+6;2;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;si;Adjetivos, adverbio y frase preposicional combinados
+7;3;Marcela vio al fantasma con el telescopio.;si;Ambigüedad estructural (adjunción de la frase preposicional)
+8;3;El profesor que explica la gramática corrige los exámenes.;si;Cláusula relativa sobre el sujeto (subordinada)
+9;3;El examen que Jaime corrigió asustó a Jose.;si;Relativa con hueco (dependencia a distancia) y objeto con 'a' personal
+10;3;Escribimos el parser.;si;Sujeto omitido (pro-drop)
+11;3;Come Marcela los dulces.;si;Orden libre (verbo antes del sujeto)
+12;A;Los fantasma come los dulces.;no;Error de número (det-sust y sujeto-verbo)
+13;A;El calabaza escribe el código.;no;Error de género (det-sust)
+14;A;Los esqueletos escribe el código.;no;Error de número (sujeto-verbo)
+15;A;Jaime corrige los examen.;no;Error de número en el objeto (det-sust)
+16;A;Las calabazas pequeños duermen furiosamente.;no;Error de género (sustantivo-adjetivo)
