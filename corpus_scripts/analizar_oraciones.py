@@ -2,8 +2,7 @@
 analizar_oraciones.py
 
 Lee las oraciones de un corpus y guarda en un archivo de texto el análisis que
-hace spaCy (modelo es_core_news_sm) de cada una. Sirve como EVIDENCIA de lo que
-produce la herramienta de NLP.
+hace spaCy (modelo es_core_news_sm) de cada una.
 
 El corpus puede ser:
   - un .csv con una columna llamada "oracion" (las columnas "id", "nivel",
@@ -21,7 +20,7 @@ import sys
 from datetime import datetime
 import spacy
 
-# --- Archivos por defecto (se pueden cambiar desde la terminal) --------------
+# --- Archivos por defecto ----------------------------
 CORPUS_POR_DEFECTO = "corpus_fase1.csv"
 SALIDA_POR_DEFECTO = "analisis_spacy.txt"
 MODELO = "es_core_news_sm"

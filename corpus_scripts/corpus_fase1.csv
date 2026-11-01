@@ -1,36 +1,36 @@
-id	nivel	oracion	gramatical	fenomeno	esperado_parser_propio
-1	1	Marcela come los dulces.	si	SVO b·sica con nombre propio	acepta
-2	1	Jose escribe el parser.	si	SVO b·sica con nombre propio	acepta
-3	1	Erika corrige la tarea.	si	SVO b·sica con nombre propio	acepta
-4	1	Diego ve el fantasma.	si	SVO b·sica con nombre propio	acepta
-5	1	Alison lee el examen.	si	SVO b·sica con nombre propio	acepta
-6	1	Jaime explica la gram·tica.	si	SVO b·sica con nombre propio	acepta
-7	1	El profesor corrige los ex·menes.	si	Concordancia singular-plural (det-sust, objeto plural)	acepta
-8	1	Los esqueletos reprueban los ex·menes.	si	Concordancia plural (sujeto y objeto)	acepta
-9	1	Los fantasmas ven las calabazas.	si	Concordancia plural masculino/femenino	acepta
-10	1	La calabaza reprueba el examen.	si	Concordancia femenino singular	acepta
-11	2	El esqueleto elegante escribe el cÛdigo nuevo.	si	Adjetivos (sujeto y objeto)	acepta
-12	2	Los fantasmas pequeÒos comen los dulces azules.	si	Adjetivos plurales	acepta
-13	2	Diego escribe r·pidamente el informe.	si	Adverbio	acepta
-14	2	Marcela corrige tranquilamente la tarea.	si	Adverbio	acepta
-15	2	Erika come los dulces en la clase.	si	Frase preposicional	acepta
-16	2	En Halloween los fantasmas comen los dulces.	si	Frase preposicional al inicio (orden)	depende de si P3 la incluye
-17	2	Jaime explicÛ la gram·tica.	si	Otro tiempo verbal (pretÈrito)	acepta
-18	2	Los fantasmas comieron los dulces.	si	PretÈrito plural	acepta
-19	2	Las calabazas verdes duermen furiosamente.	si	Sentido absurdo pero gramatical (estilo del ejemplo de Chomsky)	
-20	2	El esqueleto pequeÒo escribe r·pidamente el cÛdigo verde en la clase.	si	Adjetivos, adverbio y frase preposicional combinados	acepta
-21	3	Marcela vio al fantasma con el telescopio.	si	Ambig¸edad estructural (adjunciÛn de la frase preposicional)	falla o da una sola lectura
-22	3	El profesor que explica la gram·tica corrige los ex·menes.	si	Cl·usula relativa sobre el sujeto	depende de si P3 la incluye
-23	3	El examen que Jaime corrigiÛ asustÛ a JosÈ.	si	Relativa con hueco y objeto con 'a' personal	falla
-24	3	Escribimos el parser.	si	Sujeto omitido (pro-drop)	falla
-25	3	Los ex·menes corrigen los esqueletos.	si	Orden libre y ambig¸edad de roles (absurdo)	falla
-26	3	Jaime se la explicÛ ayer.	si	ClÌticos	falla
-27	3	Marcela dijo que el fantasma corrige el examen.	si	Subordinada completiva	depende de si P3 la incluye
-28	3	El fantasma que vio al esqueleto que escribe el cÛdigo reprobÛ el examen.	si	Relativas anidadas	falla
-29	3	El esqueleto al que Jaime explicÛ la gram·tica come los dulces.	si	Relativa con preposiciÛn y hueco	falla
-30	3	Alison y JosÈ escriben el parser y corrigen los ex·menes.	si	CoordinaciÛn y sujeto compuesto	falla
-31	A	Los fantasma come los dulces.	no	Error de n˙mero (det-sust y sujeto-verbo)	rechaza
-32	A	El calabaza escribe el cÛdigo.	no	Error de gÈnero (det-sust)	rechaza
-33	A	Los esqueletos escribe el cÛdigo.	no	Error de n˙mero (sujeto-verbo)	rechaza
-34	A	Jaime corrige los examen.	no	Error de n˙mero en el objeto (det-sust)	rechaza
-35	A	Parser el escribe Diego.	no	Orden de palabras inv·lido	rechaza
+Ôªøid;nivel;oracion;gramatical;fenomeno
+1;1;Marcela come los dulces.;si;SVO b√°sica con nombre propio
+2;1;Jose escribe el parser.;si;SVO b√°sica con nombre propio
+3;1;Erika corrige la tarea.;si;SVO b√°sica con nombre propio
+4;1;Diego ve el fantasma.;si;SVO b√°sica con nombre propio
+5;1;Alison lee el examen.;si;SVO b√°sica con nombre propio
+6;1;Jaime explica la gram√°tica.;si;SVO b√°sica con nombre propio
+7;1;El profesor corrige los ex√°menes.;si;Concordancia singular-plural (det-sust, objeto plural)
+8;1;Los esqueletos reprueban los ex√°menes.;si;Concordancia plural (sujeto y objeto)
+9;1;Los fantasmas ven las calabazas.;si;Concordancia plural masculino/femenino
+10;1;La calabaza reprueba el examen.;si;Concordancia femenino singular
+11;2;El esqueleto elegante escribe el c√≥digo nuevo.;si;Adjetivos (sujeto y objeto)
+12;2;Los fantasmas peque√±os comen los dulces azules.;si;Adjetivos plurales
+13;2;Diego escribe r√°pidamente el informe.;si;Adverbio
+14;2;Marcela corrige tranquilamente la tarea.;si;Adverbio
+15;2;Erika come los dulces en la clase.;si;Frase preposicional
+16;2;En Halloween los fantasmas comen los dulces.;si;Frase preposicional al inicio (orden)
+17;2;Jaime explic√≥ la gram√°tica.;si;Otro tiempo verbal (pret√©rito)
+18;2;Los fantasmas comieron los dulces.;si;Pret√©rito plural
+19;2;Las calabazas verdes duermen furiosamente.;si;Sentido absurdo pero gramatical (estilo del ejemplo de Chomsky)
+20;2;El esqueleto peque√±o escribe r√°pidamente el c√≥digo verde en la clase.;si;Adjetivos, adverbio y frase preposicional combinados
+21;3;Marcela vio al fantasma con el telescopio.;si;Ambig√ºedad estructural (adjunci√≥n de la frase preposicional)
+22;3;El profesor que explica la gram√°tica corrige los ex√°menes.;si;Cl√°usula relativa sobre el sujeto
+23;3;El examen que Jaime corrigi√≥ asust√≥ a Jose.;si;Relativa con hueco y objeto con 'a' personal
+24;3;Escribimos el parser.;si;Sujeto omitido (pro-drop)
+25;3;Los ex√°menes corrigen los esqueletos.;si;Orden libre y ambig√ºedad de roles (absurdo)
+26;3;Jaime se la explic√≥ ayer.;si;Cl√≠ticos
+27;3;Marcela dijo que el fantasma corrige el examen.;si;Subordinada completiva
+28;3;El fantasma que vio al esqueleto que escribe el c√≥digo reprob√≥ el examen.;si;Relativas anidadas
+29;3;El esqueleto al que Jaime explic√≥ la gram√°tica come los dulces.;si;Relativa con preposici√≥n y hueco
+30;3;Alison y Jose escriben el parser y corrigen los ex√°menes.;si;Coordinaci√≥n y sujeto compuesto
+31;A;Los fantasma come los dulces.;no;Error de n√∫mero (det-sust y sujeto-verbo)
+32;A;El calabaza escribe el c√≥digo.;no;Error de g√©nero (det-sust)
+33;A;Los esqueletos escribe el c√≥digo.;no;Error de n√∫mero (sujeto-verbo)
+34;A;Jaime corrige los examen.;no;Error de n√∫mero en el objeto (det-sust)
+35;A;Parser el escribe Diego.;no;Orden de palabras inv√°lido
