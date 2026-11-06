@@ -18,6 +18,12 @@ def imprimir_arbol(nodo, nivel=0):
 codigo = """
 int edad = 20;
 edad = edad + 5 * 2;
+
+if (edad >= 18) {
+    int resultado = (edad - 18) * 2;
+} else {
+    edad = 0;
+}
 """
 
 try:

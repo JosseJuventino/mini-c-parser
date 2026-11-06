@@ -3,6 +3,10 @@ from dataclasses import dataclass
 from .lexer import Token
 
 
+# op_comparacion → "==" | "!=" | "<" | ">" | "<=" | ">="
+OPERADORES_COMPARACION = ("==", "!=", "<", ">", "<=", ">=")
+
+
 @dataclass
 class Nodo:
     nombre: str
@@ -54,12 +58,92 @@ class Parser:
         if tipo == "ID":
             return Nodo("Sentencia", [self.asignacion()])
 
+        if tipo == "IF":
+            return Nodo("Sentencia", [self.condicional()])
+
         token = self.actual()
+
+        if tipo == "ELSE":
+            raise SyntaxError(
+                f"Línea {token.linea}, columna {token.columna}: "
+                f"se encontró 'else' sin un 'if' antes"
+            )
+
+        encontrado = (
+            token.valor
+            if token.tipo != "EOF"
+            else "fin del código"
+        )
+
         raise SyntaxError(
             f"Línea {token.linea}, columna {token.columna}: "
-            f"se esperaba una declaración o asignación, "
-            f"pero se encontró '{token.valor}'"
+            f"se esperaba una declaración, asignación o 'if', "
+            f"pero se encontró '{encontrado}'"
         )
+
+    # condicional → IF "(" condicion ")" bloque (ELSE bloque)?
+    def condicional(self) -> Nodo:
+        self.consumir("IF")
+        self.consumir("(")
+        condicion = self.condicion()
+        self.consumir(")")
+        bloque_if = self.bloque()
+
+        hijos = ["if", "(", condicion, ")", bloque_if]
+
+        # El else es opcional: solo se analiza si el siguiente token lo es
+        if self.actual().tipo == "ELSE":
+            self.consumir("ELSE")
+            hijos.extend(["else", self.bloque()])
+
+        return Nodo("Condicional", hijos)
+
+    # bloque → "{" sentencia* "}"
+    def bloque(self) -> Nodo:
+        apertura = self.consumir("{")
+        hijos = ["{"]
+
+        while self.actual().tipo not in ("}", "EOF"):
+            hijos.append(self.sentencia())
+
+        if self.actual().tipo == "EOF":
+            token = self.actual()
+            raise SyntaxError(
+                f"Línea {token.linea}, columna {token.columna}: "
+                f"se esperaba '}}' para cerrar el bloque abierto en la "
+                f"línea {apertura.linea}, columna {apertura.columna}, "
+                f"pero se encontró 'fin del código'"
+            )
+
+        self.consumir("}")
+        hijos.append("}")
+
+        return Nodo("Bloque", hijos)
+
+    # condicion → expresion op_comparacion expresion
+    def condicion(self) -> Nodo:
+        izquierda = self.expresion()
+
+        token = self.actual()
+
+        if token.tipo not in OPERADORES_COMPARACION:
+            encontrado = (
+                token.valor
+                if token.tipo != "EOF"
+                else "fin del código"
+            )
+
+            raise SyntaxError(
+                f"Línea {token.linea}, columna {token.columna}: "
+                f"se esperaba un operador de comparación "
+                f"(==, !=, <, >, <=, >=), "
+                f"pero se encontró '{encontrado}'"
+            )
+
+        operador = self.consumir(token.tipo)
+        derecha = self.expresion()
+
+        return Nodo("Condicion", [izquierda, operador.valor, derecha])
 
     def declaracion(self) -> Nodo:
         self.consumir("INT")
