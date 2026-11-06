@@ -2,17 +2,12 @@
 from dataclasses import dataclass
 from .lexer import Token
 
-
-# op_comparacion → "==" | "!=" | "<" | ">" | "<=" | ">="
 OPERADORES_COMPARACION = ("==", "!=", "<", ">", "<=", ">=")
-
 
 @dataclass
 class Nodo:
     nombre: str
     hijos: list
-
-
 class Parser:
     def __init__(self, tokens: list[Token]):
         self.tokens = tokens
@@ -81,7 +76,6 @@ class Parser:
             f"pero se encontró '{encontrado}'"
         )
 
-    # condicional → IF "(" condicion ")" bloque (ELSE bloque)?
     def condicional(self) -> Nodo:
         self.consumir("IF")
         self.consumir("(")
@@ -120,7 +114,6 @@ class Parser:
 
         return Nodo("Bloque", hijos)
 
-    # condicion → expresion op_comparacion expresion
     def condicion(self) -> Nodo:
         izquierda = self.expresion()
 

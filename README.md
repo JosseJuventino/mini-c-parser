@@ -69,8 +69,10 @@ Estos son algunos códigos que el parser rechaza y el error que muestra:
 Por ejemplo, para el segundo caso el mensaje es:
 
 ```text
-Línea 2, columna 15: se esperaba '}' para cerrar el bloque abierto en la línea 1, columna 17, pero se encontró 'fin del código'
+Línea 1, columna 29: se esperaba '}' para cerrar el bloque abierto en la línea 1, columna 17, pero se encontró 'fin del código'
 ```
+
+El mensaje indica dos posiciones: dónde se acabó el código (columna 29) y dónde se abrió la llave que quedó sin cerrar (columna 17). Esto ayuda cuando el bloque es largo y el error aparece muchas líneas después de la `{`.
 
 ### ¿Qué no admite?
 
@@ -118,6 +120,56 @@ factor         → NUMERO | ID | "(" expresion ")"
 ```
 
 Como la comparación está en su propia regla (`condicion`) y no dentro de `expresion`, la precedencia de `+`, `-`, `*` y `/` no cambia. Por eso tampoco se puede escribir una comparación en una asignación, como `x = a > b;`.
+
+### Gramática en BNF
+
+La gramática de arriba usa la notación extendida (`*` para "cero o más" y `?` para "opcional"). Esta es la misma gramática escrita en BNF estricta, donde las repeticiones y las partes opcionales se expresan con reglas recursivas y la cadena vacía (`ε`):
+
+```text
+<programa>         ::= <lista_sentencias>
+
+<lista_sentencias> ::= <sentencia> <lista_sentencias>
+                     | ε
+
+<sentencia>        ::= <declaracion>
+                     | <asignacion>
+                     | <condicional>
+
+<declaracion>      ::= "int" <id> "=" <expresion> ";"
+<asignacion>       ::= <id> "=" <expresion> ";"
+
+<condicional>      ::= "if" "(" <condicion> ")" <bloque> <parte_else>
+<parte_else>       ::= "else" <bloque>
+                     | ε
+
+<bloque>           ::= "{" <lista_sentencias> "}"
+
+<condicion>        ::= <expresion> <op_comparacion> <expresion>
+<op_comparacion>   ::= "==" | "!=" | "<" | ">" | "<=" | ">="
+
+<expresion>        ::= <termino> <resto_expresion>
+<resto_expresion>  ::= "+" <termino> <resto_expresion>
+                     | "-" <termino> <resto_expresion>
+                     | ε
+
+<termino>          ::= <factor> <resto_termino>
+<resto_termino>    ::= "*" <factor> <resto_termino>
+                     | "/" <factor> <resto_termino>
+                     | ε
+
+<factor>           ::= <numero>
+                     | <id>
+                     | "(" <expresion> ")"
+```
+
+Los terminales `<id>` y `<numero>` los reconoce el lexer: `<id>` es una letra o `_` seguida de letras, dígitos o `_` (sin contar las palabras reservadas `int`, `if` y `else`), y `<numero>` es una secuencia de uno o más dígitos.
+
+Algunas notas sobre el `if-else`:
+
+- **`<parte_else>` puede ser vacía.** Así se expresa en BNF que el `else` es opcional. En el código, esto es el `if self.actual().tipo == "ELSE"` de `condicional`: si el siguiente token no es `else`, se toma la opción `ε`.
+- **`<bloque>` reutiliza `<lista_sentencias>`.** Por eso dentro de un bloque puede ir cualquier sentencia, incluyendo otro `if`, y también un bloque vacío.
+- **No hay ambigüedad del "else colgante".** En C normal, `if (a) if (b) x; else y;` es ambiguo porque no se sabe a cuál `if` pertenece el `else`. Aquí no pasa porque las llaves son obligatorias: el `else` siempre va justo después de la `}` de su `if`, así que solo hay un árbol posible.
+- **La gramática es LL(1).** Con solo mirar el token actual se sabe qué regla aplicar (`int` → declaración, identificador → asignación, `if` → condicional, `else` → segundo bloque). Por eso se puede implementar con descenso recursivo sin retroceder.
 
 ## ¿Cómo se procesa un condicional?
 
