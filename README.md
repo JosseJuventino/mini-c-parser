@@ -1,8 +1,19 @@
 # mini-c-parser
 
-Este proyecto es un analizador léxico (lexer) y sintáctico (parser) hecho en Python para interpretar una parte básica del lenguaje C.
+Analizador léxico (lexer) y sintáctico (parser) hecho en Python para una parte pequeña del lenguaje C, a la que llamamos **Mini-C**.
 
-Por ahora permite reconocer declaraciones de variables, asignaciones, operaciones aritméticas y condicionales `if` / `if-else`, por ejemplo:
+No se necesita instalar ninguna librería: todo usa lo que ya viene con Python.
+
+## Descripción del proyecto
+
+Mini-C recibe un fragmento de código, revisa si está bien escrito según una gramática y, si lo está, muestra el árbol sintáctico que construyó. Si encuentra un error, dice en qué línea y columna está.
+
+El trabajo se divide en dos partes:
+
+- **Lexer** (`src/lexer.py`): lee el texto carácter por carácter y lo separa en **tokens**, que son las "palabras" del lenguaje: `int`, `edad`, `=`, `20`, `;`, etc. Cada token guarda su tipo, su valor y la línea y columna donde aparece. Para reconocerlos se usa una expresión regular con un grupo por cada tipo de token. Si aparece un carácter que no pertenece al lenguaje (por ejemplo `@`), aquí se detecta el error léxico.
+- **Parser** (`src/parser.py`): recibe la lista de tokens y revisa que vengan en un orden permitido por la gramática. Es un **parser descendente recursivo**: cada regla de la gramática es un método de la clase `Parser`, y los métodos se llaman entre sí igual que las reglas se usan unas a otras. Por ejemplo, `expresion()` llama a `termino()`, que llama a `factor()`. Mientras avanza, cada método crea un nodo del árbol.
+
+Un ejemplo de código que Mini-C acepta:
 
 ```c
 int edad = 20;
@@ -15,84 +26,44 @@ if (edad >= 18) {
 }
 ```
 
-Si el código es válido, el programa genera un árbol sintáctico donde se puede ver cómo interpreta cada instrucción. Si hay algún error, muestra la línea y columna donde está el problema.
-
-No se necesita instalar ninguna librería adicional, ya que solamente se utilizan las que vienen incluidas con Python.
-
-## ¿Qué permite analizar?
+## Subconjunto de C seleccionado
 
 El parser solamente reconoce un subconjunto pequeño de C, no todo el lenguaje.
 
-Actualmente admite:
+### Lo que sí admite
 
 - **Declaraciones de variables:** solamente de tipo `int` y con un valor inicial, por ejemplo `int edad = 20;`.
-- **Asignaciones:** permite asignar valores o expresiones a variables, por ejemplo `edad = edad + 5;`.
-- **Operaciones aritméticas:** suma (`+`), resta (`-`), multiplicación (`*`) y división (`/`).
-- **Paréntesis:** se pueden utilizar para agrupar operaciones y cambiar su orden.
-- **Números enteros e identificadores:** reconoce números y nombres de variables dentro de las expresiones.
-- **Varias instrucciones:** permite analizar varias declaraciones o asignaciones, siempre que terminen con punto y coma (`;`).
-- **Condicionales `if` e `if-else`:** la condición va entre paréntesis y cada rama va entre llaves, por ejemplo `if (edad >= 18) { edad = 0; }`. El `else` es opcional.
+- **Asignaciones:** `edad = edad + 5;`.
+- **Operaciones aritméticas:** suma (`+`), resta (`-`), multiplicación (`*`) y división (`/`), respetando que `*` y `/` se agrupan antes que `+` y `-`.
+- **Paréntesis:** para agrupar operaciones y cambiar el orden, por ejemplo `(edad + 5) * 2`.
+- **Números enteros e identificadores** dentro de las expresiones.
+- **Varias instrucciones** seguidas, cada una terminada en punto y coma (`;`).
+- **Condicionales `if` e `if-else`:** la condición va entre paréntesis y cada rama va entre llaves. El `else` es opcional.
 - **Operadores de comparación:** `==`, `!=`, `<`, `>`, `<=` y `>=`, con expresiones aritméticas a ambos lados, por ejemplo `if ((edad + 2) * 3 > limite - 1) { }`.
-- **Bloques:** dentro de las llaves se pueden poner declaraciones, asignaciones y otros `if` (anidados). También se permiten bloques vacíos (`{ }`).
+- **Bloques:** dentro de las llaves puede ir cualquier instrucción, incluso otro `if` (anidado). También se permiten bloques vacíos (`{ }`).
 
-Por ejemplo, este código es válido:
-
-```c
-int edad = 20;
-int resultado = (edad + 5) * 2;
-edad = resultado / 5;
-
-if ((edad + 2) >= 18) {
-    if (edad == 20) {
-        edad = 21;
-    }
-} else {
-}
-```
-
-También se respeta la prioridad de los operadores, es decir, las multiplicaciones y divisiones se agrupan antes que las sumas y restas. La comparación siempre se hace al final, entre las dos expresiones ya agrupadas.
-
-### Ejemplos inválidos
-
-Estos son algunos códigos que el parser rechaza y el error que muestra:
-
-| Código | Error |
-| --- | --- |
-| `if (edad >=) { edad = 20; }` | Falta la expresión del lado derecho de `>=`. |
-| `if (edad >= 18) { edad = 20;` | Falta la llave `}` que cierra el bloque. |
-| `if edad >= 18 { edad = 20; }` | Faltan los paréntesis de la condición. |
-| `else { edad = 20; }` | Hay un `else` sin un `if` antes. |
-| `if (edad >= 18) { edad = ; }` | La asignación del bloque no tiene expresión. |
-| `if (edad) { }` | Falta el operador de comparación. |
-| `if (edad > 1) edad = 2;` | Las ramas del `if` siempre necesitan llaves. |
-
-Por ejemplo, para el segundo caso el mensaje es:
-
-```text
-Línea 1, columna 29: se esperaba '}' para cerrar el bloque abierto en la línea 1, columna 17, pero se encontró 'fin del código'
-```
-
-El mensaje indica dos posiciones: dónde se acabó el código (columna 29) y dónde se abrió la llave que quedó sin cerrar (columna 17). Esto ayuda cuando el bloque es largo y el error aparece muchas líneas después de la `{`.
-
-### ¿Qué no admite?
-
-Por ahora no se han implementado otras construcciones de C, como:
+### Lo que todavía no admite
 
 - `else if` (aunque se puede escribir un `if` dentro del bloque del `else`).
 - `switch`.
 - Ciclos (`for`, `while`, `do while`).
-- Funciones.
+- Funciones, incluida `main()`.
+- `#include`, `std::cout` y cualquier otra cosa propia de C++.
 - Otros tipos de datos como `float`, `double` o `char`.
 - Declaraciones sin inicializar, como `int edad;`.
 - Operadores lógicos (`&&`, `||`, `!`).
 - `if` sin llaves, como `if (x > 0) x = 1;`.
 - Operadores unarios, como `-5`.
+- Comentarios (`//` o `/* */`).
 
-También hay que tener en cuenta que **el programa solamente realiza análisis léxico y sintáctico**. No ejecuta el código ni comprueba errores semánticos, como utilizar una variable que no ha sido declarada. Tampoco evalúa si una condición es verdadera o falsa: solo revisa que esté bien escrita.
+## Gramática formal
 
-## Gramática
+Cada regla corresponde a un método de la clase `Parser` en `src/parser.py`. Está escrita en EBNF:
 
-Esta es la gramática que sigue el parser. Cada regla corresponde a un método de la clase `Parser` en `src/parser.py`.
+- `*` significa "cero o más veces".
+- `?` significa "opcional" (cero o una vez).
+- `|` separa alternativas.
+- Lo que está entre comillas es un símbolo literal y lo que está en mayúsculas es un token que viene del lexer.
 
 ```text
 programa       → sentencia*
@@ -119,11 +90,13 @@ termino        → factor (("*" | "/") factor)*
 factor         → NUMERO | ID | "(" expresion ")"
 ```
 
-Como la comparación está en su propia regla (`condicion`) y no dentro de `expresion`, la precedencia de `+`, `-`, `*` y `/` no cambia. Por eso tampoco se puede escribir una comparación en una asignación, como `x = a > b;`.
+Como la comparación está en su propia regla (`condicion`) y no dentro de `expresion`, la precedencia de `+`, `-`, `*` y `/` no cambia, y la comparación siempre se hace al final, entre dos expresiones ya agrupadas. Por eso tampoco se puede escribir una comparación en una asignación, como `x = a > b;`.
 
-### Gramática en BNF
+En el código, cada `*` es un ciclo `while` y cada `?` es un `if`. Por ejemplo, `(ELSE bloque)?` es el `if self.actual().tipo == "ELSE"` de `condicional()`.
 
-La gramática de arriba usa la notación extendida (`*` para "cero o más" y `?` para "opcional"). Esta es la misma gramática escrita en BNF estricta, donde las repeticiones y las partes opcionales se expresan con reglas recursivas y la cadena vacía (`ε`):
+### La misma gramática en BNF
+
+Esta es la misma gramática en BNF estricta, donde las repeticiones y las partes opcionales se escriben con reglas recursivas y la cadena vacía (`ε`):
 
 ```text
 <programa>         ::= <lista_sentencias>
@@ -164,16 +137,51 @@ La gramática de arriba usa la notación extendida (`*` para "cero o más" y `?`
 
 Los terminales `<id>` y `<numero>` los reconoce el lexer: `<id>` es una letra o `_` seguida de letras, dígitos o `_` (sin contar las palabras reservadas `int`, `if` y `else`), y `<numero>` es una secuencia de uno o más dígitos.
 
-Algunas notas sobre el `if-else`:
+Algunas notas sobre la gramática:
 
-- **`<parte_else>` puede ser vacía.** Así se expresa en BNF que el `else` es opcional. En el código, esto es el `if self.actual().tipo == "ELSE"` de `condicional`: si el siguiente token no es `else`, se toma la opción `ε`.
-- **`<bloque>` reutiliza `<lista_sentencias>`.** Por eso dentro de un bloque puede ir cualquier sentencia, incluyendo otro `if`, y también un bloque vacío.
 - **No hay ambigüedad del "else colgante".** En C normal, `if (a) if (b) x; else y;` es ambiguo porque no se sabe a cuál `if` pertenece el `else`. Aquí no pasa porque las llaves son obligatorias: el `else` siempre va justo después de la `}` de su `if`, así que solo hay un árbol posible.
-- **La gramática es LL(1).** Con solo mirar el token actual se sabe qué regla aplicar (`int` → declaración, identificador → asignación, `if` → condicional, `else` → segundo bloque). Por eso se puede implementar con descenso recursivo sin retroceder.
+- **La gramática es LL(1).** Con solo mirar el token actual se sabe qué regla aplicar, así que se puede implementar con descenso recursivo sin retroceder.
 
-## ¿Cómo se procesa un condicional?
+## Funcionamiento
 
-Tomemos este código:
+El recorrido completo es:
+
+```text
+Código fuente → Lexer → Tokens → Parser → Árbol sintáctico
+```
+
+1. `src/main.py` lee el archivo `.cpp` (o usa el ejemplo predeterminado).
+2. `tokenizar()` convierte el texto en una lista de tokens y agrega un token `EOF` al final para marcar dónde termina el código.
+3. `Parser(tokens).parsear()` llama a `sentencia()` una y otra vez hasta llegar a `EOF`.
+4. Si todo cuadra, se imprime el árbol. Si no, se muestra el error con su línea y columna.
+
+### ¿Cómo decide `sentencia()` qué analizar?
+
+Mira solamente el tipo del token actual:
+
+| Token actual | Qué se analiza |
+| --- | --- |
+| `INT` | `declaracion()` |
+| `ID` | `asignacion()` |
+| `IF` | `condicional()` |
+| `ELSE` | Error: un `else` sin un `if` antes |
+| Cualquier otro | Error: se esperaba una declaración, asignación o `if` |
+
+Un `else` correcto nunca llega a `sentencia()`, porque `condicional()` lo consume justo después del bloque del `if`. Por eso, si `sentencia()` ve un `else`, es que está suelto.
+
+### ¿Por qué se pueden anidar condicionales?
+
+Porque las reglas se llaman en círculo:
+
+```text
+sentencia() → condicional() → bloque() → sentencia() → ...
+```
+
+`condicional()` usa `bloque()` para cada rama, y `bloque()` llama a `sentencia()` hasta encontrar la `}`. Como `sentencia()` puede volver a llamar a `condicional()`, dentro de un bloque puede ir otro `if`, y dentro de ese otro más. No hace falta escribir nada especial para los anidados: sale solo de la recursión.
+
+### Ejemplo paso a paso
+
+Para este código:
 
 ```c
 if (edad >= 18) {
@@ -181,15 +189,15 @@ if (edad >= 18) {
 }
 ```
 
-1. El lexer lo convierte en tokens: `IF`, `(`, `ID`, `>=`, `NUMERO`, `)`, `{`, `ID`, `=`, `ID`, `+`, `NUMERO`, `;`, `}`. Las palabras `if` y `else` solo se toman como reservadas si están escritas exactamente así; por ejemplo, `ifVariable` sigue siendo un identificador normal.
-2. En `sentencia`, el parser ve que el token actual es `IF` y llama a `condicional`.
-3. `condicional` consume `if` y `(`, y llama a `condicion`.
-4. `condicion` lee una expresión (`edad`), revisa que siga un operador de comparación (`>=`) y lee la otra expresión (`18`).
-5. De vuelta en `condicional`, se consume `)` y se llama a `bloque`.
-6. `bloque` consume `{` y llama a `sentencia` una y otra vez hasta encontrar `}`. Como `bloque` vuelve a llamar a `sentencia`, dentro de un bloque puede ir cualquier instrucción, incluso otro `if`.
-7. Al final, si el siguiente token es `ELSE`, se consume y se analiza un segundo bloque. Si no, el condicional termina ahí.
+1. El lexer genera: `IF`, `(`, `ID`, `>=`, `NUMERO`, `)`, `{`, `ID`, `=`, `ID`, `+`, `NUMERO`, `;`, `}`. Las palabras `if` y `else` solo se toman como reservadas si están escritas exactamente así; `ifVariable` sigue siendo un identificador normal.
+2. `sentencia()` ve `IF` y llama a `condicional()`.
+3. `condicional()` consume `if` y `(`, y llama a `condicion()`.
+4. `condicion()` lee una expresión (`edad`), revisa que siga un operador de comparación (`>=`) y lee la otra expresión (`18`).
+5. `condicional()` consume `)` y llama a `bloque()`.
+6. `bloque()` consume `{`, llama a `sentencia()` hasta encontrar `}` y la consume. Si el código se acaba antes, avisa dónde se abrió la llave que quedó sin cerrar.
+7. Si el siguiente token es `ELSE`, se consume y se analiza un segundo bloque. Si no, el condicional termina ahí.
 
-El árbol que se genera se ve así:
+El árbol que se genera:
 
 ```text
 Programa
@@ -222,85 +230,182 @@ Programa
 
 Si hubiera un `else`, después del primer `Bloque` aparecerían `else` y un segundo `Bloque`.
 
-## Estructura del proyecto
+## Ejecución
 
-```text
-src/
-  lexer.py     # Convierte el código en tokens
-  parser.py    # Analiza los tokens y genera el árbol sintáctico
-  main.py      # Archivo principal para ejecutar el programa
-tests/
-  test_lexer.py
-  test_parser.py
-```
-
-## 1. Clonar el proyecto
-
-Primero clonamos el repositorio y entramos a la carpeta del proyecto:
+Se necesita **Python 3.9 o superior** (se desarrolló con Python 3.13). Todos los comandos se ejecutan desde la carpeta principal del proyecto.
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/JosseJuventino/mini-c-parser.git
 cd mini-c-parser
 ```
 
-Para ejecutarlo se necesita tener instalado **Python 3.9 o superior**. El proyecto se desarrolló utilizando Python 3.13.
+Es importante usar `python -m src.main` y no `python src/main.py`, porque los archivos se importan entre sí con imports relativos.
 
-## 2. Ejecutar el programa
+### Analizar un archivo `.cpp`
 
-Desde la carpeta principal del proyecto ejecutamos:
+```bash
+python -m src.main ejemplos/validos/condicional_else.cpp
+python -m src.main ejemplos/invalidos/condicion_incompleta.cpp
+```
+
+Para probar otro código, basta con guardarlo en un archivo `.cpp` (en UTF-8) y pasar su ruta. Ya no hace falta modificar `src/main.py`.
+
+Sin argumentos, se analiza un ejemplo predeterminado:
 
 ```bash
 python -m src.main
 ```
 
-Es importante ejecutarlo de esta forma y no con `python src/main.py`, porque se utilizan imports relativos entre los archivos.
+### Ver los tokens
 
-Si todo está correcto, debería aparecer algo parecido a esto:
+Con `--tokens` (o `-t`) se muestra primero la lista de tokens con su posición, y después el árbol:
+
+```bash
+python -m src.main --tokens ejemplos/validos/condicional.cpp
+```
 
 ```text
-Código sintácticamente válido
-
-Árbol de análisis sintáctico:
-Programa
-  Sentencia
-    Declaracion
-      int
-      edad
-      =
-      Expresion
-        Termino
-          Factor
-            20
-      ;
+Tokens reconocidos:
+  LÍNEA:COL  TIPO      VALOR
+  1:1        INT       int
+  1:5        ID        edad
+  1:10       =         =
+  1:12       NUMERO    20
+  1:14       ;         ;
+  ...
+  4:1        IF        if
+  4:4        (         (
+  4:5        ID        edad
+  4:10       >=        >=
   ...
 ```
 
-Básicamente, el lexer se encarga de separar el código en tokens y después el parser analiza esos tokens para construir el árbol sintáctico.
+### Modo demostración
 
-Si quieren probar otro código, solamente tienen que modificar la variable `codigo` que está en `src/main.py`.
+```bash
+python -m src.main --demo
+```
 
-### Ejecutarlo desde VS Code
+Recorre todos los archivos de `ejemplos/validos` y `ejemplos/invalidos`. Para cada uno muestra el resultado esperado, el obtenido, si coinciden, y el árbol (si es válido) o el error (si es inválido). Un ejemplo inválido cuenta como correcto cuando el analizador lo **rechaza**. Al final aparece un resumen:
 
-También se puede ejecutar directamente desde VS Code.
+```text
+RESUMEN DE LA DEMOSTRACIÓN
 
-El proyecto ya tiene una configuración llamada **Debug mini-c-parser** en `.vscode/launch.json`.
+Ejemplos procesados: 14
+Comportamientos correctos: 14
+Comportamientos incorrectos: 0
+```
 
-Solo hay que abrir la carpeta del proyecto, tener instalada la extensión de Python y presionar **F5**.
+`--demo` también funciona con `--tokens`, y encuentra la carpeta `ejemplos` aunque el comando se ejecute desde otra carpeta.
 
-## 3. Ejecutar las pruebas
+### Ayuda y códigos de salida
 
-Se agregaron pruebas para comprobar que tanto el lexer como el parser funcionen correctamente, incluyendo los condicionales (casos válidos, inválidos y la estructura de los nodos `Condicional`, `Condicion` y `Bloque`).
+```bash
+python -m src.main --help
+```
 
-Desde la carpeta principal ejecutamos:
+| Código | Significado |
+| --- | --- |
+| `0` | El código es válido (o, en `--demo`, todos los ejemplos se comportaron como se esperaba). |
+| `1` | El código tiene un error léxico o sintáctico (o, en `--demo`, hubo alguna diferencia). |
+| `2` | No se pudo leer el archivo (no existe, es una carpeta o no está en UTF-8), o los argumentos son incorrectos. |
+
+### Desde VS Code
+
+En `.vscode/launch.json` hay dos configuraciones: **Debug mini-c-parser** (ejemplo predeterminado) y **Demo mini-c-parser** (`--demo`). Se elige una en la pestaña de ejecución y se presiona **F5**.
+
+### Pruebas
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-Esto busca y ejecuta todas las pruebas de la carpeta `tests` y muestra cuáles pasaron o fallaron. También se puede seguir usando la forma anterior:
+Hay tres archivos de pruebas:
 
-```bash
-python -m unittest tests.test_lexer tests.test_parser -v
+- `tests/test_lexer.py`: tokens, palabras reservadas, operadores de comparación, línea y columna.
+- `tests/test_parser.py`: árboles de entradas válidas, errores en entradas inválidas y condicionales.
+- `tests/test_main.py`: lectura de archivos, todos los ejemplos de la carpeta `ejemplos`, mensajes de error, `--tokens`, `--demo` y códigos de salida (algunas pruebas ejecutan el programa con `subprocess`, igual que desde la terminal).
+
+Si todo funciona, al final aparece `OK`.
+
+## Ejemplos válidos e inválidos
+
+Los ejemplos están en la carpeta `ejemplos`. Usan la extensión `.cpp` solo para organizarlos y que el editor los coloree, pero **no son programas C++ completos**: son fragmentos que usan únicamente el subconjunto de Mini-C. No tienen `#include`, `main()` ni `std::cout`, y probablemente no compilarían con un compilador de C++. Mini-C no analiza todo C ni todo C++.
+
+### Válidos
+
+| Archivo | Qué muestra |
+| --- | --- |
+| `declaraciones.cpp` | Varias declaraciones `int`. |
+| `operaciones.cpp` | Suma, resta, multiplicación y división con su precedencia. |
+| `parentesis.cpp` | Paréntesis anidados que cambian el orden de las operaciones. |
+| `condicional.cpp` | Dos `if` sin `else`, uno con expresiones a ambos lados de `!=`. |
+| `condicional_else.cpp` | Un `if-else`. |
+| `condicional_anidado.cpp` | Un `if-else` dentro de otro `if-else`. |
+
+Por ejemplo, `condicional_anidado.cpp`:
+
+```c
+int edad = 20;
+int resultado = 0;
+
+if (edad >= 18) {
+    if (edad == 20) {
+        resultado = 100;
+    } else {
+        resultado = 50;
+    }
+} else {
+    resultado = 0;
+}
 ```
 
-Si todo funciona correctamente, al final debería aparecer `OK`.
+Resultado: `Código sintácticamente válido` y su árbol, con un nodo `Condicional` dentro del primer `Bloque` del otro.
+
+### Inválidos
+
+| Archivo | Código con el error | Mensaje |
+| --- | --- | --- |
+| `sin_expresion.cpp` | `int edad = ;` | `Línea 1, columna 12: se esperaba un número, identificador o '(', pero se encontró ';'` |
+| `sin_punto_coma.cpp` | `int edad = 20` (y en la línea 2 sigue otra instrucción) | `Línea 2, columna 1: se esperaba ';', pero se encontró 'edad'` |
+| `sin_identificador.cpp` | `int = 20;` | `Línea 1, columna 5: se esperaba 'ID', pero se encontró '='` |
+| `parentesis_sin_cerrar.cpp` | `int resultado = (edad + 5 * 2;` | `Línea 2, columna 30: se esperaba ')', pero se encontró ';'` |
+| `condicion_incompleta.cpp` | `if (edad >=) {` | `Línea 3, columna 12: se esperaba un número, identificador o '(', pero se encontró ')'` |
+| `bloque_sin_cerrar.cpp` | Un `if` cuyo bloque nunca se cierra | `Línea 5, columna 1: se esperaba '}' para cerrar el bloque abierto en la línea 3, columna 17, pero se encontró 'fin del código'` |
+| `else_sin_if.cpp` | Una asignación entre la `}` del `if` y el `else` | `Línea 7, columna 1: se encontró 'else' sin un 'if' antes` |
+| `caracter_invalido.cpp` | `int total = edad @ 2;` | `Carácter inválido '@' en línea 2, columna 18` (error léxico) |
+
+Todos los errores salen como un mensaje del analizador (`Error léxico: ...` o `Error sintáctico: ...`), nunca como un fallo interno de Python.
+
+Otros casos que también se rechazan (están en las pruebas):
+
+| Código | Por qué falla |
+| --- | --- |
+| `if edad >= 18 { edad = 20; }` | Faltan los paréntesis de la condición. |
+| `if (edad) { }` | Falta el operador de comparación. |
+| `if (edad > 1) edad = 2;` | Las ramas del `if` siempre necesitan llaves. |
+
+## Limitaciones
+
+- **Solo se valida la sintaxis.** El programa no ejecuta las instrucciones, no evalúa si una condición es verdadera o falsa y no calcula ningún resultado.
+- **No hay análisis semántico.** No se revisa si una variable fue declarada antes de usarla ni si se declara dos veces.
+- **Las llaves son obligatorias en los condicionales.** Por eso el problema clásico del *dangling else* (un `else` que podría pertenecer a dos `if` distintos cuando no hay llaves) queda fuera de este subconjunto.
+- **Se detiene en el primer error.** Si un archivo tiene varios errores, solo se informa el primero.
+- Todo lo que aparece en [Lo que todavía no admite](#lo-que-todavía-no-admite) produce un error, aunque sea C válido.
+
+## Estructura del proyecto
+
+```text
+src/
+  lexer.py       # Convierte el código en tokens
+  parser.py      # Analiza los tokens y genera el árbol sintáctico
+  main.py        # Interfaz de terminal: archivos, --tokens y --demo
+ejemplos/
+  validos/       # Fragmentos que el parser debe aceptar
+  invalidos/     # Fragmentos que el parser debe rechazar
+tests/
+  test_lexer.py
+  test_parser.py
+  test_main.py
+DEMO.md          # Guion para la exposición
+```

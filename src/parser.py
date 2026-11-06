@@ -1,4 +1,3 @@
-
 from dataclasses import dataclass
 from .lexer import Token
 
@@ -85,14 +84,12 @@ class Parser:
 
         hijos = ["if", "(", condicion, ")", bloque_if]
 
-        # El else es opcional: solo se analiza si el siguiente token lo es
         if self.actual().tipo == "ELSE":
             self.consumir("ELSE")
             hijos.extend(["else", self.bloque()])
 
         return Nodo("Condicional", hijos)
 
-    # bloque → "{" sentencia* "}"
     def bloque(self) -> Nodo:
         apertura = self.consumir("{")
         hijos = ["{"]

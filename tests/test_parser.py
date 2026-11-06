@@ -4,10 +4,6 @@ from src.lexer import tokenizar
 from src.parser import Parser
 
 
-## assertEqual() comprueba que dos valores sean iguales.
-## assertTrue() comprueba que un valor sea verdadero.
-## assertRaises() comprueba que se produzca una excepción.
-
 def analizar(codigo):
     tokens = tokenizar(codigo)
     parser = Parser(tokens)
@@ -136,7 +132,6 @@ class TestEntradasInvalidas(unittest.TestCase):
 
 
 def sentencias_del_bloque(bloque):
-    # Un Bloque tiene la forma ["{", Sentencia, ..., Sentencia, "}"]
     return [sentencia.hijos[0] for sentencia in bloque.hijos[1:-1]]
 
 
@@ -231,7 +226,6 @@ class TestCondicionalesValidos(unittest.TestCase):
         externo = primera_instruccion(arbol)
         self.assertEqual(externo.nombre, "Condicional")
 
-        # La parte izquierda es una expresión entre paréntesis: (edad + 2)
         condicion_externa = externo.hijos[2]
         self.assertEqual(condicion_externa.hijos[1], ">=")
         factor_parentesis = condicion_externa.hijos[0].hijos[0].hijos[0]
@@ -294,7 +288,6 @@ class TestCondicionalesValidos(unittest.TestCase):
         izquierda = condicion.hijos[0]
         derecha = condicion.hijos[2]
 
-        # La comparación queda arriba; la aritmética mantiene su precedencia
         self.assertEqual(condicion.hijos[1], "<=")
         self.assertEqual(izquierda.hijos[1], "+")
         self.assertEqual(izquierda.hijos[2].hijos[1], "*")
