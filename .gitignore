@@ -1,0 +1,4 @@
+corpus_scripts/analisis_spacy.txt
+corpus_scripts/venv/
+corpus_scripts/__pycache__/
+corpus_scripts/*.pyc
