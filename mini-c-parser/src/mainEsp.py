@@ -18,7 +18,9 @@ def imprimir_arbol(nodo, nivel=0):
         print(f"{espacio}{nodo}")
 
 
-oracion = "Marcela vio al fantasma pequeño."
+
+
+oracion = "La calabaza escribe el código"
 
 try:
     tokens = tokenizarEsp(oracion)

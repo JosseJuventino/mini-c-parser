@@ -192,13 +192,13 @@ class ParserEsp:
         )
     
     def verbo_s(self) -> Nodo:
-        #verbo_s -> V_s complemento preps adverbio
+        #verbo_s -> V_s complemento 
         if self.actual().tipo == "V_s":
             verbo = self.consumir("V_s")
             hijos = [verbo.valor]
             hijos.append(self.complemento())
-            hijos.append(self.preps())
-            hijos.append(self.adverbio())
+            #hijos.append(self.preps())
+            #hijos.append(self.adverbio())
             return Nodo("Verbo", hijos)
 
         token = self.actual()
@@ -208,13 +208,13 @@ class ParserEsp:
         )
 
     def verbo_p(self) -> Nodo:
-            #verbo_p -> V_p complemento preps adverbio
+            #verbo_p -> V_p complemento
             if self.actual().tipo == "V_p":
                 verbo = self.consumir("V_p")
                 hijos = [verbo.valor]
                 hijos.append(self.complemento())
-                hijos.append(self.preps())
-                hijos.append(self.adverbio())
+                #hijos.append(self.preps())
+                #hijos.append(self.adverbio())
                 return Nodo("Verbo", hijos)
     
             token = self.actual()
@@ -239,15 +239,29 @@ class ParserEsp:
         )
 
     def complemento(self) -> Nodo:
-        # complemento -> SN | que oracion | e
-        tipo = self.actual().tipo
-        if tipo in ("DET_ms", "NP_ms", "DET_fs", "NP_fs", "DET_mp", "NP_mp", "DET_fp", "NP_fp", "N_mp", "N_fp"):
-            return Nodo("Complemento", [self.sn()])
-        if tipo == "que":
+        # complemento -> SN complemento2 | que oracion | complemento2
+        if self.actual().tipo in ("DET_ms", "NP_ms", "DET_fs", "NP_fs", "DET_mp", "NP_mp", "DET_fp", "NP_fp", "N_mp", "N_fp"):
+            sn = self.sn()
+            complemento2 = self.complemento2()
+            return Nodo("Complemento", [sn, complemento2])
+        if self.actual().tipo == "que":
             que = self.consumir("que")
             oracion = self.oracion()
             return Nodo("Complemento", [que.valor, oracion])
-        return Nodo("Complemento", [])
+        if self.actual().tipo in ("PREP", "ADV", "EOF"):
+            return Nodo("Complemento", [self.complemento2()])
+
+        raise SyntaxError(
+            f"Columna {self.actual().columna}: se esperaba un sintagma nominal, "
+            f"'que', una preposición, un adverbio o fin de la oración, "
+            f"pero se encontró '{self.actual().valor}'"
+        )
+
+    def complemento2(self) -> Nodo:
+        hijos = []
+        hijos.append(self.preps())
+        hijos.append(self.adverbio())
+        return Nodo("Complemento2", hijos)
 
     def preps(self) -> Nodo:
         # preps -> PREP SN preps | e
@@ -256,12 +270,31 @@ class ParserEsp:
             sn = self.sn()
             preps = self.preps()
             return Nodo("Preposiciones", [prep.valor, sn, preps])
-        return Nodo("Preposiciones", [])
+
+        # FOLLOW(preps) = {ADV, EOF}
+        if self.actual().tipo in ("ADV", "EOF"):
+            return Nodo("Preposiciones", [])
+
+        token = self.actual()
+        raise SyntaxError(
+            f"Columna {token.columna}: se esperaba una preposición, "
+            f"un adverbio o fin de la oración, "
+            f"pero se encontró '{token.valor}'"
+        )
 
     def adverbio(self) -> Nodo:
         # adverbio -> ADV | e
         if self.actual().tipo == "ADV":
             adv = self.consumir("ADV")
             return Nodo("Adverbio", [adv.valor])
-        return Nodo("Adverbio", [])
+
+        # FOLLOW(adverbio) = {EOF}
+        if self.actual().tipo == "EOF":
+            return Nodo("Adverbio", [])
+
+        token = self.actual()
+        raise SyntaxError(
+            f"Columna {token.columna}: se esperaba un adverbio "
+            f"o fin de la oración, pero se encontró '{token.valor}'"
+        )
     

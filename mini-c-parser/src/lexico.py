@@ -60,7 +60,8 @@ LEXICO = {
     "escribimos":("V", None, "p"),  
     "explica":("V", None, "s"), 
     "ven":("V", None, "p"),  
-    "vio": ("V", None, "s"),  
+    "vio": ("V", None, "s"), 
+    "dijo": ("V", None, "s"), 
 
     # Adverbios, no importa ni género ni número
     "furiosamente":("ADV", None, None),
