@@ -1,6 +1,6 @@
 
 from dataclasses import dataclass
-from .lexer import Token
+from lexer import Token
 
 
 @dataclass
