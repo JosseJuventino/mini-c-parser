@@ -1,0 +1,17 @@
+﻿id;nivel;oracion;gramatical;fenomeno
+1;1;Marcela come los dulces.;si;SVO básica con nombre propio
+2;1;El profesor corrige los exámenes.;si;Concordancia singular-plural (det-sust, objeto plural)
+3;1;Los fantasmas ven las calabazas.;si;Concordancia plural masculino/femenino
+4;2;Los fantasmas pequeños comen los dulces nuevos.;si;Adjetivos plurales (concordancia sustantivo-adjetivo)
+5;2;Las calabazas pequeñas duermen furiosamente.;si;Adjetivo y adverbio
+6;2;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;si;Adjetivos, adverbio y frase preposicional combinados
+7;3;Marcela vio al fantasma con el telescopio.;si;Ambigüedad estructural (adjunción de la frase preposicional)
+8;3;El profesor que explica la gramática corrige los exámenes.;si;Cláusula relativa sobre el sujeto (subordinada)
+9;3;El examen que Jaime corrigió asustó a Jose.;si;Relativa con hueco (dependencia a distancia) y objeto con 'a' personal
+10;3;Escribimos el parser.;si;Sujeto omitido (pro-drop)
+11;3;Come Marcela los dulces.;si;Orden libre (verbo antes del sujeto)
+12;A;Los fantasma come los dulces.;no;Error de número (det-sust y sujeto-verbo)
+13;A;El calabaza escribe el código.;no;Error de género (det-sust)
+14;A;Los esqueletos escribe el código.;no;Error de número (sujeto-verbo)
+15;A;Jaime corrige los examen.;no;Error de número en el objeto (det-sust)
+16;A;Las calabazas pequeños duermen furiosamente.;no;Error de género (sustantivo-adjetivo)
