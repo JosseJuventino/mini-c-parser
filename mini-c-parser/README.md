@@ -1,3 +1,4 @@
+#    Implementación Parser al español
 Esta parte del proyecto adapta el análisis descendente recursivo a un conjunto limitado de oraciones en español. Utiliza un léxico definido manualmente para reconocer las palabras, comprobar las concordancias programadas y construir un árbol sintáctico.
 
 La entrada se escribe directamente en la variable `oracion` de `mainEsp.py`. Al ejecutar ese archivo, el programa muestra el árbol si acepta la oración o un mensaje con el primer error encontrado.
