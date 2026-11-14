@@ -37,11 +37,11 @@ class ParserEsp:
     def oracion(self) -> Nodo:
         # oracion -> Sujeto_s V_s | Sujeto_p V_p
         tipo = self.actual().tipo
-        if tipo in ("DET_ms", "NP_ms", "DET_fs", "NP_fs"):
+        if tipo in ("DET_ms", "NP_ms", "DET_fs", "NP_fs", "PRON_s"):
             sn = self.sujeto_s()
             verbo = self.verbo_s()
             return Nodo("Oracion", [sn, verbo])
-        if tipo in ("DET_mp", "NP_mp", "DET_fp", "NP_fp", "N_mp", "N_fp"):
+        if tipo in ("DET_mp", "NP_mp", "DET_fp", "NP_fp", "N_mp", "N_fp", "PRON_p"):
             sn = self.sujeto_p()
             verbo = self.verbo_p()
             return Nodo("Oracion", [sn, verbo])
@@ -175,6 +175,9 @@ class ParserEsp:
             return Nodo("Sujeto", [self.sujeto_ms()])
         if tipo in ("DET_fs", "NP_fs"):
             return Nodo("Sujeto", [self.sujeto_fs()])
+        if tipo in ("PRON_s"):
+            pronombre = self.consumir("PRON_s")
+            return Nodo("Sujeto", [pronombre.valor])
         raise SyntaxError(
             f"Columna {self.actual().columna}: se esperaba un sujeto singular, "
             f"pero se encontró '{self.actual().valor}'"
@@ -186,6 +189,9 @@ class ParserEsp:
             return Nodo("Sujeto", [self.sujeto_mp()])
         if tipo in ("DET_fp", "NP_fp", "N_fp"):
             return Nodo("Sujeto", [self.sujeto_fp()])
+        if tipo in ("PRON_p"):
+            pronombre = self.consumir("PRON_p")
+            return Nodo("Sujeto", [pronombre.valor])
         raise SyntaxError(
             f"Columna {self.actual().columna}: se esperaba un sujeto plural, "
             f"pero se encontró '{self.actual().valor}'"
