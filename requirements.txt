@@ -9,3 +9,8 @@ matplotlib==3.11.2
 # análisis sea el mismo en cualquier máquina.
 spacy==3.8.18
 es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.8.0/es_core_news_sm-3.8.0-py3-none-any.whl
+
+# NLTK (segunda herramienta de NLP). Su corpus de español, cess_esp, se
+# descarga solo la primera vez que se ejecuta NLTK/correr_nltk.py.
+# También se puede descargar con:  python -m nltk.downloader cess_esp
+nltk==3.10.4
