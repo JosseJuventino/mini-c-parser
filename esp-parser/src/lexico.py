@@ -1,16 +1,18 @@
 
 # Se determina qué es cada palabra
-# Para género m masculino, f femenino
+# Para género m masculino, f femenino, c común (la misma forma sirve para
+# masculino y femenino, como "verde")
 # Numero es s singural y p plural
 # Sustantivo es N
 # Nombre propio es NP
 # Adjetivo es Adj
 # Verb es V (puede ser singular o plural)
+# Los verbos llevan un cuarto dato: el tiempo (presente o pretérito)
 # Adverbio es ADV
 # Preposicion PREP
 # que es que
 
-# ( <TIPO>, <GENERO>, <NUMERO> )
+# ( <TIPO>, <GENERO>, <NUMERO> )  y, solo en los verbos, <TIEMPO>
 LEXICO = {
     # Determinantes
     "el": ("DET", "m", "s"),
@@ -26,11 +28,13 @@ LEXICO = {
     "marcela": ("NP", "f", "s"),
     "jaime": ("NP", "m", "s"),
     "jose":("NP", "m", "s"),
+    "josé": ("NP", "m", "s"),
     "ana": ("NP", "f", "s"),
     "victoria": ("NP", "f", "s"),
     "diego": ("NP", "m", "s"),
     "mateo": ("NP", "m", "s"),
     "maria": ("NP", "f", "s"),
+    "maría": ("NP", "f", "s"),
     "carlos": ("NP", "m", "s"),
 
     # Sustantivos 
@@ -87,7 +91,7 @@ LEXICO = {
     "ella": ("PRON", None, "s"),
     "ellos": ("PRON", None, "p"),
     "ellas": ("PRON", None, "p"),
-    "tu": ("PRON", None, "s"),
+    "tú": ("PRON", None, "s"),
     "usted": ("PRON", None, "s"),
     "nosotras": ("PRON", None, "p"),
     "nosotros": ("PRON", None, "p"),
@@ -113,9 +117,8 @@ LEXICO = {
     "viejos": ("Adj", "m", "p"),
     "vieja": ("Adj", "f", "s"),
     "viejas": ("Adj", "f", "p"),
-    "verde": ("Adj", "m", "s"),
-    "verdes": ("Adj", "m", "p"),
-    "verdes": ("Adj", "f", "p"),
+    "verde": ("Adj", "c", "s"),
+    "verdes": ("Adj", "c", "p"),
     "blanco": ("Adj", "m", "s"),
     "blancos": ("Adj", "m", "p"),
     "blanca": ("Adj", "f", "s"),
@@ -126,51 +129,52 @@ LEXICO = {
     "bonitas": ("Adj", "f", "p"),
     
 
-    # Verbos, género no importa 
-    "asustó": ("V", None, "s"),  
-    "come":("V", None, "s"),  
-    "comen": ("V", None, "p"),  
-    "corrige": ("V", None, "s"), 
-    "corrigió":("V", None, "s"),  
-    "duermen":("V", None, "p"),  
-    "duerme":("V", None, "s"),
-    "escribe":("V", None, "s"),  
-    "escribimos":("V", None, "p"),  
-    "explica":("V", None, "s"), 
-    "ven":("V", None, "p"),  
-    "vio": ("V", None, "s"), 
-    "dijo": ("V", None, "s"), 
-    "lee": ("V", None, "s"),
-    "leen": ("V", None, "p"),
-    "corrigen": ("V", None, "p"),
-    "leyó": ("V", None, "s"),
-    "leyeron": ("V", None, "p"),
-    "comió": ("V", None, "s"),
-    "comieron": ("V", None, "p"),
-    "corrigieron": ("V", None, "p"),
-    "escriben": ("V", None, "p"),
-    "pinta": ("V", None, "s"),
-    "pintan": ("V", None, "p"),
-    "guarda": ("V", None, "s"),
-    "guardan": ("V", None, "p"),
-    "escribió": ("V", None, "s"),
-    "escribieron": ("V", None, "p"),
-    "pintó": ("V", None, "s"),
-    "pintaron": ("V", None, "p"),
-    "guardó": ("V", None, "s"),
-    "guardaron": ("V", None, "p"),
-    "dibujó": ("V", None, "s"),
-    "dibujaron": ("V", None, "p"),
-    "compró": ("V", None, "s"),
-    "compraron": ("V", None, "p"),
-    "buscó": ("V", None, "s"),
-    "buscaron": ("V", None, "p"),
-    "dibuja": ("V", None, "s"),
-    "dibujan": ("V", None, "p"),
-    "compra": ("V", None, "s"),
-    "compran": ("V", None, "p"),
-    "busca": ("V", None, "s"),
-    "buscan": ("V", None, "p"),
+    # Verbos, género no importa. El cuarto dato es el tiempo.
+    # "escribimos" tiene la misma forma en presente y en pretérito.
+    "asustó": ("V", None, "s", "pretérito"),  
+    "come":("V", None, "s", "presente"),  
+    "comen": ("V", None, "p", "presente"),  
+    "corrige": ("V", None, "s", "presente"), 
+    "corrigió":("V", None, "s", "pretérito"),  
+    "duermen":("V", None, "p", "presente"),  
+    "duerme":("V", None, "s", "presente"),
+    "escribe":("V", None, "s", "presente"),  
+    "escribimos":("V", None, "p", "presente o pretérito"),  
+    "explica":("V", None, "s", "presente"), 
+    "ven":("V", None, "p", "presente"),  
+    "vio": ("V", None, "s", "pretérito"), 
+    "dijo": ("V", None, "s", "pretérito"), 
+    "lee": ("V", None, "s", "presente"),
+    "leen": ("V", None, "p", "presente"),
+    "corrigen": ("V", None, "p", "presente"),
+    "leyó": ("V", None, "s", "pretérito"),
+    "leyeron": ("V", None, "p", "pretérito"),
+    "comió": ("V", None, "s", "pretérito"),
+    "comieron": ("V", None, "p", "pretérito"),
+    "corrigieron": ("V", None, "p", "pretérito"),
+    "escriben": ("V", None, "p", "presente"),
+    "pinta": ("V", None, "s", "presente"),
+    "pintan": ("V", None, "p", "presente"),
+    "guarda": ("V", None, "s", "presente"),
+    "guardan": ("V", None, "p", "presente"),
+    "escribió": ("V", None, "s", "pretérito"),
+    "escribieron": ("V", None, "p", "pretérito"),
+    "pintó": ("V", None, "s", "pretérito"),
+    "pintaron": ("V", None, "p", "pretérito"),
+    "guardó": ("V", None, "s", "pretérito"),
+    "guardaron": ("V", None, "p", "pretérito"),
+    "dibujó": ("V", None, "s", "pretérito"),
+    "dibujaron": ("V", None, "p", "pretérito"),
+    "compró": ("V", None, "s", "pretérito"),
+    "compraron": ("V", None, "p", "pretérito"),
+    "buscó": ("V", None, "s", "pretérito"),
+    "buscaron": ("V", None, "p", "pretérito"),
+    "dibuja": ("V", None, "s", "presente"),
+    "dibujan": ("V", None, "p", "presente"),
+    "compra": ("V", None, "s", "presente"),
+    "compran": ("V", None, "p", "presente"),
+    "busca": ("V", None, "s", "presente"),
+    "buscan": ("V", None, "p", "presente"),
 
     # Adverbios, no importa ni género ni número
     "furiosamente":("ADV", None, None),

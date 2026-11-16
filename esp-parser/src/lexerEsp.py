@@ -25,11 +25,40 @@ PATRON = re.compile(
 
 CONTRACCIONES = {"al": ["a", "el"], "del": ["de", "el"]}
 
+
+class ErrorLexico(SyntaxError):
+    """
+    La oración contiene algo que el lexer no puede clasificar: una palabra
+    que no está en el léxico o un carácter que no se admite.
+
+    Hereda de SyntaxError para que el código que ya capturaba SyntaxError
+    siga funcionando, pero permite distinguir este caso (la palabra no
+    pertenece al vocabulario) de un rechazo sintáctico (las palabras se
+    conocen, pero su orden no cumple la gramática).
+    """
+
+
 def etiquetar(palabra: str) -> str:
-    tipo, genero, numero = LEXICO[palabra]
+    # Los verbos tienen un cuarto dato (el tiempo) que no forma parte del
+    # tipo de token; por eso solo se toman los tres primeros.
+    tipo, genero, numero = LEXICO[palabra][:3]
     if genero or numero:
         return f"{tipo}_{genero or ''}{numero or ''}"
     return tipo
+
+
+def tiempo_verbal(palabra: str) -> str | None:
+    """
+    Devuelve el tiempo de un verbo del léxico ("presente", "pretérito" o
+    "presente o pretérito") y None si la palabra no es un verbo.
+
+    El tiempo es un dato del léxico y no una categoría de la gramática:
+    ninguna regla sintáctica del fragmento depende de él.
+    """
+    entrada = LEXICO.get(palabra.lower())
+    if entrada is None or entrada[0] != "V":
+        return None
+    return entrada[3]
 
 def tokenizarEsp(oracion: str) -> list[Token]:
     tokens = []
@@ -49,10 +78,18 @@ def tokenizarEsp(oracion: str) -> list[Token]:
              continue
     
         if tipo == "ERROR":
-            raise SyntaxError(
+            raise ErrorLexico(
                 f"Carácter inválido '{valor}' "
                 f"en columna {columna}"
             )
+
+        # La coma es un signo válido del español, pero la gramática no tiene
+        # ninguna regla que la use. Se entrega como token COMA para que el
+        # parser la rechace con un error sintáctico claro, en lugar de
+        # tratarla como una palabra desconocida.
+        if tipo == "COMA":
+            tokens.append(Token("COMA", valor, 1, columna))
+            continue
 
         #if tipo == "ID" and valor == "int":
         #    tipo = "INT"
@@ -65,7 +102,7 @@ def tokenizarEsp(oracion: str) -> list[Token]:
         PALABRAS = valor.lower()
         for parte in CONTRACCIONES.get(PALABRAS, [PALABRAS]):
             if parte not in LEXICO:
-                raise SyntaxError(
+                raise ErrorLexico(
                     f"Palabra desconocida '{parte}' "
                     f"en columna {columna}"
                 )

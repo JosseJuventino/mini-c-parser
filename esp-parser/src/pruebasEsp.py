@@ -5,6 +5,7 @@ from pathlib import Path
 from lexerEsp import tokenizarEsp
 from parserEsp import ParserEsp
 from arbol_matplot import exportar_arbol
+from ll1 import resumen, verificar_ll1
 
 CORPUS = {
     # Nivel 1: oraciones simples
@@ -85,6 +86,9 @@ CARPETA_ARBOLES = Path(__file__).resolve().parent / "arboles"
 
 
 def main():
+    # Se muestra el resultado de la verificación LL(1) antes de analizar.
+    print(resumen(verificar_ll1()))
+
     aceptadas = 0
     rechazos_sintacticos = 0
     errores_lexicos = 0

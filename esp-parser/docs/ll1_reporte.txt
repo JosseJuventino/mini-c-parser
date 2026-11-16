@@ -1,0 +1,254 @@
+Verificación LL(1): la gramática es LL(1) | 19 no terminales, 24 terminales, 43 producciones, 92 celdas en la tabla, 0 conflictos
+
+GRAMÁTICA
+  Programa -> Oracion EOF
+  Oracion -> Sujeto_s SV_s
+  Oracion -> Sujeto_p SV_p
+  Sujeto_s -> SN_ms
+  Sujeto_s -> SN_fs
+  Sujeto_s -> PRON_s
+  Sujeto_p -> SN_mp
+  Sujeto_p -> SN_fp
+  Sujeto_p -> PRON_p
+  SN_ms -> DET_ms N_ms Adjs_ms
+  SN_ms -> NP_ms
+  SN_fs -> DET_fs N_fs Adjs_fs
+  SN_fs -> NP_fs
+  SN_mp -> DET_mp N_mp Adjs_mp
+  SN_mp -> N_mp Adjs_mp
+  SN_fp -> DET_fp N_fp Adjs_fp
+  SN_fp -> N_fp Adjs_fp
+  Adjs_ms -> Adj_ms Adjs_ms
+  Adjs_ms -> Adj_cs Adjs_ms
+  Adjs_ms -> ε
+  Adjs_fs -> Adj_fs Adjs_fs
+  Adjs_fs -> Adj_cs Adjs_fs
+  Adjs_fs -> ε
+  Adjs_mp -> Adj_mp Adjs_mp
+  Adjs_mp -> Adj_cp Adjs_mp
+  Adjs_mp -> ε
+  Adjs_fp -> Adj_fp Adjs_fp
+  Adjs_fp -> Adj_cp Adjs_fp
+  Adjs_fp -> ε
+  SV_s -> V_s Complemento
+  SV_p -> V_p Complemento
+  SN -> SN_ms
+  SN -> SN_fs
+  SN -> SN_mp
+  SN -> SN_fp
+  Complemento -> SN Complemento2
+  Complemento -> que Oracion
+  Complemento -> Complemento2
+  Complemento2 -> Preps Adverbio
+  Preps -> PREP SN Preps
+  Preps -> ε
+  Adverbio -> ADV
+  Adverbio -> ε
+
+FIRST
+  FIRST(Programa) = { DET_fp, DET_fs, DET_mp, DET_ms, NP_fs, NP_ms, N_fp, N_mp, PRON_p, PRON_s }
+  FIRST(Oracion) = { DET_fp, DET_fs, DET_mp, DET_ms, NP_fs, NP_ms, N_fp, N_mp, PRON_p, PRON_s }
+  FIRST(Sujeto_s) = { DET_fs, DET_ms, NP_fs, NP_ms, PRON_s }
+  FIRST(Sujeto_p) = { DET_fp, DET_mp, N_fp, N_mp, PRON_p }
+  FIRST(SN_ms) = { DET_ms, NP_ms }
+  FIRST(SN_fs) = { DET_fs, NP_fs }
+  FIRST(SN_mp) = { DET_mp, N_mp }
+  FIRST(SN_fp) = { DET_fp, N_fp }
+  FIRST(Adjs_ms) = { Adj_cs, Adj_ms, ε }
+  FIRST(Adjs_fs) = { Adj_cs, Adj_fs, ε }
+  FIRST(Adjs_mp) = { Adj_cp, Adj_mp, ε }
+  FIRST(Adjs_fp) = { Adj_cp, Adj_fp, ε }
+  FIRST(SV_s) = { V_s }
+  FIRST(SV_p) = { V_p }
+  FIRST(SN) = { DET_fp, DET_fs, DET_mp, DET_ms, NP_fs, NP_ms, N_fp, N_mp }
+  FIRST(Complemento) = { ADV, DET_fp, DET_fs, DET_mp, DET_ms, NP_fs, NP_ms, N_fp, N_mp, PREP, que, ε }
+  FIRST(Complemento2) = { ADV, PREP, ε }
+  FIRST(Preps) = { PREP, ε }
+  FIRST(Adverbio) = { ADV, ε }
+
+FOLLOW
+  FOLLOW(Programa) = {  }
+  FOLLOW(Oracion) = { EOF }
+  FOLLOW(Sujeto_s) = { V_s }
+  FOLLOW(Sujeto_p) = { V_p }
+  FOLLOW(SN_ms) = { ADV, EOF, PREP, V_s }
+  FOLLOW(SN_fs) = { ADV, EOF, PREP, V_s }
+  FOLLOW(SN_mp) = { ADV, EOF, PREP, V_p }
+  FOLLOW(SN_fp) = { ADV, EOF, PREP, V_p }
+  FOLLOW(Adjs_ms) = { ADV, EOF, PREP, V_s }
+  FOLLOW(Adjs_fs) = { ADV, EOF, PREP, V_s }
+  FOLLOW(Adjs_mp) = { ADV, EOF, PREP, V_p }
+  FOLLOW(Adjs_fp) = { ADV, EOF, PREP, V_p }
+  FOLLOW(SV_s) = { EOF }
+  FOLLOW(SV_p) = { EOF }
+  FOLLOW(SN) = { ADV, EOF, PREP }
+  FOLLOW(Complemento) = { EOF }
+  FOLLOW(Complemento2) = { EOF }
+  FOLLOW(Preps) = { ADV, EOF }
+  FOLLOW(Adverbio) = { EOF }
+
+CONDICIONES LL(1)
+  Para cada no terminal con más de una producción se muestra el FIRST
+  de cada alternativa. Deben ser disjuntos (condición i) y, si una
+  alternativa puede derivar ε, ninguna puede empezar con un
+  terminal de FOLLOW (condición ii).
+  Oracion
+    FIRST(Sujeto_s SV_s) = { DET_fs, DET_ms, NP_fs, NP_ms, PRON_s }
+    FIRST(Sujeto_p SV_p) = { DET_fp, DET_mp, N_fp, N_mp, PRON_p }
+  Sujeto_s
+    FIRST(SN_ms) = { DET_ms, NP_ms }
+    FIRST(SN_fs) = { DET_fs, NP_fs }
+    FIRST(PRON_s) = { PRON_s }
+  Sujeto_p
+    FIRST(SN_mp) = { DET_mp, N_mp }
+    FIRST(SN_fp) = { DET_fp, N_fp }
+    FIRST(PRON_p) = { PRON_p }
+  SN_ms
+    FIRST(DET_ms N_ms Adjs_ms) = { DET_ms }
+    FIRST(NP_ms) = { NP_ms }
+  SN_fs
+    FIRST(DET_fs N_fs Adjs_fs) = { DET_fs }
+    FIRST(NP_fs) = { NP_fs }
+  SN_mp
+    FIRST(DET_mp N_mp Adjs_mp) = { DET_mp }
+    FIRST(N_mp Adjs_mp) = { N_mp }
+  SN_fp
+    FIRST(DET_fp N_fp Adjs_fp) = { DET_fp }
+    FIRST(N_fp Adjs_fp) = { N_fp }
+  Adjs_ms
+    FIRST(Adj_ms Adjs_ms) = { Adj_ms }
+    FIRST(Adj_cs Adjs_ms) = { Adj_cs }
+    FIRST(ε) = { ε }
+    FOLLOW(Adjs_ms) = { ADV, EOF, PREP, V_s }
+  Adjs_fs
+    FIRST(Adj_fs Adjs_fs) = { Adj_fs }
+    FIRST(Adj_cs Adjs_fs) = { Adj_cs }
+    FIRST(ε) = { ε }
+    FOLLOW(Adjs_fs) = { ADV, EOF, PREP, V_s }
+  Adjs_mp
+    FIRST(Adj_mp Adjs_mp) = { Adj_mp }
+    FIRST(Adj_cp Adjs_mp) = { Adj_cp }
+    FIRST(ε) = { ε }
+    FOLLOW(Adjs_mp) = { ADV, EOF, PREP, V_p }
+  Adjs_fp
+    FIRST(Adj_fp Adjs_fp) = { Adj_fp }
+    FIRST(Adj_cp Adjs_fp) = { Adj_cp }
+    FIRST(ε) = { ε }
+    FOLLOW(Adjs_fp) = { ADV, EOF, PREP, V_p }
+  SN
+    FIRST(SN_ms) = { DET_ms, NP_ms }
+    FIRST(SN_fs) = { DET_fs, NP_fs }
+    FIRST(SN_mp) = { DET_mp, N_mp }
+    FIRST(SN_fp) = { DET_fp, N_fp }
+  Complemento
+    FIRST(SN Complemento2) = { DET_fp, DET_fs, DET_mp, DET_ms, NP_fs, NP_ms, N_fp, N_mp }
+    FIRST(que Oracion) = { que }
+    FIRST(Complemento2) = { ADV, PREP, ε }
+    FOLLOW(Complemento) = { EOF }
+  Preps
+    FIRST(PREP SN Preps) = { PREP }
+    FIRST(ε) = { ε }
+    FOLLOW(Preps) = { ADV, EOF }
+  Adverbio
+    FIRST(ADV) = { ADV }
+    FIRST(ε) = { ε }
+    FOLLOW(Adverbio) = { EOF }
+
+  Resultado: se cumplen las condiciones (i) y (ii) en todos los casos.
+
+TABLA LL(1)  (las celdas que no aparecen son errores sintácticos)
+  M[Programa, DET_fp] = Programa -> Oracion EOF
+  M[Programa, DET_fs] = Programa -> Oracion EOF
+  M[Programa, DET_mp] = Programa -> Oracion EOF
+  M[Programa, DET_ms] = Programa -> Oracion EOF
+  M[Programa, NP_fs] = Programa -> Oracion EOF
+  M[Programa, NP_ms] = Programa -> Oracion EOF
+  M[Programa, N_fp] = Programa -> Oracion EOF
+  M[Programa, N_mp] = Programa -> Oracion EOF
+  M[Programa, PRON_p] = Programa -> Oracion EOF
+  M[Programa, PRON_s] = Programa -> Oracion EOF
+  M[Oracion, DET_fp] = Oracion -> Sujeto_p SV_p
+  M[Oracion, DET_fs] = Oracion -> Sujeto_s SV_s
+  M[Oracion, DET_mp] = Oracion -> Sujeto_p SV_p
+  M[Oracion, DET_ms] = Oracion -> Sujeto_s SV_s
+  M[Oracion, NP_fs] = Oracion -> Sujeto_s SV_s
+  M[Oracion, NP_ms] = Oracion -> Sujeto_s SV_s
+  M[Oracion, N_fp] = Oracion -> Sujeto_p SV_p
+  M[Oracion, N_mp] = Oracion -> Sujeto_p SV_p
+  M[Oracion, PRON_p] = Oracion -> Sujeto_p SV_p
+  M[Oracion, PRON_s] = Oracion -> Sujeto_s SV_s
+  M[Sujeto_s, DET_fs] = Sujeto_s -> SN_fs
+  M[Sujeto_s, DET_ms] = Sujeto_s -> SN_ms
+  M[Sujeto_s, NP_fs] = Sujeto_s -> SN_fs
+  M[Sujeto_s, NP_ms] = Sujeto_s -> SN_ms
+  M[Sujeto_s, PRON_s] = Sujeto_s -> PRON_s
+  M[Sujeto_p, DET_fp] = Sujeto_p -> SN_fp
+  M[Sujeto_p, DET_mp] = Sujeto_p -> SN_mp
+  M[Sujeto_p, N_fp] = Sujeto_p -> SN_fp
+  M[Sujeto_p, N_mp] = Sujeto_p -> SN_mp
+  M[Sujeto_p, PRON_p] = Sujeto_p -> PRON_p
+  M[SN_ms, DET_ms] = SN_ms -> DET_ms N_ms Adjs_ms
+  M[SN_ms, NP_ms] = SN_ms -> NP_ms
+  M[SN_fs, DET_fs] = SN_fs -> DET_fs N_fs Adjs_fs
+  M[SN_fs, NP_fs] = SN_fs -> NP_fs
+  M[SN_mp, DET_mp] = SN_mp -> DET_mp N_mp Adjs_mp
+  M[SN_mp, N_mp] = SN_mp -> N_mp Adjs_mp
+  M[SN_fp, DET_fp] = SN_fp -> DET_fp N_fp Adjs_fp
+  M[SN_fp, N_fp] = SN_fp -> N_fp Adjs_fp
+  M[Adjs_ms, ADV] = Adjs_ms -> ε
+  M[Adjs_ms, Adj_cs] = Adjs_ms -> Adj_cs Adjs_ms
+  M[Adjs_ms, Adj_ms] = Adjs_ms -> Adj_ms Adjs_ms
+  M[Adjs_ms, PREP] = Adjs_ms -> ε
+  M[Adjs_ms, V_s] = Adjs_ms -> ε
+  M[Adjs_ms, EOF] = Adjs_ms -> ε
+  M[Adjs_fs, ADV] = Adjs_fs -> ε
+  M[Adjs_fs, Adj_cs] = Adjs_fs -> Adj_cs Adjs_fs
+  M[Adjs_fs, Adj_fs] = Adjs_fs -> Adj_fs Adjs_fs
+  M[Adjs_fs, PREP] = Adjs_fs -> ε
+  M[Adjs_fs, V_s] = Adjs_fs -> ε
+  M[Adjs_fs, EOF] = Adjs_fs -> ε
+  M[Adjs_mp, ADV] = Adjs_mp -> ε
+  M[Adjs_mp, Adj_cp] = Adjs_mp -> Adj_cp Adjs_mp
+  M[Adjs_mp, Adj_mp] = Adjs_mp -> Adj_mp Adjs_mp
+  M[Adjs_mp, PREP] = Adjs_mp -> ε
+  M[Adjs_mp, V_p] = Adjs_mp -> ε
+  M[Adjs_mp, EOF] = Adjs_mp -> ε
+  M[Adjs_fp, ADV] = Adjs_fp -> ε
+  M[Adjs_fp, Adj_cp] = Adjs_fp -> Adj_cp Adjs_fp
+  M[Adjs_fp, Adj_fp] = Adjs_fp -> Adj_fp Adjs_fp
+  M[Adjs_fp, PREP] = Adjs_fp -> ε
+  M[Adjs_fp, V_p] = Adjs_fp -> ε
+  M[Adjs_fp, EOF] = Adjs_fp -> ε
+  M[SV_s, V_s] = SV_s -> V_s Complemento
+  M[SV_p, V_p] = SV_p -> V_p Complemento
+  M[SN, DET_fp] = SN -> SN_fp
+  M[SN, DET_fs] = SN -> SN_fs
+  M[SN, DET_mp] = SN -> SN_mp
+  M[SN, DET_ms] = SN -> SN_ms
+  M[SN, NP_fs] = SN -> SN_fs
+  M[SN, NP_ms] = SN -> SN_ms
+  M[SN, N_fp] = SN -> SN_fp
+  M[SN, N_mp] = SN -> SN_mp
+  M[Complemento, ADV] = Complemento -> Complemento2
+  M[Complemento, DET_fp] = Complemento -> SN Complemento2
+  M[Complemento, DET_fs] = Complemento -> SN Complemento2
+  M[Complemento, DET_mp] = Complemento -> SN Complemento2
+  M[Complemento, DET_ms] = Complemento -> SN Complemento2
+  M[Complemento, NP_fs] = Complemento -> SN Complemento2
+  M[Complemento, NP_ms] = Complemento -> SN Complemento2
+  M[Complemento, N_fp] = Complemento -> SN Complemento2
+  M[Complemento, N_mp] = Complemento -> SN Complemento2
+  M[Complemento, PREP] = Complemento -> Complemento2
+  M[Complemento, que] = Complemento -> que Oracion
+  M[Complemento, EOF] = Complemento -> Complemento2
+  M[Complemento2, ADV] = Complemento2 -> Preps Adverbio
+  M[Complemento2, PREP] = Complemento2 -> Preps Adverbio
+  M[Complemento2, EOF] = Complemento2 -> Preps Adverbio
+  M[Preps, ADV] = Preps -> ε
+  M[Preps, PREP] = Preps -> PREP SN Preps
+  M[Preps, EOF] = Preps -> ε
+  M[Adverbio, ADV] = Adverbio -> ADV
+  M[Adverbio, EOF] = Adverbio -> ε
+
+CONFLICTOS
+  Ninguno: ninguna celda tiene más de una producción, por lo tanto la gramática es LL(1).
