@@ -1,0 +1,11 @@
+# Dependencias del proyecto (Fase 2).
+# Instalar con:  python -m pip install -r requirements.txt
+# Versiones con las que se corrieron los experimentos, en Python 3.14.3.
+
+# Imágenes de los árboles (esp-parser/src/arbol_matplot.py) y gráficas.
+matplotlib==3.11.2
+
+# spaCy y su modelo de español. El modelo se fija por versión para que el
+# análisis sea el mismo en cualquier máquina.
+spacy==3.8.18
+es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-3.8.0/es_core_news_sm-3.8.0-py3-none-any.whl

@@ -16,7 +16,7 @@ vez que se ejecuta, que la gramática sobre la que opera es LL(1).
 | `src/analizadorEsp.py` | Función `analizar(oracion)`: ejecuta lexer y parser y clasifica el resultado |
 | `src/arbol_matplot.py` | Dibuja el árbol en una imagen PNG o SVG |
 | `src/mainEsp.py` | Demostración con una oración |
-| `src/pruebasEsp.py` | Recorre las 60 oraciones del corpus y guarda los árboles |
+| `src/pruebasEsp.py` | Recorre las 76 oraciones del corpus y guarda los árboles |
 | `docs/ll1_reporte.txt` | FIRST, FOLLOW, condiciones y tabla LL(1) generados por `ll1.py` |
 | `docs/ll1_tabla.csv` | La tabla LL(1) como tabla de doble entrada (se abre en Excel) |
 | `tests/test_esp/` | Pruebas del lexer, del parser y de la verificación LL(1) |
@@ -33,7 +33,7 @@ Desde la carpeta `esp-parser/src`:
 
 ```
 python mainEsp.py        analiza la oración escrita en el archivo
-python pruebasEsp.py     analiza las 60 oraciones del corpus
+python pruebasEsp.py     analiza las 76 oraciones del corpus
 python ll1.py            muestra FIRST, FOLLOW, condiciones y tabla LL(1)
 python ll1.py ../docs/ll1_reporte.txt ../docs/ll1_tabla.csv
                          además vuelve a generar los dos archivos de docs
@@ -167,7 +167,7 @@ sin retroceder. Eso es posible precisamente porque la gramática es LL(1).
 La gramática está escrita dos veces: como datos en `gramatica.py` y como
 métodos en `parserEsp.py`. Las pruebas comprueban que ambas coinciden:
 `ll1.reconocer()` es un analizador dirigido por la tabla, con pila, y debe
-dar la misma respuesta que `ParserEsp` en las 60 oraciones del corpus y en
+dar la misma respuesta que `ParserEsp` en las 76 oraciones del corpus y en
 todas las secuencias de hasta tres tokens.
 
 ### Árbol de derivación
@@ -247,7 +247,7 @@ gramática que altere uno de estos comportamientos no pasa inadvertido.
   la gramática no es LL(1); el parser y la tabla coinciden.
 - `test_lexer_esp.py`: tokens, contracciones "al" y "del", errores léxicos,
   y que el léxico y los terminales de la gramática coinciden.
-- `test_parser_esp.py`: la salida esperada de las 60 oraciones del corpus
+- `test_parser_esp.py`: la salida esperada de las 76 oraciones del corpus
   (`benchmark/corpus_fase2.csv`), que cada árbol sigue la gramática, los tres
   estados del análisis, la concordancia y los límites conocidos.
 - `test_documentos.py`: que este README y los archivos de `docs/` coinciden

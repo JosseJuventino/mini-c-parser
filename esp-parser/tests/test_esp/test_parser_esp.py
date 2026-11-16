@@ -47,8 +47,23 @@ class TestCorpus(unittest.TestCase):
         self.corpus = leer_corpus()
         self.tabla = ll1.verificar_ll1()["tabla"]
 
-    def test_el_corpus_tiene_60_oraciones(self):
-        self.assertEqual(len(self.corpus), 60)
+    def test_tamano_y_niveles_del_corpus(self):
+        self.assertEqual(len(self.corpus), 76)
+        por_nivel = [fila["nivel"] for fila in self.corpus]
+        self.assertEqual(por_nivel.count("1"), 20)
+        self.assertEqual(por_nivel.count("2"), 28)
+        self.assertEqual(por_nivel.count("3"), 28)
+        # Los identificadores no se repiten.
+        self.assertEqual(len({fila["id"] for fila in self.corpus}), 76)
+
+    def test_etiquetas_del_corpus(self):
+        # Cada oración tiene las dos etiquetas con valores válidos.
+        for fila in self.corpus:
+            with self.subTest(fila["id"]):
+                self.assertIn(fila["salida_cfg"], {"acepta", "rechaza"})
+                self.assertIn(fila["gramatical"], {"si", "no"})
+        incorrectas = [fila for fila in self.corpus if fila["gramatical"] == "no"]
+        self.assertEqual(len(incorrectas), 23)
 
     def test_salida_esperada_de_cada_oracion(self):
         for fila in self.corpus:
@@ -109,7 +124,7 @@ class TestArbolDeDerivacion(unittest.TestCase):
                     palabras_del_arbol(resultado["arbol"]),
                     [token.valor for token in tokens[:-1]],
                 )
-        self.assertEqual(aceptadas, 40)
+        self.assertEqual(aceptadas, 45)
 
     def test_arbol_de_una_oracion_simple(self):
         arbol = analizar("El niño come.")["arbol"]

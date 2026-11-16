@@ -100,6 +100,12 @@ class TestReadme(unittest.TestCase):
         )
         self.assertIn(f"{len(LEXICO)} palabras", self.texto)
 
+    def test_el_numero_de_oraciones_del_corpus_coincide(self):
+        ruta = RAIZ.parent / "benchmark" / "corpus_fase2.csv"
+        oraciones = len(leer_csv(ruta)) - 1  # sin la fila de encabezados
+        self.assertIn(f"las {oraciones} oraciones del corpus", self.texto)
+        self.assertNotIn("las 60 oraciones", self.texto)
+
     def test_nombra_todos_los_simbolos(self):
         simbolos = set(GRAMATICA) | self.reporte["terminales"]
         for simbolo in simbolos:
