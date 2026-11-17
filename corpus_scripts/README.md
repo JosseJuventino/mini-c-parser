@@ -12,7 +12,7 @@ El programa también genera una representación textual del árbol de dependenci
 
 | Archivo | Descripción |
 |---|---|
-| `corpus_fase1.csv` | Corpus de entrada con 16 oraciones en español, elaboradas para observar distintos fenómenos lingüísticos. |
+| `../benchmark/corpus_fase2.csv` | Corpus de entrada utilizado por defecto, con oraciones en español elaboradas para observar distintos fenómenos lingüísticos. |
 | `analizar_oraciones.py` | Lee el corpus, procesa cada oración con spaCy y guarda los resultados en un archivo de texto. |
 | `demo_nlp.py` | Demostración en vivo: muestra en pantalla el análisis de spaCy de oraciones seleccionadas del corpus o de una oración escrita por el usuario. |
 
@@ -56,7 +56,7 @@ Con el entorno virtual activo, ejecuta:
 python analizar_oraciones.py
 ```
 
-Por defecto, el programa utiliza `corpus_fase1.csv` como archivo de entrada y genera `analisis_spacy.txt` como archivo de salida.
+Por defecto, el programa utiliza `../benchmark/corpus_fase2.csv` como archivo de entrada y genera `analisis_spacy.txt` como archivo de salida. La ruta del corpus predeterminado se resuelve en relación con el script, por lo que funciona independientemente de la carpeta desde la que se ejecute.
 
 También es posible indicar otro corpus y, opcionalmente, otro nombre para el archivo de resultados:
 

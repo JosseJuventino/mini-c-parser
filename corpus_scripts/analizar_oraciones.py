@@ -18,7 +18,7 @@ Uso:
 import csv
 import sys
 from datetime import datetime
-
+from pathlib import Path
 import spacy
 
 
@@ -27,7 +27,7 @@ import spacy
 # ---------------------------------------------------------------------
 
 # Corpus utilizado cuando no se proporciona una ruta como argumento.
-CORPUS_POR_DEFECTO = "corpus_fase1.csv"
+CORPUS_POR_DEFECTO = str(Path(__file__).resolve().parents[1] / "benchmark" / "corpus_fase2.csv")
 
 # Archivo en el que se guardará el reporte generado.
 SALIDA_POR_DEFECTO = "analisis_spacy.txt"
