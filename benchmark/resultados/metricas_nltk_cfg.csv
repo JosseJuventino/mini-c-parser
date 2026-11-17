@@ -1,0 +1,5 @@
+﻿enfoque;criterio;nivel;oraciones;TP;FP;TN;FN;precision;recall;rechazo_correcto
+NLTK;CFG;general;76;25;13;18;20;65.79;55.56;58.06
+NLTK;CFG;1;20;11;0;0;9;100.0;55.0;
+NLTK;CFG;2;28;9;2;12;5;81.82;64.29;85.71
+NLTK;CFG;3;28;5;11;6;6;31.25;45.45;35.29
