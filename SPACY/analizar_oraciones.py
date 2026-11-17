@@ -41,8 +41,8 @@ import spacy
 # ---------------------------------------------------------------------
 
 CORPUS_POR_DEFECTO = "benchmark/corpus_fase2.csv"
-SALIDA_TXT_POR_DEFECTO = "analisis_spacy.txt"
-SALIDA_CSV_POR_DEFECTO = "spacy/logs/spacy.csv"
+SALIDA_TXT_POR_DEFECTO = "SPACY/analisis_spacy.txt"
+SALIDA_CSV_POR_DEFECTO = "SPACY/logs/spacy.csv"
 MODELO = "es_core_news_sm"
 
 
