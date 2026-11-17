@@ -1,0 +1,77 @@
+﻿id;nivel;oracion;esperado_cfg;gramatical;decision;coincide_cfg;mensaje
+S01;1;Marcela come los dulces.;acepta;si;acepta;si;
+S02;1;El profesor corrige los exámenes.;acepta;si;acepta;si;
+S03;1;Los fantasmas ven las calabazas.;acepta;si;acepta;si;
+S04;1;El profesor corrigió los exámenes.;acepta;si;acepta;si;
+S05;1;Marcela comió los dulces.;acepta;si;acepta;si;
+S06;1;Los esqueletos dibujaron las calabazas.;acepta;si;acepta;si;
+S07;1;La niña vio los fantasmas.;acepta;si;acepta;si;
+S08;1;Los niños compraron unas calabazas.;acepta;si;acepta;si;
+S09;1;El esqueleto pinta la calabaza.;acepta;si;acepta;si;
+S10;1;Los fantasmas comen las manzanas.;acepta;si;acepta;si;
+S11;1;Jaime escribe el código.;acepta;si;acepta;si;
+S12;1;Jaime escribió el código.;acepta;si;acepta;si;
+S13;1;La profesora explica la gramática.;acepta;si;acepta;si;
+S14;1;Las profesoras corrigen los exámenes.;acepta;si;acepta;si;
+S15;1;Él leyó el libro.;acepta;si;acepta;si;
+S16;1;Nosotras escribimos el parser.;acepta;si;acepta;si;
+S17;1;Ana compra una mochila.;acepta;si;acepta;si;
+S18;1;Diego guarda los cuadernos.;acepta;si;acepta;si;
+S19;1;Ellos buscaron las cajas.;acepta;si;acepta;si;
+S20;1;Ella pintó la mesa.;acepta;si;acepta;si;
+I01;2;Los fantasmas pequeños comen los dulces nuevos.;acepta;si;acepta;si;
+I02;2;Las calabazas pequeñas duermen furiosamente.;acepta;si;acepta;si;
+I03;2;Los fantasma come los dulces.;rechaza;no;rechaza;si;Columna 5: se esperaba 'N_mp', pero se encontró 'fantasma'
+I04;2;El calabaza escribe el código.;rechaza;no;rechaza;si;Columna 4: se esperaba 'N_ms', pero se encontró 'calabaza'
+I05;2;Los esqueletos escribe el código.;rechaza;no;rechaza;si;Columna 16: se esperaba un verbo plural, pero se encontró 'escribe'
+I06;2;Jaime corrige los examen.;rechaza;no;rechaza;si;Columna 19: se esperaba 'N_mp', pero se encontró 'examen'
+I07;2;Las calabazas pequeños duermen furiosamente.;rechaza;no;rechaza;si;Columna 15: se esperaba un verbo plural, pero se encontró 'pequeños'
+I08;2;El esqueleto pequeño guardó los dulces en la caja.;acepta;si;acepta;si;
+I09;2;Las niñas dibujaron unos fantasmas blancos ayer.;acepta;si;acepta;si;
+I10;2;El fantasma duerme bajo la mesa hoy.;acepta;si;acepta;si;
+I11;2;Ellas pintaron las calabazas rojas con los niños.;acepta;si;acepta;si;
+I12;2;Jaime corrigió los exámenes en la clase ayer.;acepta;si;acepta;si;
+I13;2;La profesora nueva explica la gramática en la clase.;acepta;si;acepta;si;
+I14;2;Nosotros escribimos el código nuevo en la clase.;acepta;si;acepta;si;
+I15;2;Usted lee el libro cuidadosamente.;acepta;si;acepta;si;
+I16;2;Ella guardó el cuaderno en la mochila con una carta.;acepta;si;acepta;si;
+I17;2;Ana compró una mochila bonita para Mateo.;acepta;si;acepta;si;
+I18;2;Mateo guardó las manzanas rojas en una caja.;acepta;si;acepta;si;
+I19;2;Los gatos blancos duermen afuera.;acepta;si;acepta;si;
+I20;2;Ellos guardó las cartas en la caja.;rechaza;no;rechaza;si;Columna 7: se esperaba un verbo plural, pero se encontró 'guardó'
+I21;2;La niña compró un mochila.;rechaza;no;rechaza;si;Columna 19: se esperaba 'N_ms', pero se encontró 'mochila'
+I22;2;Los gatos blanco duermen afuera.;rechaza;no;rechaza;si;Columna 11: se esperaba un verbo plural, pero se encontró 'blanco'
+I23;2;Mateo guardó las manzanas rojos en una caja.;rechaza;no;rechaza;si;Columna 27: se esperaba una preposición, un adverbio o fin de la oración, pero se encontró 'rojos'
+I24;2;El esqueleto guardó los dulces en las caja.;rechaza;no;rechaza;si;Columna 39: se esperaba 'N_fp', pero se encontró 'caja'
+I25;2;Las profesoras explica la gramática.;rechaza;no;rechaza;si;Columna 16: se esperaba un verbo plural, pero se encontró 'explica'
+I26;2;Diego guardan los cuadernos.;rechaza;no;rechaza;si;Columna 7: se esperaba un verbo singular, pero se encontró 'guardan'
+I27;2;Una niñas dibujaron los fantasmas.;rechaza;no;rechaza;si;Columna 5: se esperaba 'N_fs', pero se encontró 'niñas'
+I28;2;Ana guardó las manzanas en.;rechaza;no;rechaza;si;Columna 28: se esperaba un sintagma nominal, pero se encontró 'fin de la oración'
+C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;rechaza;si;rechaza;si;Columna 42: se esperaba 'EOF', pero se encontró 'el'
+C02;3;Marcela vio al fantasma con el telescopio.;acepta;si;acepta;si;
+C03;3;El profesor que explica la gramática corrige los exámenes.;rechaza;si;rechaza;si;Columna 13: se esperaba un verbo singular, pero se encontró 'que'
+C04;3;El examen que Jaime corrigió asustó a Jose.;rechaza;si;rechaza;si;Columna 11: se esperaba un verbo singular, pero se encontró 'que'
+C05;3;Escribimos el parser.;rechaza;si;rechaza;si;Columna 1: se esperaba un sujeto, pero se encontró 'escribimos'
+C06;3;Come Marcela los dulces.;rechaza;si;rechaza;si;Columna 1: se esperaba un sujeto, pero se encontró 'come'
+C07;3;La profesora dijo que Jaime corrigió los exámenes.;acepta;si;acepta;si;
+C08;3;Ana dijo que Diego dijo que ella escribe el código.;acepta;si;acepta;si;
+C09;3;Marcela dijo que ellos dibujaron los fantasmas.;acepta;si;acepta;si;
+C10;3;Mateo dijo que nosotros escribimos las cartas.;acepta;si;acepta;si;
+C11;3;Los fantasmas que vio Marcela comen los dulces.;rechaza;si;rechaza;si;Columna 15: se esperaba un verbo plural, pero se encontró 'que'
+C12;3;Los libros que leyó la profesora los guardó Diego.;rechaza;si;rechaza;si;Columna 12: se esperaba un verbo plural, pero se encontró 'que'
+C13;3;Anoche los esqueletos comieron los dulces.;rechaza;si;rechaza;si;Columna 1: se esperaba un sujeto, pero se encontró 'anoche'
+C14;3;En la clase Jaime explica la gramática.;rechaza;si;rechaza;si;Columna 1: se esperaba un sujeto, pero se encontró 'en'
+C15;3;Las manzanas las comieron los niños.;rechaza;si;rechaza;si;Columna 14: se esperaba un verbo plural, pero se encontró 'las'
+C16;3;Ana guardó las manzanas en la caja cuidadosamente ayer.;rechaza;si;rechaza;si;Columna 51: se esperaba 'EOF', pero se encontró 'ayer'
+C17;3;Jaime dijo que corrigió los exámenes.;rechaza;si;rechaza;si;Columna 16: se esperaba un sujeto, pero se encontró 'corrigió'
+C18;3;Marcela vio rápidamente al fantasma con el telescopio.;rechaza;si;rechaza;si;Columna 25: se esperaba 'EOF', pero se encontró 'a'
+C19;3;La niña de la mochila blanca compró unas cartas.;rechaza;si;rechaza;si;Columna 9: se esperaba un verbo singular, pero se encontró 'de'
+C20;3;Jaime dijo que nosotros corrigen los exámenes en la clase.;acepta;no;acepta;si;
+C21;3;Yo come los dulces.;acepta;no;acepta;si;
+C22;3;Ellos escribimos el código.;acepta;no;acepta;si;
+C23;3;Nosotras duermen afuera.;acepta;no;acepta;si;
+C24;3;Ana come que Diego duerme.;acepta;no;acepta;si;
+C25;3;Marcela vio a el fantasma.;acepta;no;acepta;si;
+C26;3;Ana dijo que los niños come los dulces.;rechaza;no;rechaza;si;Columna 24: se esperaba un verbo plural, pero se encontró 'come'
+C27;3;Los fantasmas que vio Marcela come los dulces.;rechaza;no;rechaza;si;Columna 15: se esperaba un verbo plural, pero se encontró 'que'
+C28;3;La niña de la mochila blanca compraron unas cartas.;rechaza;no;rechaza;si;Columna 9: se esperaba un verbo singular, pero se encontró 'de'
