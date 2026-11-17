@@ -5,7 +5,10 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 
 RUTA_CORPUS = RAIZ / "benchmark" / "corpus_fase2.csv"
-RUTA_NLTK = RAIZ / "NLTK" / "logs" / "nltk.csv"
+RUTAS_LOGS = {
+    "NLTK": RAIZ / "NLTK" / "logs" / "nltk.csv",
+    "Parser propio": RAIZ / "benchmark" / "logs" / "log_parser_propio.csv",
+}
 
 
 def leer_csv(ruta):
@@ -122,7 +125,7 @@ def crear_fila_resultado(enfoque, criterio, nivel, matriz):
 
 
 def guardar_resultados(filas):
-    ruta = RAIZ / "benchmark" / "resultados" / "metricas_nltk.csv"
+    ruta = RAIZ / "benchmark" / "resultados" / "metricas_comparativas.csv"
 
     # Crear la carpeta si todavía no existe.
     ruta.parent.mkdir(parents=True, exist_ok=True)
@@ -188,20 +191,45 @@ def mostrar_porcentaje(valor):
     return f"{valor:.2f}%"
 
 
-def main():
-    corpus = leer_csv(RUTA_CORPUS)
-    resultados_nltk = leer_csv(RUTA_NLTK)
+def normalizar_spacy(corpus, resultados_spacy):
+    ids_corpus = {fila["id"] for fila in corpus}
+    ids_encontrados = set()
+    decisiones_definitivas = []
 
-    print(f"Oraciones del corpus: {len(corpus)}")
-    print(f"Resultados de NLTK: {len(resultados_nltk)}")
+    for fila in resultados_spacy:
+        identificador = fila["id"]
+        decision = fila["decision_spacy"]
 
-    filas_exportar = evaluar_enfoque(
-        "NLTK",
-        corpus,
-        resultados_nltk
-    )
+        if identificador in ids_encontrados:
+            raise ValueError(f"ID duplicado en spaCy: {identificador}")
 
-    for fila in filas_exportar:
+        if identificador not in ids_corpus:
+            raise ValueError(f"ID desconocido en spaCy: {identificador}")
+
+        ids_encontrados.add(identificador)
+
+        if decision not in ("acepta", "rechaza", "acepta_parcial"):
+            raise ValueError(
+                f"Decisión inválida en spaCy: {identificador}"
+            )
+
+        if decision == "acepta_parcial":
+            continue
+
+        decisiones_definitivas.append({
+            "id": identificador,
+            "decision": decision,
+        })
+
+    if ids_encontrados != ids_corpus:
+        faltantes = ids_corpus - ids_encontrados
+        raise ValueError(f"Faltan oraciones de spaCy: {faltantes}")
+
+    return decisiones_definitivas
+
+
+def imprimir_filas(filas):
+    for fila in filas:
         print(
             f"{fila['criterio']} | "
             f"Nivel {fila['nivel']} | "
@@ -209,6 +237,78 @@ def main():
             f"Recall: {mostrar_porcentaje(fila['recall'])} | "
             f"Rechazo: {mostrar_porcentaje(fila['rechazo_correcto'])}"
         )
+
+
+def main():
+    corpus = leer_csv(RUTA_CORPUS)
+
+    print(f"Oraciones del corpus: {len(corpus)}")
+
+    filas_exportar = []
+
+    for nombre, ruta in RUTAS_LOGS.items():
+        if not ruta.is_file():
+            raise FileNotFoundError(
+                f"No se encontró el log de {nombre}: {ruta}"
+            )
+
+        resultados = leer_csv(ruta)
+
+        filas_enfoque = evaluar_enfoque(
+            nombre,
+            corpus,
+            resultados
+        )
+
+        filas_exportar.extend(filas_enfoque)
+
+        print(f"\nResultados de {nombre}:")
+        imprimir_filas(filas_enfoque)
+
+    ruta_spacy = RAIZ / "SPACY" / "logs" / "spacy.csv"
+    resultados_spacy = leer_csv(ruta_spacy)
+
+    decisiones_spacy = normalizar_spacy(
+        corpus,
+        resultados_spacy
+    )
+
+    ids_definitivos = {
+        fila["id"] for fila in decisiones_spacy
+    }
+
+    corpus_evaluable = [
+        fila for fila in corpus
+        if fila["id"] in ids_definitivos
+    ]
+
+    filas_spacy = evaluar_enfoque(
+        "spaCy",
+        corpus_evaluable,
+        decisiones_spacy
+    )
+
+    filas_exportar.extend(filas_spacy)
+
+    print("\nResultados de spaCy:")
+    print(f"Decisiones definitivas: {len(decisiones_spacy)}")
+    print(f"Indeterminadas: {len(corpus) - len(decisiones_spacy)}")
+    imprimir_filas(filas_spacy)
+
+    totales_por_nivel = {
+        "general": len(corpus),
+        "1": sum(1 for fila in corpus if fila["nivel"] == "1"),
+        "2": sum(1 for fila in corpus if fila["nivel"] == "2"),
+        "3": sum(1 for fila in corpus if fila["nivel"] == "3"),
+    }
+
+    for fila in filas_exportar:
+        total = totales_por_nivel[fila["nivel"]]
+        evaluadas = fila["oraciones"]
+
+        fila["total_corpus"] = total
+        fila["indeterminadas"] = total - evaluadas
+        fila["cobertura"] = round(evaluadas / total * 100, 2)
 
     guardar_resultados(filas_exportar)
 
