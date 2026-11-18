@@ -17,7 +17,13 @@ METRICAS = [
     ("rechazo_correcto", "Rechazo correcto"),
 ]
 
-ORDEN = ["Parser propio", "NLTK", "spaCy"]
+ORDEN = [
+    "Parser propio",
+    "NLTK",
+    "spaCy",
+    "Gemini zero-shot",
+    "Gemini few-shot",
+]
 NIVELES = ["1", "2", "3"]
 
 
@@ -96,7 +102,7 @@ def guardar(fig, nombre):
 # 1. Comparación global de ambos criterios
 def grafica_general(datos, enfoques):
     fig, ejes = plt.subplots(
-        1, 2, figsize=(14, 5.8), sharey=True
+        1, 2, figsize=(17, 6.5), sharey=True
     )
 
     ancho = 0.8 / len(enfoques)
@@ -154,9 +160,9 @@ def grafica_general(datos, enfoques):
     )
 
     fig.text(
-        0.5, 0.02,
-        "Las métricas de spaCy corresponden "
-        "solo a decisiones definitivas (21.05% de cobertura).",
+    0.5, 0.02,
+        "Todos los enfoques evaluaron 76 oraciones. "
+        "Las métricas utilizan dos referencias distintas: CFG y español.",
         ha="center",
         fontsize=9,
     )
@@ -215,8 +221,8 @@ def grafica_complejidad(datos, enfoques):
 
     fig.text(
         0.5, 0.02,
-        "spaCy tiene cobertura distinta por nivel; "
-        "los porcentajes solo incluyen decisiones definitivas.",
+        "Recall = TP / (TP + FN). "
+        "Todos los enfoques evaluaron las 76 oraciones.",
         ha="center",
         fontsize=9,
     )
@@ -225,106 +231,104 @@ def grafica_complejidad(datos, enfoques):
     guardar(fig, "02_recall_complejidad.png")
 
 
-# 3. Cobertura específica de spaCy
-def grafica_cobertura(datos):
-    niveles = ["general", "1", "2", "3"]
-    etiquetas = ["General", "Nivel 1", "Nivel 2", "Nivel 3"]
 
-    filas = [
-        datos[("spaCy", "CFG", nivel)]
-        for nivel in niveles
+def grafica_errores(datos, enfoques):
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    errores = [
+        ("FP", "Falsos positivos"),
+        ("FN", "Falsos negativos"),
     ]
 
-    definitivas = [
-        int(f["oraciones"]) for f in filas
-    ]
-    indeterminadas = [
-        int(f["indeterminadas"]) for f in filas
-    ]
-    totales = [
-        int(f["total_corpus"]) for f in filas
-    ]
+    ancho = 0.8 / len(enfoques)
+    maximo = 0
 
-    porcentajes = [
-        d / t * 100
-        for d, t in zip(definitivas, totales)
-    ]
+    for i, enfoque in enumerate(enfoques):
+        fila = datos[
+            (enfoque, "ESPAÑOL", "general")
+        ]
 
-    pendientes = [
-        100 - p for p in porcentajes
-    ]
+        for j, (clave, _) in enumerate(errores):
+            cantidad = int(fila[clave])
+            maximo = max(maximo, cantidad)
 
-    fig, ax = plt.subplots(figsize=(9.5, 5.8))
+            x = j + (
+                i - (len(enfoques) - 1) / 2
+            ) * ancho
 
-    ax.bar(
-        etiquetas,
-        porcentajes,
-        label="Decisiones definitivas",
+            barra = ax.bar(
+                x,
+                cantidad,
+                width=ancho * 0.9,
+                label=enfoque if j == 0 else None,
+                color=f"C{i}",
+            )[0]
+
+            ax.annotate(
+                str(cantidad),
+                (
+                    barra.get_x() + barra.get_width() / 2,
+                    barra.get_height()
+                ),
+                xytext=(0, 4),
+                textcoords="offset points",
+                ha="center",
+                fontsize=9,
+            )
+
+    ax.set_xticks(
+        range(len(errores)),
+        [nombre for _, nombre in errores]
     )
 
-    ax.bar(
-        etiquetas,
-        pendientes,
-        bottom=porcentajes,
-        label="Indeterminadas",
-    )
+    ax.set_ylim(0, maximo + 5)
+    ax.set_ylabel("Número de oraciones")
 
-    for i, (d, nd, p) in enumerate(
-        zip(definitivas, indeterminadas, porcentajes)
-    ):
-        ax.text(
-            i, p / 2,
-            f"{d} definitivas",
-            ha="center",
-            va="center",
-            fontsize=9,
-        )
-
-        ax.text(
-            i, p + (100 - p) / 2,
-            f"{nd} indeterminadas",
-            ha="center",
-            va="center",
-            fontsize=9,
-        )
-
-    ax.set_ylim(0, 108)
-    ax.set_ylabel("Porcentaje del corpus (%)")
     ax.set_title(
-        "Cobertura de decisiones de spaCy",
+        "Errores de clasificación frente al español",
         fontsize=14,
         fontweight="bold",
     )
 
+    ax.grid(axis="y", alpha=0.2)
+    ax.set_axisbelow(True)
+
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+
     ax.legend(
+        ncol=3,
         loc="upper center",
         bbox_to_anchor=(0.5, 1.02),
-        ncol=2,
         frameon=False,
     )
 
     fig.text(
-        0.5, 0.02,
-        "Cobertura = decisiones definitivas / total. "
-        "No representa la capacidad de análisis lingüístico.",
+        0.5,
+        0.02,
+        "FP: acepta una oración incorrecta. "
+        "FN: rechaza una oración correcta. "
+        "Base: 76 oraciones.",
         ha="center",
         fontsize=9,
     )
 
-    fig.tight_layout(rect=[0, 0.07, 1, 0.97])
-    guardar(fig, "03_cobertura_spacy.png")
+    fig.tight_layout(rect=[0, 0.07, 1, 0.95])
+
+    guardar(fig, "03_errores_espanol.png")
 
 
 def main():
     datos, enfoques = cargar_datos()
 
+    print(f"Enfoques encontrados: {len(enfoques)}")
+
     grafica_general(datos, enfoques)
     grafica_complejidad(datos, enfoques)
-
-    if ("spaCy", "CFG", "general") in datos:
-        grafica_cobertura(datos)
+    grafica_errores(datos, enfoques)
 
     print("\nGráficas generadas correctamente.")
+
 
 
 if __name__ == "__main__":

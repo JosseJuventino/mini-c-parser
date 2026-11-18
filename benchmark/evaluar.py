@@ -5,10 +5,23 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 
 RUTA_CORPUS = RAIZ / "benchmark" / "corpus_fase2.csv"
+
 RUTAS_LOGS = {
     "NLTK": RAIZ / "NLTK" / "logs" / "nltk.csv",
-    "Parser propio": RAIZ / "benchmark" / "logs" / "log_parser_propio.csv",
+
+    "Parser propio": (
+        RAIZ / "benchmark" / "logs" / "log_parser_propio.csv"
+    ),
+
+    "Gemini zero-shot": (
+        RAIZ / "LLM" / "gemini_zero_shot.csv"
+    ),
+
+    "Gemini few-shot": (
+        RAIZ / "LLM" / "gemini_few_shot.csv"
+    ),
 }
+
 
 
 def leer_csv(ruta):
