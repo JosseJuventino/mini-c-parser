@@ -12,11 +12,10 @@ Criterio de aceptación (C1–C2–C3):
   C3  La raíz sintáctica tiene categoría VERB o AUX.
 
 Valores posibles por criterio: "si" | "no" | "no_evaluable"
-Decisión final: "acepta" | "acepta_parcial" | "rechaza"
+Decisión final: "acepta" | "rechaza"
 
-  - acepta        : C3=si, C1=si, C2=si
-  - acepta_parcial: C3=si, ninguno en "no", al menos uno en "no_evaluable"
-  - rechaza       : C3=no  O  C1=no  O  C2=no
+  - acepta  : ningún criterio produjo "no" (incluye casos con "no_evaluable")
+  - rechaza : C3=no  O  C1=no  O  C2=no
 
 Entrada:
   - CSV: requiere columna "oracion". Las columnas "id", "nivel",
@@ -41,8 +40,8 @@ import spacy
 # ---------------------------------------------------------------------
 
 CORPUS_POR_DEFECTO = "benchmark/corpus_fase2.csv"
-SALIDA_TXT_POR_DEFECTO = "SPACY/analisis_spacy.txt"
-SALIDA_CSV_POR_DEFECTO = "SPACY/logs/spacy.csv"
+SALIDA_TXT_POR_DEFECTO = "analisis_spacy.txt"
+SALIDA_CSV_POR_DEFECTO = "spacy/logs/spacy.csv"
 MODELO = "es_core_news_sm"
 
 
@@ -299,19 +298,17 @@ def evaluar_c3(doc):
 
 def decidir(c1, c2, c3):
     """
-    Aplica la lógica de combinación de C1–C2–C3.
+    Aplica la lógica de combinación de C1–C2–C3. Decisión binaria: acepta/rechaza.
 
     C3 es condición necesaria: si es 'no', la decisión es siempre 'rechaza'.
     Si alguno de C1 o C2 es 'no', también 'rechaza'.
-    Si todos son 'si', 'acepta'.
-    Si C3='si' y ninguno es 'no' pero alguno es 'no_evaluable', 'acepta_parcial'.
+    En cualquier otro caso (incluyendo 'no_evaluable' por falta de rasgos
+    morfológicos), la decisión es 'acepta': la ausencia de evidencia de fallo
+    no se penaliza.
     """
     if c3 == "no" or c1 == "no" or c2 == "no":
         return "rechaza"
-    if c1 == "si" and c2 == "si" and c3 == "si":
-        return "acepta"
-    # c3=si, ninguno en "no", al menos uno en "no_evaluable"
-    return "acepta_parcial"
+    return "acepta"
 
 
 # ---------------------------------------------------------------------
@@ -358,7 +355,7 @@ def main():
             res_c3, mot_c3 = evaluar_c3(doc)
             decision = decidir(res_c1, res_c2, res_c3)
 
-            # Motivo de rechazo / parcialidad
+            # Motivo de rechazo (vacío si acepta)
             motivos = []
             if res_c3 == "no":
                 motivos.append(f"C3: {mot_c3}")
@@ -366,11 +363,6 @@ def main():
                 motivos.append(f"C1: {mot_c1}")
             if res_c2 == "no":
                 motivos.append(f"C2: {mot_c2}")
-            if decision == "acepta_parcial":
-                if res_c1 == "no_evaluable":
-                    motivos.append(f"C1 no evaluable: {mot_c1}")
-                if res_c2 == "no_evaluable":
-                    motivos.append(f"C2 no evaluable: {mot_c2}")
             motivo_str = " | ".join(motivos) if motivos else ""
 
             # Acumular fila CSV
@@ -427,8 +419,8 @@ def main():
     print(f"  -> {salida_txt}")
     print(f"  -> {salida_csv}")
     print("Decisiones:")
-    for k in ("acepta", "acepta_parcial", "rechaza"):
-        print(f"  {k:<16}: {conteo.get(k, 0)}")
+    for k in ("acepta", "rechaza"):
+        print(f"  {k:<10}: {conteo.get(k, 0)}")
 
 
 if __name__ == "__main__":

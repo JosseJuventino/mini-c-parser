@@ -14,7 +14,7 @@ El programa aplica un criterio de aceptación y rechazo definido por el equipo (
 |---|---|
 | `../benchmark/corpus_fase2.csv` | Corpus de entrada utilizado por defecto, con 76 oraciones en español elaboradas para observar distintos fenómenos lingüísticos. |
 | `analizar_oraciones.py` | Lee el corpus, procesa cada oración con spaCy, aplica el criterio C1–C2–C3 y guarda los resultados en un archivo de texto y en un CSV. |
-| `logs/spacy.csv` | CSV con la decisión por oración (`acepta`, `acepta_parcial` o `rechaza`) y el detalle de cada criterio. |
+| `logs/spacy.csv` | CSV con la decisión por oración (`acepta` o `rechaza`) y el detalle de cada criterio. |
 | `demo_nlp.py` | Demostración en vivo: muestra en pantalla el análisis de spaCy de oraciones seleccionadas del corpus o de una oración escrita por el usuario. |
 
 El archivo `analisis_spacy.txt` no se incluye en el repositorio: se produce al ejecutar el script y está contemplado en `.gitignore`.
@@ -98,26 +98,23 @@ spaCy no acepta ni rechaza oraciones por sí mismo. El equipo definió un criter
 | **C2** | Concordancia de género y número entre determinantes/adjetivos y el sustantivo al que modifican. | `si` / `no` / `no_evaluable` |
 | **C3** | El token raíz tiene categoría gramatical verbal (`VERB` o `AUX`). Es condición necesaria. | `si` / `no` |
 
-Un criterio produce `no_evaluable` cuando el modelo no asigna los rasgos morfológicos necesarios para realizar la comparación (por ejemplo, cuando un sustantivo carece de `Person` o `Number`). Esto no es un fallo del criterio sino una limitación de la cobertura morfológica del modelo.
+Un criterio produce `no_evaluable` cuando el modelo no asigna los rasgos morfológicos necesarios para realizar la comparación. En ese caso la oración **no se penaliza**: la ausencia de evidencia de fallo se trata como aceptación.
 
 ### Lógica de decisión
 
-**C3 es condición necesaria**: si C3 = `no`, la decisión es siempre `rechaza`, sin importar C1 ni C2.
+La decisión es binaria: **acepta** o **rechaza**.
+
+**C3 es condición necesaria**: si C3 = `no`, la decisión es siempre `rechaza`, sin importar C1 ni C2. Si C1 = `no` o C2 = `no`, también `rechaza`. En cualquier otro caso —incluyendo cuando C1 o C2 son `no_evaluable`— la decisión es `acepta`.
 
 | C1 | C2 | C3 | Decisión |
 |---|---|---|---|
 | `si` | `si` | `si` | **acepta** |
+| `no_evaluable` | `si` | `si` | **acepta** |
+| `si` | `no_evaluable` | `si` | **acepta** |
+| `no_evaluable` | `no_evaluable` | `si` | **acepta** |
 | `no` | `*` | `*` | **rechaza** |
 | `*` | `no` | `*` | **rechaza** |
 | `*` | `*` | `no` | **rechaza** |
-| `no_evaluable` | `si` | `si` | **acepta_parcial** |
-| `si` | `no_evaluable` | `si` | **acepta_parcial** |
-| `no_evaluable` | `no_evaluable` | `si` | **acepta_parcial** |
-
-Los tres valores de decisión son distintos:
-- **acepta**: spaCy cumplió y pudo verificar todos los criterios.
-- **acepta_parcial**: no se detectaron incumplimientos, pero no fue posible evaluar todos los criterios por falta de información morfológica.
-- **rechaza**: al menos un criterio presentó un incumplimiento.
 
 ### Resultados sobre el corpus
 
@@ -125,11 +122,10 @@ El script se ejecutó sobre las 76 oraciones del corpus con spaCy 3.8.18 y `es_c
 
 | Decisión | gramatical = si (53) | gramatical = no (23) | Total |
 |---|---|---|---|
-| acepta | 5 | 0 | **5** |
-| acepta_parcial | 46 | 14 | **60** |
+| acepta | 51 | 14 | **65** |
 | rechaza | 2 | 9 | **11** |
 
-El alto número de `acepta_parcial` refleja que `es_core_news_sm` no asigna rasgos de persona y número a la mayoría de sustantivos y nombres propios, lo que impide evaluar C1 en esos casos. Esto es en sí mismo un hallazgo sobre la cobertura morfológica del modelo.
+Los 11 rechazos incluyen 7 detectados por C2 (discordancias de género/número), 2 por C1 (discordancias de persona: C21 y C22) y 2 por C3 (errores del etiquetador: C06 e I22).
 
 ## Formato del corpus
 
@@ -200,14 +196,14 @@ Los scripts construyen el árbol mediante la función recursiva `arbol()`. La sa
 
 - spaCy realiza un análisis lingüístico de las oraciones proporcionadas, pero **no determina por sí mismo si una oración es gramatical o agramatical**.
 - El modelo intenta asignar categorías y relaciones sintácticas a los elementos del texto, incluso cuando la oración contiene construcciones inusuales o agramaticales.
-- Las etiquetas y relaciones obtenidas pueden no coincidir con el análisis esperado. Por ejemplo, el modelo puede asignar una categoría gramatical o una característica morfológica incorrecta.
+- Las etiquetas y relaciones obtenidas pueden no coincidir con el análisis esperado.
 - El árbol de dependencias representa la estructura que predice el modelo para la oración procesada.
 - Los resultados dependen del modelo y de su versión. Por ello, distintas versiones o modelos pueden producir análisis diferentes.
 - En las pruebas de la demostración, la oración con ambigüedad estructural recibe una única interpretación: el modelo no señala que existe otra lectura posible.
 
 ## Limitaciones
 
-- `es_core_news_sm` no asigna rasgos de persona y número a la mayoría de sustantivos comunes ni a nombres propios en este corpus. Esto impide evaluar C1 en la mayor parte de las oraciones y produce un alto número de decisiones `acepta_parcial`.
-- C3 produce falsos negativos por errores del etiquetador POS: dos oraciones correctas (C06) e incorrectas (I22) fueron rechazadas porque el modelo etiquetó el verbo como nombre propio (`PROPN`). Estos casos se documentan como limitaciones del modelo y no se corrigen manualmente.
+- `es_core_news_sm` no asigna rasgos de persona y número a la mayoría de sustantivos comunes ni a nombres propios en este corpus. Esto impide evaluar C1 en la mayor parte de las oraciones; por diseño del criterio, esos casos se aceptan (ausencia de evidencia de fallo).
+- C3 produce falsos negativos por errores del etiquetador POS: C06 (oración correcta) e I22 (oración incorrecta) fueron rechazadas porque el modelo etiquetó el verbo como nombre propio (`PROPN`). Estos casos se documentan como limitaciones del modelo y no se corrigen manualmente.
 - `es_core_news_sm` es la versión pequeña del modelo de español; sus predicciones pueden presentar errores de etiquetado morfológico o de análisis sintáctico.
 - El análisis generado depende de las predicciones del modelo y no constituye una verificación definitiva de la estructura sintáctica o de la gramaticalidad de las oraciones.
