@@ -1,0 +1,77 @@
+id;decision_spacy;c1;c2;c3;motivo_rechazo
+S01;acepta;no_evaluable;si;si;
+S02;acepta;no_evaluable;si;si;
+S03;acepta;no_evaluable;no_evaluable;si;
+S04;acepta;no_evaluable;si;si;
+S05;acepta;no_evaluable;si;si;
+S06;acepta;no_evaluable;si;si;
+S07;acepta;no_evaluable;no_evaluable;si;
+S08;acepta;no_evaluable;si;si;
+S09;acepta;no_evaluable;si;si;
+S10;acepta;no_evaluable;no_evaluable;si;
+S11;acepta;no_evaluable;si;si;
+S12;acepta;no_evaluable;si;si;
+S13;acepta;no_evaluable;si;si;
+S14;acepta;no_evaluable;si;si;
+S15;acepta;si;si;si;
+S16;acepta;no_evaluable;si;si;
+S17;acepta;no_evaluable;si;si;
+S18;acepta;no_evaluable;si;si;
+S19;acepta;si;si;si;
+S20;acepta;si;si;si;
+I01;acepta;no_evaluable;no_evaluable;si;
+I02;acepta;no_evaluable;si;si;
+I03;acepta;no_evaluable;no_evaluable;si;
+I04;acepta;no_evaluable;no_evaluable;si;
+I05;acepta;no_evaluable;si;si;
+I06;rechaza;no_evaluable;no;si;C2: discordancia: número: 'los'=['Plur'] vs 'examen'=['Sing']
+I07;rechaza;no_evaluable;no;si;C2: discordancia: género: 'pequeños'=['Masc'] vs 'calabazas'=['Fem']
+I08;acepta;no_evaluable;si;si;
+I09;acepta;no_evaluable;no_evaluable;si;
+I10;acepta;no_evaluable;no_evaluable;si;
+I11;acepta;si;si;si;
+I12;acepta;no_evaluable;si;si;
+I13;acepta;no_evaluable;si;si;
+I14;acepta;si;no_evaluable;si;
+I15;rechaza;no;si;si;C1: discordancia sujeto 'Usted'–raíz 'lee': persona: sujeto=['2'] vs raíz=['3']
+I16;acepta;si;si;si;
+I17;acepta;no_evaluable;si;si;
+I18;acepta;no_evaluable;si;si;
+I19;acepta;no_evaluable;si;si;
+I20;rechaza;no;si;si;C1: discordancia sujeto 'Ellos'–raíz 'guardó': número: sujeto=['Plur'] vs raíz=['Sing']
+I21;acepta;no_evaluable;si;si;
+I22;rechaza;no_evaluable;no;no;C3: raíz 'duermen' es PROPN (esperado VERB o AUX) | C2: discordancia: número: 'blanco'=['Sing'] vs 'gatos'=['Plur']
+I23;rechaza;no_evaluable;no;si;C2: discordancia: género: 'rojos'=['Masc'] vs 'manzanas'=['Fem']
+I24;rechaza;no_evaluable;no;si;C2: discordancia: número: 'las'=['Plur'] vs 'caja'=['Sing']
+I25;acepta;no_evaluable;si;si;
+I26;acepta;no_evaluable;si;si;
+I27;rechaza;no_evaluable;no;si;C2: discordancia: número: 'Una'=['Sing'] vs 'niñas'=['Plur']
+I28;acepta;no_evaluable;si;si;
+C01;acepta;no_evaluable;no_evaluable;si;
+C02;acepta;no_evaluable;si;si;
+C03;acepta;no_evaluable;si;si;
+C04;acepta;no_evaluable;si;si;
+C05;acepta;no_evaluable;si;si;
+C06;rechaza;no_evaluable;si;no;C3: raíz 'dulces' es NOUN (esperado VERB o AUX)
+C07;acepta;no_evaluable;si;si;
+C08;acepta;no_evaluable;si;si;
+C09;acepta;no_evaluable;no_evaluable;si;
+C10;acepta;no_evaluable;si;si;
+C11;acepta;no_evaluable;no_evaluable;si;
+C12;acepta;no_evaluable;si;si;
+C13;acepta;no_evaluable;si;si;
+C14;acepta;no_evaluable;si;si;
+C15;acepta;no_evaluable;si;si;
+C16;acepta;no_evaluable;si;si;
+C17;acepta;no_evaluable;si;si;
+C18;acepta;no_evaluable;si;si;
+C19;acepta;no_evaluable;si;si;
+C20;acepta;no_evaluable;si;si;
+C21;rechaza;no;si;si;C1: discordancia sujeto 'Yo'–raíz 'come': persona: sujeto=['1'] vs raíz=['3']
+C22;rechaza;no;si;si;C1: discordancia sujeto 'Ellos'–raíz 'escribimos': persona: sujeto=['3'] vs raíz=['1']
+C23;acepta;no_evaluable;si;si;
+C24;acepta;no_evaluable;si;si;
+C25;acepta;no_evaluable;no_evaluable;si;
+C26;acepta;no_evaluable;si;si;
+C27;acepta;no_evaluable;no_evaluable;si;
+C28;acepta;no_evaluable;si;si;
