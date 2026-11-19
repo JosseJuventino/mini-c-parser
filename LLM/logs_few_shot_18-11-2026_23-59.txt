@@ -1,0 +1,515 @@
+--- ANALISIS Few-Shot (76 oraciones) ---
+
+Prompt utilizado:
+
+Necesito que analices estas oraciones basándote exclusivamente en las reglas que te proporcionaré a continuación. No uses tu conocimiento general del español ni modifiques las reglas ya creadas. Haz el analisis de cada oración indicando el indice, la oración, si se acepta o se rechaza, el fenomeno que se observa y la estructura generada.
+
+Reglas de nuestra gramática:
+Símbolo Inicial: Programa
+Reglas:
+  Programa -> Oracion EOF
+  Oracion -> Sujeto_s SV_s | Sujeto_p SV_p
+  Sujeto_s -> SN_ms | SN_fs | PRON_s
+  Sujeto_p -> SN_mp | SN_fp | PRON_p
+  SN_ms -> DET_ms N_ms Adjs_ms | NP_ms
+  SN_fs -> DET_fs N_fs Adjs_fs | NP_fs
+  SN_mp -> DET_mp N_mp Adjs_mp | N_mp Adjs_mp
+  SN_fp -> DET_fp N_fp Adjs_fp | N_fp Adjs_fp
+  Adjs_ms -> Adj_ms Adjs_ms | Adj_cs Adjs_ms | ε
+  Adjs_fs -> Adj_fs Adjs_fs | Adj_cs Adjs_fs | ε
+  Adjs_mp -> Adj_mp Adjs_mp | Adj_cp Adjs_mp | ε
+  Adjs_fp -> Adj_fp Adjs_fp | Adj_cp Adjs_fp | ε
+  SV_s -> V_s Complemento
+  SV_p -> V_p Complemento
+  SN -> SN_ms | SN_fs | SN_mp | SN_fp
+  Complemento -> SN Complemento2 | que Oracion | Complemento2
+  Complemento2 -> Preps Adverbio
+  Preps -> PREP SN Preps | ε
+  Adverbio -> ADV | ε
+
+
+Oraciones a analizar:
+1. Marcela come los dulces.
+2. El profesor corrige los exámenes.
+3. Los fantasmas ven las calabazas.
+4. El profesor corrigió los exámenes.
+5. Marcela comió los dulces.
+6. Los esqueletos dibujaron las calabazas.
+7. La niña vio los fantasmas.
+8. Los niños compraron unas calabazas.
+9. El esqueleto pinta la calabaza.
+10. Los fantasmas comen las manzanas.
+11. Jaime escribe el código.
+12. Jaime escribió el código.
+13. La profesora explica la gramática.
+14. Las profesoras corrigen los exámenes.
+15. Él leyó el libro.
+16. Nosotras escribimos el parser.
+17. Ana compra una mochila.
+18. Diego guarda los cuadernos.
+19. Ellos buscaron las cajas.
+20. Ella pintó la mesa.
+21. Los fantasmas pequeños comen los dulces nuevos.
+22. Las calabazas pequeñas duermen furiosamente.
+23. Los fantasma come los dulces.
+24. El calabaza escribe el código.
+25. Los esqueletos escribe el código.
+26. Jaime corrige los examen.
+27. Las calabazas pequeños duermen furiosamente.
+28. El esqueleto pequeño guardó los dulces en la caja.
+29. Las niñas dibujaron unos fantasmas blancos ayer.
+30. El fantasma duerme bajo la mesa hoy.
+31. Ellas pintaron las calabazas rojas con los niños.
+32. Jaime corrigió los exámenes en la clase ayer.
+33. La profesora nueva explica la gramática en la clase.
+34. Nosotros escribimos el código nuevo en la clase.
+35. Usted lee el libro cuidadosamente.
+36. Ella guardó el cuaderno en la mochila con una carta.
+37. Ana compró una mochila bonita para Mateo.
+38. Mateo guardó las manzanas rojas en una caja.
+39. Los gatos blancos duermen afuera.
+40. Ellos guardó las cartas en la caja.
+41. La niña compró un mochila.
+42. Los gatos blanco duermen afuera.
+43. Mateo guardó las manzanas rojos en una caja.
+44. El esqueleto guardó los dulces en las caja.
+45. Las profesoras explica la gramática.
+46. Diego guardan los cuadernos.
+47. Una niñas dibujaron los fantasmas.
+48. Ana guardó las manzanas en.
+49. El esqueleto pequeño escribe rápidamente el código nuevo en la clase.
+50. Marcela vio al fantasma con el telescopio.
+51. El profesor que explica la gramática corrige los exámenes.
+52. El examen que Jaime corrigió asustó a Jose.
+53. Escribimos el parser.
+54. Come Marcela los dulces.
+55. La profesora dijo que Jaime corrigió los exámenes.
+56. Ana dijo que Diego dijo que ella escribe el código.
+57. Marcela dijo que ellos dibujaron los fantasmas.
+58. Mateo dijo que nosotros escribimos las cartas.
+59. Los fantasmas que vio Marcela comen los dulces.
+60. Los libros que leyó la profesora los guardó Diego.
+61. Anoche los esqueletos comieron los dulces.
+62. En la clase Jaime explica la gramática.
+63. Las manzanas las comieron los niños.
+64. Ana guardó las manzanas en la caja cuidadosamente ayer.
+65. Jaime dijo que corrigió los exámenes.
+66. Marcela vio rápidamente al fantasma con el telescopio.
+67. La niña de la mochila blanca compró unas cartas.
+68. Jaime dijo que nosotros corrigen los exámenes en la clase.
+69. Yo come los dulces.
+70. Ellos escribimos el código.
+71. Nosotras duermen afuera.
+72. Ana come que Diego duerme.
+73. Marcela vio a el fantasma.
+74. Ana dijo que los niños come los dulces.
+75. Los fantasmas que vio Marcela come los dulces.
+76. La niña de la mochila blanca compraron unas cartas.
+
+
+Toma estos ejemplos como referencia:
+Oración1: "Los esqueletos dibujaron las calabazas."
+Salida esperada: Aceptada.
+Fenomeno: SVO en pretérito con sujeto plural.
+Estructura generada: (Programa -> {Oracion -> [Sujeto_p -> (SN_mp -> {DET_mp -> los} {N_mp -> esqueletos} {Adjs_mp -> ε})] [SV_p -> (V_p -> dibujaron) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> calabazas) (Adjs_fp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})
+
+Oración2: "Marcela vio al fantasma con el telescopio."
+Salida esperada: Aceptada.
+Fenomeno: «Con el telescopio» admite dos lecturas. La CFG agrupa ambas frases en la secuencia de SP.
+Estructura generada: (Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> marcela})] [SV_s -> (V_s -> vio) (Complemento -> {Complemento2 -> [Preps -> (PREP -> a) (SN -> {SN_ms -> [DET_ms -> el] [N_ms -> fantasma] [Adjs_ms -> ε]}) (Preps -> {PREP -> con} {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> telescopio) (Adjs_ms -> ε)]} {Preps -> ε})] [Adverbio -> ε]})]})
+
+Oración3: "Los fantasma come los dulces."
+Salida esperada: Rechazada.
+Fenomeno: Primer fallo en «fantasma». Se espera N_mp.
+Estructura generada: Sin árbol generado.
+
+Oración4: "El examen que Jaime corrigió asustó a Jose."
+Salida esperada: Rechazada.
+Fenomeno: Relativa en el sujeto con objeto omitido dentro de la relativa.
+Estructura generada: Sin árbol generado.
+
+
+Respuesta generada:
+A continuación se presenta el análisis de las 76 oraciones basado **exclusivamente** en las reglas de la gramática libre de contexto proporcionada:
+
+---
+
+**1. "Marcela come los dulces."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con sujeto singular (nombre propio femenino) y objeto directo plural.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> marcela})] [SV_s -> (V_s -> come) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> dulces) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**2. "El profesor corrige los exámenes."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con sujeto singular y objeto directo plural.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {DET_ms -> el} {N_ms -> profesor} {Adjs_ms -> ε})] [SV_s -> (V_s -> corrige) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> exámenes) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**3. "Los fantasmas ven las calabazas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con sujeto plural masculino y objeto directo plural femenino.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_mp -> {DET_mp -> los} {N_mp -> fantasmas} {Adjs_mp -> ε})] [SV_p -> (V_p -> ven) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> calabazas) (Adjs_fp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**4. "El profesor corrigió los exámenes."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con sujeto singular.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {DET_ms -> el} {N_ms -> profesor} {Adjs_ms -> ε})] [SV_s -> (V_s -> corrigió) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> exámenes) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**5. "Marcela comió los dulces."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con sujeto singular (nombre propio).
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> marcela})] [SV_s -> (V_s -> comió) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> dulces) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**6. "Los esqueletos dibujaron las calabazas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** SVO en pretérito con sujeto plural.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_mp -> {DET_mp -> los} {N_mp -> esqueletos} {Adjs_mp -> ε})] [SV_p -> (V_p -> dibujaron) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> calabazas) (Adjs_fp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**7. "La niña vio los fantasmas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con sujeto singular femenino y objeto directo plural masculino.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {DET_fs -> la} {N_fs -> niña} {Adjs_fs -> ε})] [SV_s -> (V_s -> vio) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> fantasmas) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**8. "Los niños compraron unas calabazas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con sujeto plural y objeto directo con determinante indefinido plural.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_mp -> {DET_mp -> los} {N_mp -> niños} {Adjs_mp -> ε})] [SV_p -> (V_p -> compraron) (Complemento -> {SN -> [SN_fp -> (DET_fp -> unas) (N_fp -> calabazas) (Adjs_fp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**9. "El esqueleto pinta la calabaza."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con sujeto y objeto directo singulares.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {DET_ms -> el} {N_ms -> esqueleto} {Adjs_ms -> ε})] [SV_s -> (V_s -> pinta) (Complemento -> {SN -> [SN_fs -> (DET_fs -> la) (N_fs -> calabaza) (Adjs_fs -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**10. "Los fantasmas comen las manzanas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con sujeto y objeto directo plurales.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_mp -> {DET_mp -> los} {N_mp -> fantasmas} {Adjs_mp -> ε})] [SV_p -> (V_p -> comen) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> manzanas) (Adjs_fp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**11. "Jaime escribe el código."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con nombre propio masculino en el sujeto.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> jaime})] [SV_s -> (V_s -> escribe) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> código) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**12. "Jaime escribió el código."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con nombre propio masculino en el sujeto.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> jaime})] [SV_s -> (V_s -> escribió) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> código) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**13. "La profesora explica la gramática."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con sujeto y objeto directo femeninos singulares.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {DET_fs -> la} {N_fs -> profesora} {Adjs_fs -> ε})] [SV_s -> (V_s -> explica) (Complemento -> {SN -> [SN_fs -> (DET_fs -> la) (N_fs -> gramática) (Adjs_fs -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**14. "Las profesoras corrigen los exámenes."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con sujeto plural femenino y objeto directo plural masculino.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_fp -> {DET_fp -> las} {N_fp -> profesoras} {Adjs_fp -> ε})] [SV_p -> (V_p -> corrigen) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> exámenes) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**15. "Él leyó el libro."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con pronombre singular en el sujeto.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (PRON_s -> él)] [SV_s -> (V_s -> leyó) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> libro) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**16. "Nosotras escribimos el parser."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO con pronombre plural en el sujeto.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (PRON_p -> nosotras)] [SV_p -> (V_p -> escribimos) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> parser) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**17. "Ana compra una mochila."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con nombre propio femenino y determinante indefinido singular.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> ana})] [SV_s -> (V_s -> compra) (Complemento -> {SN -> [SN_fs -> (DET_fs -> una) (N_fs -> mochila) (Adjs_fs -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**18. "Diego guarda los cuadernos."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en presente con nombre propio masculino y objeto directo plural.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> diego})] [SV_s -> (V_s -> guarda) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> cuadernos) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**19. "Ellos buscaron las cajas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con pronombre plural en el sujeto.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (PRON_p -> ellos)] [SV_p -> (V_p -> buscaron) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> cajas) (Adjs_fp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**20. "Ella pintó la mesa."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración SVO en pretérito con pronombre singular en el sujeto.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (PRON_s -> ella)] [SV_s -> (V_s -> pintó) (Complemento -> {SN -> [SN_fs -> (DET_fs -> la) (N_fs -> mesa) (Adjs_fs -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**21. "Los fantasmas pequeños comen los dulces nuevos."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Modificación adjetival concordante en número y género tanto en el sujeto plural como en el objeto directo plural.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_mp -> {DET_mp -> los} {N_mp -> fantasmas} {Adjs_mp -> (Adj_mp -> pequeños) (Adjs_mp -> ε)})] [SV_p -> (V_p -> comen) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> dulces) (Adjs_mp -> (Adj_mp -> nuevos) (Adjs_mp -> ε))]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**22. "Las calabazas pequeñas duermen furiosamente."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración sintácticamente válida con sujeto plural modificado por adjetivo, verbo intransitivo y adverbio final (aunque semánticamente anómala).
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_fp -> {DET_fp -> las} {N_fp -> calabazas} {Adjs_fp -> (Adj_fp -> pequeñas) (Adjs_fp -> ε)})] [SV_p -> (V_p -> duermen) (Complemento -> {Complemento2 -> [Preps -> ε] [Adverbio -> (ADV -> furiosamente)]})]})`
+
+**23. "Los fantasma come los dulces."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Primer fallo en «fantasma». Se espera `N_mp` tras `DET_mp`.
+- **Estructura generada:** Sin árbol generado.
+
+**24. "El calabaza escribe el código."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de género en el sujeto. Primer fallo en «calabaza»: se espera `N_ms` tras `DET_ms`.
+- **Estructura generada:** Sin árbol generado.
+
+**25. "Los esqueletos escribe el código."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número entre sujeto plural (`Sujeto_p`) y verbo singular. Primer fallo en «escribe»: se espera `V_p`.
+- **Estructura generada:** Sin árbol generado.
+
+**26. "Jaime corrige los examen."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número en el objeto directo. Primer fallo en «examen»: se espera `N_mp` tras `DET_mp`.
+- **Estructura generada:** Sin árbol generado.
+
+**27. "Las calabazas pequeños duermen furiosamente."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de género en el adjetivo del sujeto femenino plural. Primer fallo en «pequeños»: se espera `Adj_fp`, `Adj_cp` o cierre de `Adjs_fp` seguido de `V_p`.
+- **Estructura generada:** Sin árbol generado.
+
+**28. "El esqueleto pequeño guardó los dulces en la caja."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración con adjetivo en el sujeto, objeto directo y un sintagma preposicional locativo al final.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {DET_ms -> el} {N_ms -> esqueleto} {Adjs_ms -> (Adj_ms -> pequeño) (Adjs_ms -> ε)})] [SV_s -> (V_s -> guardó) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> dulces) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> (PREP -> en) (SN -> {SN_fs -> [DET_fs -> la] [N_fs -> caja] [Adjs_fs -> ε]}) (Preps -> ε)] [Adverbio -> ε]})]})`
+
+**29. "Las niñas dibujaron unos fantasmas blancos ayer."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración en pretérito con objeto directo modificado por adjetivo y un adverbio temporal en posición final.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_fp -> {DET_fp -> las} {N_fp -> niñas} {Adjs_fp -> ε})] [SV_p -> (V_p -> dibujaron) (Complemento -> {SN -> [SN_mp -> (DET_mp -> unos) (N_mp -> fantasmas) (Adjs_mp -> (Adj_mp -> blancos) (Adjs_mp -> ε))]} {Complemento2 -> [Preps -> ε] [Adverbio -> (ADV -> ayer)]})]})`
+
+**30. "El fantasma duerme bajo la mesa hoy."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Verbo sin objeto directo (`Complemento -> Complemento2`) seguido de un sintagma preposicional y un adverbio final.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {DET_ms -> el} {N_ms -> fantasma} {Adjs_ms -> ε})] [SV_s -> (V_s -> duerme) (Complemento -> {Complemento2 -> [Preps -> (PREP -> bajo) (SN -> {SN_fs -> [DET_fs -> la] [N_fs -> mesa] [Adjs_fs -> ε]}) (Preps -> ε)] [Adverbio -> (ADV -> hoy)]})]})`
+
+**31. "Ellas pintaron las calabazas rojas con los niños."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sujeto pronominal plural, objeto directo con adjetivo y sintagma preposicional comitativo/instrumental.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (PRON_p -> ellas)] [SV_p -> (V_p -> pintaron) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> calabazas) (Adjs_fp -> (Adj_fp -> rojas) (Adjs_fp -> ε))]} {Complemento2 -> [Preps -> (PREP -> con) (SN -> {SN_mp -> [DET_mp -> los] [N_mp -> niños] [Adjs_mp -> ε]}) (Preps -> ε)] [Adverbio -> ε]})]})`
+
+**32. "Jaime corrigió los exámenes en la clase ayer."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración con objeto directo, sintagma preposicional y adverbio al final de `Complemento2`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> jaime})] [SV_s -> (V_s -> corrigió) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> exámenes) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> (PREP -> en) (SN -> {SN_fs -> [DET_fs -> la] [N_fs -> clase] [Adjs_fs -> ε]}) (Preps -> ε)] [Adverbio -> (ADV -> ayer)]})]})`
+
+**33. "La profesora nueva explica la gramática en la clase."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sujeto con adjetivo, objeto directo y sintagma preposicional en `Complemento2`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {DET_fs -> la} {N_fs -> profesora} {Adjs_fs -> (Adj_fs -> nueva) (Adjs_fs -> ε)})] [SV_s -> (V_s -> explica) (Complemento -> {SN -> [SN_fs -> (DET_fs -> la) (N_fs -> gramática) (Adjs_fs -> ε)]} {Complemento2 -> [Preps -> (PREP -> en) (SN -> {SN_fs -> [DET_fs -> la] [N_fs -> clase] [Adjs_fs -> ε]}) (Preps -> ε)] [Adverbio -> ε]})]})`
+
+**34. "Nosotros escribimos el código nuevo en la clase."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Pronombre plural en el sujeto, objeto directo con adjetivo y sintagma preposicional final.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (PRON_p -> nosotros)] [SV_p -> (V_p -> escribimos) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> código) (Adjs_ms -> (Adj_ms -> nuevo) (Adjs_ms -> ε))]} {Complemento2 -> [Preps -> (PREP -> en) (SN -> {SN_fs -> [DET_fs -> la] [N_fs -> clase] [Adjs_fs -> ε]}) (Preps -> ε)] [Adverbio -> ε]})]})`
+
+**35. "Usted lee el libro cuidadosamente."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Pronombre singular en el sujeto, objeto directo y adverbio de modo al final.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (PRON_s -> usted)] [SV_s -> (V_s -> lee) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> libro) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> (ADV -> cuidadosamente)]})]})`
+
+**36. "Ella guardó el cuaderno en la mochila con una carta."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Secuencia recursiva de dos sintagmas preposicionales (`Preps -> PREP SN Preps`) tras el objeto directo.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (PRON_s -> ella)] [SV_s -> (V_s -> guardó) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> cuaderno) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> (PREP -> en) (SN -> {SN_fs -> [DET_fs -> la] [N_fs -> mochila] [Adjs_fs -> ε]}) (Preps -> {PREP -> con} {SN -> [SN_fs -> (DET_fs -> una) (N_fs -> carta) (Adjs_fs -> ε)]} {Preps -> ε})] [Adverbio -> ε]})]})`
+
+**37. "Ana compró una mochila bonita para Mateo."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Objeto directo femenino singular con adjetivo y sintagma preposicional con nombre propio masculino.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> ana})] [SV_s -> (V_s -> compró) (Complemento -> {SN -> [SN_fs -> (DET_fs -> una) (N_fs -> mochila) (Adjs_fs -> (Adj_fs -> bonita) (Adjs_fs -> ε))]} {Complemento2 -> [Preps -> (PREP -> para) (SN -> {SN_ms -> [NP_ms -> mateo]}) (Preps -> ε)] [Adverbio -> ε]})]})`
+
+**38. "Mateo guardó las manzanas rojas en una caja."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Nombre propio en sujeto singular, objeto directo femenino plural con adjetivo y sintagma preposicional.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> mateo})] [SV_s -> (V_s -> guardó) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> manzanas) (Adjs_fp -> (Adj_fp -> rojas) (Adjs_fp -> ε))]} {Complemento2 -> [Preps -> (PREP -> en) (SN -> {SN_fs -> [DET_fs -> una] [N_fs -> caja] [Adjs_fs -> ε]}) (Preps -> ε)] [Adverbio -> ε]})]})`
+
+**39. "Los gatos blancos duermen afuera."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sujeto plural masculino con adjetivo, verbo intransitivo y adverbio final.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (SN_mp -> {DET_mp -> los} {N_mp -> gatos} {Adjs_mp -> (Adj_mp -> blancos) (Adjs_mp -> ε)})] [SV_p -> (V_p -> duermen) (Complemento -> {Complemento2 -> [Preps -> ε] [Adverbio -> (ADV -> afuera)]})]})`
+
+**40. "Ellos guardó las cartas en la caja."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número entre sujeto plural (`PRON_p`) y verbo singular. Primer fallo en «guardó»: se espera `V_p`.
+- **Estructura generada:** Sin árbol generado.
+
+**41. "La niña compró un mochila."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de género en el objeto directo. Primer fallo en «mochila»: se espera `N_ms` tras `DET_ms`.
+- **Estructura generada:** Sin árbol generado.
+
+**42. "Los gatos blanco duermen afuera."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número en el adjetivo del sujeto masculino plural. Primer fallo en «blanco»: se espera `Adj_mp`, `Adj_cp` o `V_p`.
+- **Estructura generada:** Sin árbol generado.
+
+**43. "Mateo guardó las manzanas rojos en una caja."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de género en el adjetivo del objeto directo femenino plural. Primer fallo en «rojos»: se espera `Adj_fp`, `Adj_cp` o cierre hacia `Complemento2`.
+- **Estructura generada:** Sin árbol generado.
+
+**44. "El esqueleto guardó los dulces en las caja."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número dentro del sintagma preposicional. Primer fallo en «caja»: se espera `N_fp` tras `DET_fp`.
+- **Estructura generada:** Sin árbol generado.
+
+**45. "Las profesoras explica la gramática."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número entre sujeto plural y verbo singular. Primer fallo en «explica»: se espera `V_p`.
+- **Estructura generada:** Sin árbol generado.
+
+**46. "Diego guardan los cuadernos."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número entre sujeto singular y verbo plural. Primer fallo en «guardan»: se espera `V_s`.
+- **Estructura generada:** Sin árbol generado.
+
+**47. "Una niñas dibujaron los fantasmas."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número en el sujeto. Primer fallo en «niñas»: se espera `N_fs` tras `DET_fs`.
+- **Estructura generada:** Sin árbol generado.
+
+**48. "Ana guardó las manzanas en."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Preposición sin término (`SN`). Primer fallo al encontrar `EOF` tras `PREP` («en»), donde se espera un `SN`.
+- **Estructura generada:** Sin árbol generado.
+
+**49. "El esqueleto pequeño escribe rápidamente el código nuevo en la clase."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Adverbio antepuesto al objeto directo. La regla `Complemento2 -> Preps Adverbio` solo permite `Adverbio` al final de `Complemento2` (después de `SN` y `Preps`); primer fallo en «rápidamente» (o en «el» si se consume «rápidamente» como `Complemento2`).
+- **Estructura generada:** Sin árbol generado.
+
+**50. "Marcela vio al fantasma con el telescopio."**
+- **Estado:** Aceptada.
+- **Fenómeno:** «Con el telescopio» admite dos lecturas. La CFG agrupa ambas frases en la secuencia de SP.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> marcela})] [SV_s -> (V_s -> vio) (Complemento -> {Complemento2 -> [Preps -> (PREP -> a) (SN -> {SN_ms -> [DET_ms -> el] [N_ms -> fantasma] [Adjs_ms -> ε]}) (Preps -> {PREP -> con} {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> telescopio) (Adjs_ms -> ε)]} {Preps -> ε})] [Adverbio -> ε]})]})`
+
+**51. "El profesor que explica la gramática corrige los exámenes."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Oración relativa incrustada en el sujeto. Las reglas de `SN_ms` no contemplan cláusulas relativas; primer fallo en «que» (se espera `Adj_ms`, `Adj_cs` o `V_s`).
+- **Estructura generada:** Sin árbol generado.
+
+**52. "El examen que Jaime corrigió asustó a Jose."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Relativa en el sujeto con objeto omitido dentro de la relativa.
+- **Estructura generada:** Sin árbol generado.
+
+**53. "Escribimos el parser."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Sujeto tácito (elidido). La regla `Oracion` exige obligatoriamente un `Sujeto_s` o `Sujeto_p` explícito antes del predicado; primer fallo en «escribimos».
+- **Estructura generada:** Sin árbol generado.
+
+**54. "Come Marcela los dulces."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Orden VSO (verbo inicial). La regla `Oracion` exige que el sujeto preceda al sintagma verbal; primer fallo en «come».
+- **Estructura generada:** Sin árbol generado.
+
+**55. "La profesora dijo que Jaime corrigió los exámenes."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración subordinada sustantiva introducida por `que` mediante la regla `Complemento -> que Oracion`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {DET_fs -> la} {N_fs -> profesora} {Adjs_fs -> ε})] [SV_s -> (V_s -> dijo) (Complemento -> {que} {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> jaime})] [SV_s -> (V_s -> corrigió) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> exámenes) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})]})`
+
+**56. "Ana dijo que Diego dijo que ella escribe el código."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Recursividad derecha con doble subordinación mediante `Complemento -> que Oracion`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> ana})] [SV_s -> (V_s -> dijo) (Complemento -> {que} {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> diego})] [SV_s -> (V_s -> dijo) (Complemento -> {que} {Oracion -> [Sujeto_s -> (PRON_s -> ella)] [SV_s -> (V_s -> escribe) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> código) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})]})]})`
+
+**57. "Marcela dijo que ellos dibujaron los fantasmas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración subordinada sustantiva con sujeto pronominal plural (`PRON_p`) dentro de `que Oracion`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> marcela})] [SV_s -> (V_s -> dijo) (Complemento -> {que} {Oracion -> [Sujeto_p -> (PRON_p -> ellos)] [SV_p -> (V_p -> dibujaron) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> fantasmas) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})]})`
+
+**58. "Mateo dijo que nosotros escribimos las cartas."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Oración subordinada sustantiva con sujeto pronominal plural y objeto directo femenino plural.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> mateo})] [SV_s -> (V_s -> dijo) (Complemento -> {que} {Oracion -> [Sujeto_p -> (PRON_p -> nosotros)] [SV_p -> (V_p -> escribimos) (Complemento -> {SN -> [SN_fp -> (DET_fp -> las) (N_fp -> cartas) (Adjs_fp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})]})`
+
+**59. "Los fantasmas que vio Marcela comen los dulces."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Oración relativa en el sujeto. Las reglas de `SN_mp` no admiten cláusulas relativas; primer fallo en «que».
+- **Estructura generada:** Sin árbol generado.
+
+**60. "Los libros que leyó la profesora los guardó Diego."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Relativa en posición inicial/tópico con dislocación a la izquierda y clítico acusativo («los»). Primer fallo en «que» (tampoco se admiten clíticos preverbales ni sujeto posverbal).
+- **Estructura generada:** Sin árbol generado.
+
+**61. "Anoche los esqueletos comieron los dulces."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Adverbio antepuesto al sujeto. `Oracion` solo puede comenzar por `Sujeto_s` o `Sujeto_p`; primer fallo en «anoche».
+- **Estructura generada:** Sin árbol generado.
+
+**62. "En la clase Jaime explica la gramática."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Sintagma preposicional antepuesto al sujeto. `Oracion` no permite `PREP` al inicio; primer fallo en «en».
+- **Estructura generada:** Sin árbol generado.
+
+**63. "Las manzanas las comieron los niños."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Topicalización del objeto con doblado de clítico («las») y sujeto posverbal. Tras el `Sujeto_p` («las manzanas») se espera `V_p`; primer fallo en «las».
+- **Estructura generada:** Sin árbol generado.
+
+**64. "Ana guardó las manzanas en la caja cuidadosamente ayer."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Dos adverbios consecutivos al final. La regla `Adverbio -> ADV | ε` solo genera como máximo un adverbio; primer fallo en «ayer» (se espera `EOF`).
+- **Estructura generada:** Sin árbol generado.
+
+**65. "Jaime dijo que corrigió los exámenes."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Sujeto tácito dentro de la subordinada. Tras `que`, `Oracion` exige obligatoriamente un `Sujeto_s` o `Sujeto_p` antes del verbo; primer fallo en «corrigió».
+- **Estructura generada:** Sin árbol generado.
+
+**66. "Marcela vio rápidamente al fantasma con el telescopio."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Adverbio situado antes de los sintagmas preposicionales. La regla `Complemento2 -> Preps Adverbio` exige que `Adverbio` aparezca después de `Preps`; primer fallo al no poder derivar «al fantasma con el telescopio» tras `ADV`.
+- **Estructura generada:** Sin árbol generado.
+
+**67. "La niña de la mochila blanca compró unas cartas."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Sintagma preposicional modificando al núcleo nominal del sujeto. La regla `SN_fs` no permite `Preps`; primer fallo en «de» (se espera `Adj_fs`, `Adj_cs` o `V_s`).
+- **Estructura generada:** Sin árbol generado.
+
+**68. "Jaime dijo que nosotros corrigen los exámenes en la clase."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sobregeneración por ausencia de rasgo de persona en la gramática: aunque en español «nosotros» (1.ª pl.) y «corrigen» (3.ª pl.) no concuerdan en persona, en la CFG ambos pertenecen a las categorías plurales `PRON_p` y `V_p`, cumpliendo `Sujeto_p SV_p`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> jaime})] [SV_s -> (V_s -> dijo) (Complemento -> {que} {Oracion -> [Sujeto_p -> (PRON_p -> nosotros)] [SV_p -> (V_p -> corrigen) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> exámenes) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> (PREP -> en) (SN -> {SN_fs -> [DET_fs -> la] [N_fs -> clase] [Adjs_fs -> ε]}) (Preps -> ε)] [Adverbio -> ε]})]})]})`
+
+**69. "Yo come los dulces."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sobregeneración por falta de concordancia de persona en la CFG: «yo» es `PRON_s` y «come» es `V_s`, por lo que `Oracion -> Sujeto_s SV_s` los acepta al verificar únicamente el número singular.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (PRON_s -> yo)] [SV_s -> (V_s -> come) (Complemento -> {SN -> [SN_mp -> (DET_mp -> los) (N_mp -> dulces) (Adjs_mp -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**70. "Ellos escribimos el código."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sobregeneración por falta de concordancia de persona en la CFG: «ellos» es `PRON_p` y «escribimos» es `V_p`, satisfaciendo `Oracion -> Sujeto_p SV_p`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (PRON_p -> ellos)] [SV_p -> (V_p -> escribimos) (Complemento -> {SN -> [SN_ms -> (DET_ms -> el) (N_ms -> código) (Adjs_ms -> ε)]} {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})`
+
+**71. "Nosotras duermen afuera."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sobregeneración por falta de concordancia de persona en la CFG: «nosotras» es `PRON_p` y «duermen» es `V_p`, satisfaciendo `Oracion -> Sujeto_p SV_p`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_p -> (PRON_p -> nosotras)] [SV_p -> (V_p -> duermen) (Complemento -> {Complemento2 -> [Preps -> ε] [Adverbio -> (ADV -> afuera)]})]})`
+
+**72. "Ana come que Diego duerme."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Sobregeneración por ausencia de subcategorización verbal: la regla `Complemento -> que Oracion` permite que cualquier `V_s` (incluido «come») tome una cláusula subordinada con `que`.
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> ana})] [SV_s -> (V_s -> come) (Complemento -> {que} {Oracion -> [Sujeto_s -> (SN_ms -> {NP_ms -> diego})] [SV_s -> (V_s -> duerme) (Complemento -> {Complemento2 -> [Preps -> ε] [Adverbio -> ε]})]})]})`
+
+**73. "Marcela vio a el fantasma."**
+- **Estado:** Aceptada.
+- **Fenómeno:** Secuencia no contracta «a el» aceptada directamente por `Preps -> PREP SN Preps` (`PREP -> a` seguido de `SN_ms -> DET_ms N_ms Adjs_ms`).
+- **Estructura generada:** `(Programa -> {Oracion -> [Sujeto_s -> (SN_fs -> {NP_fs -> marcela})] [SV_s -> (V_s -> vio) (Complemento -> {Complemento2 -> [Preps -> (PREP -> a) (SN -> {SN_ms -> [DET_ms -> el] [N_ms -> fantasma] [Adjs_ms -> ε]}) (Preps -> ε)] [Adverbio -> ε]})]})`
+
+**74. "Ana dijo que los niños come los dulces."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Discordancia de número dentro de la oración subordinada entre el sujeto plural (`SN_mp`) y el verbo singular. Primer fallo en «come»: se espera `V_p`.
+- **Estructura generada:** Sin árbol generado.
+
+**75. "Los fantasmas que vio Marcela come los dulces."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Oración relativa en el sujeto (y además discordancia de número con «come»). Primer fallo en «que», no admitido dentro de `SN_mp`.
+- **Estructura generada:** Sin árbol generado.
+
+**76. "La niña de la mochila blanca compraron unas cartas."**
+- **Estado:** Rechazada.
+- **Fenómeno:** Sintagma preposicional dentro del sujeto (y además discordancia de número con «compraron»). Primer fallo en «de», no admitido dentro de `SN_fs`.
+- **Estructura generada:** Sin árbol generado.
