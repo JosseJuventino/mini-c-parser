@@ -21,7 +21,7 @@ def leer_corpus():
     """
     corpus = {}
     rechazos = set()
-    with open(RUTA_CORPUS, encoding="utf-8", newline="") as archivo:
+    with open(RUTA_CORPUS, encoding="utf-8-sig", newline="") as archivo:
         for fila in csv.DictReader(archivo, delimiter=";"):
             corpus[fila["id"]] = fila["oracion"]
             if fila["salida_cfg"] == "rechaza":

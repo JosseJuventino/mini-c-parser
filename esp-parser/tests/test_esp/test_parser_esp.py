@@ -28,7 +28,7 @@ RUTA_CORPUS = Path(__file__).resolve().parents[3] / "benchmark" / "corpus_fase2.
 
 
 def leer_corpus():
-    with open(RUTA_CORPUS, encoding="utf-8", newline="") as archivo:
+    with open(RUTA_CORPUS, encoding="utf-8-sig", newline="") as archivo:
         return list(csv.DictReader(archivo, delimiter=";"))
 
 

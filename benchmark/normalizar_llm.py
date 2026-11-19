@@ -1,4 +1,4 @@
-
+import argparse
 import csv
 import re
 from pathlib import Path
@@ -9,11 +9,11 @@ RUTA_CORPUS = RAIZ / "benchmark" / "corpus_fase2.csv"
 
 ARCHIVOS = {
     "zero_shot": (
-        RAIZ / "LLM" / "logs_zero_shot.txt",
+        RAIZ / "LLM" / "logs_zero_shot_18-11-2026_1-00.txt",
         RAIZ / "LLM" / "gemini_zero_shot.csv",
     ),
     "few_shot": (
-        RAIZ / "LLM" / "logs_few_shot.txt",
+        RAIZ / "LLM" / "logs_few_shot_18-11-2026_1-00.txt",
         RAIZ / "LLM" / "gemini_few_shot.csv",
     ),
 }
@@ -35,11 +35,12 @@ def extraer_decisiones(texto, modo, corpus):
 
     if modo == "zero_shot":
         patron = re.compile(
-            r"(?m)^(\d+)\.[ \t]+\*\*Índice:\*\*[ \t]*(\d+)[ \t]*$"
+            r"(?m)^(?:\*\*)?(\d+)\.(?:\*\*[ \t]*\n\*[ \t]+|[ \t]+)"
+            r"\*\*Índice:\*\*[ \t]*(\d+)[ \t]*$"
         )
     else:
         patron = re.compile(
-            r'(?m)^\*\*(\d+)\.\*\*[ \t]*["“]([^\n"”]+)["”]'
+            r'(?m)^\*\*(\d+)\.(?:\*\*)?[ \t]*["“]([^\n"”]+)["”]'
         )
 
     coincidencias = list(patron.finditer(respuesta))
@@ -70,7 +71,7 @@ def extraer_decisiones(texto, modo, corpus):
         bloque = respuesta[inicio:fin]
 
         resultado = re.search(
-            r"\*\*Resultado:\*\*[ \t]*"
+            r"\*\*(?:Resultado|Estado):\*\*[ \t]*"
             r"(?:Se[ \t]+)?"
             r"(acepta|rechaza|aceptada|rechazada)\b",
             bloque,
@@ -172,17 +173,23 @@ def guardar_csv(ruta, filas):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Extrae las decisiones de Gemini para el evaluador.")
+    parser.add_argument("--zero-shot", type=Path, help="Registro zero-shot de la corrida")
+    parser.add_argument("--few-shot", type=Path, help="Registro few-shot de la misma corrida")
+    args = parser.parse_args()
+    if (args.zero_shot is None) != (args.few_shot is None):
+        parser.error("Indique los dos registros de la corrida.")
+
+    entradas = {"zero_shot": args.zero_shot, "few_shot": args.few_shot}
     corpus = leer_corpus()
+    resultados = {}
+    for modo, (predeterminada, _) in ARCHIVOS.items():
+        entrada = entradas[modo] or predeterminada
+        texto = entrada.read_text(encoding="utf-8-sig")
+        resultados[modo] = extraer_decisiones(texto, modo, corpus)
 
-    for modo, (entrada, salida) in ARCHIVOS.items():
-        texto = entrada.read_text(encoding="utf-8")
-
-        filas = extraer_decisiones(
-            texto,
-            modo,
-            corpus,
-        )
-
+    for modo, filas in resultados.items():
+        salida = ARCHIVOS[modo][1]
         guardar_csv(salida, filas)
 
         print(

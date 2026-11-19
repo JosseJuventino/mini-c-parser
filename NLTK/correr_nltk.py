@@ -366,7 +366,7 @@ def main():
     etiquetador = entrenar_etiquetador(entrenamiento)
     vocabulario = {palabra for oracion in entrenamiento for palabra, _ in oracion}
 
-    with open(RUTA_CORPUS, encoding="utf-8", newline="") as archivo:
+    with open(RUTA_CORPUS, encoding="utf-8-sig", newline="") as archivo:
         corpus = list(csv.DictReader(archivo, delimiter=";"))
 
     filas = []

@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug mini-c-parser",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.main",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Demo mini-c-parser",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.main",
+      "args": ["--demo"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
