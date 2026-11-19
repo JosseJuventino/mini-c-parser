@@ -1,5 +1,6 @@
 from google import genai
 from oraciones import oraciones
+from datetime import datetime
 
 import sys
 import os
@@ -72,10 +73,13 @@ def analisisOraciones(tipoPrompt, tipo):
     #Se obtiene el directorio actual del archivo llm.py para guardar los logs en la misma carpeta
     directorio_actual = os.path.dirname(os.path.abspath(__file__))
 
+    #Se obtiene la fecha y hora actual
+    timestamp = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+
     #Se crea un archivo de logs con el nombre del tipo de prompt y se guarda la respuesta generada por la API (un archivo por cada tipo de prompt Zero-Shot y Few-Shot)
-    archivoLogs = os.path.join(directorio_actual, f"logs_{tipo.lower().replace('-', '_')}.txt")
+    archivoLogs = os.path.join(directorio_actual, f"logs_{tipo.lower().replace('-', '_')}_{timestamp}.txt")
     with open(archivoLogs, "w", encoding="utf-8") as f_out:
-        f_out.write(f"--- ANALISIS {tipo} (75 oraciones) ---\n\n")
+        f_out.write(f"--- ANALISIS {tipo} (76 oraciones) ---\n\n")
         f_out.write("Prompt utilizado:\n")
         f_out.write(tipoPrompt)
         f_out.write("\n\n")
