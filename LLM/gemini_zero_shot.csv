@@ -1,0 +1,77 @@
+﻿id;indice;oracion;decision
+S01;1;Marcela come los dulces.;acepta
+S02;2;El profesor corrige los exámenes.;acepta
+S03;3;Los fantasmas ven las calabazas.;acepta
+S04;4;El profesor corrigió los exámenes.;acepta
+S05;5;Marcela comió los dulces.;acepta
+S06;6;Los esqueletos dibujaron las calabazas.;acepta
+S07;7;La niña vio los fantasmas.;acepta
+S08;8;Los niños compraron unas calabazas.;acepta
+S09;9;El esqueleto pinta la calabaza.;acepta
+S10;10;Los fantasmas comen las manzanas.;acepta
+S11;11;Jaime escribe el código.;acepta
+S12;12;Jaime escribió el código.;acepta
+S13;13;La profesora explica la gramática.;acepta
+S14;14;Las profesoras corrigen los exámenes.;acepta
+S15;15;Él leyó el libro.;acepta
+S16;16;Nosotras escribimos el parser.;acepta
+S17;17;Ana compra una mochila.;acepta
+S18;18;Diego guarda los cuadernos.;acepta
+S19;19;Ellos buscaron las cajas.;acepta
+S20;20;Ella pintó la mesa.;acepta
+I01;21;Los fantasmas pequeños comen los dulces nuevos.;acepta
+I02;22;Las calabazas pequeñas duermen furiosamente.;acepta
+I03;23;Los fantasma come los dulces.;rechaza
+I04;24;El calabaza escribe el código.;rechaza
+I05;25;Los esqueletos escribe el código.;rechaza
+I06;26;Jaime corrige los examen.;rechaza
+I07;27;Las calabazas pequeños duermen furiosamente.;rechaza
+I08;28;El esqueleto pequeño guardó los dulces en la caja.;acepta
+I09;29;Las niñas dibujaron unos fantasmas blancos ayer.;acepta
+I10;30;El fantasma duerme bajo la mesa hoy.;acepta
+I11;31;Ellas pintaron las calabazas rojas con los niños.;acepta
+I12;32;Jaime corrigió los exámenes en la clase ayer.;acepta
+I13;33;La profesora nueva explica la gramática en la clase.;acepta
+I14;34;Nosotros escribimos el código nuevo en la clase.;acepta
+I15;35;Usted lee el libro cuidadosamente.;acepta
+I16;36;Ella guardó el cuaderno en la mochila con una carta.;acepta
+I17;37;Ana compró una mochila bonita para Mateo.;acepta
+I18;38;Mateo guardó las manzanas rojas en una caja.;acepta
+I19;39;Los gatos blancos duermen afuera.;acepta
+I20;40;Ellos guardó las cartas en la caja.;rechaza
+I21;41;La niña compró un mochila.;rechaza
+I22;42;Los gatos blanco duermen afuera.;rechaza
+I23;43;Mateo guardó las manzanas rojos en una caja.;rechaza
+I24;44;El esqueleto guardó los dulces en las caja.;rechaza
+I25;45;Las profesoras explica la gramática.;rechaza
+I26;46;Diego guardan los cuadernos.;rechaza
+I27;47;Una niñas dibujaron los fantasmas.;rechaza
+I28;48;Ana guardó las manzanas en.;rechaza
+C01;49;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;rechaza
+C02;50;Marcela vio al fantasma con el telescopio.;rechaza
+C03;51;El profesor que explica la gramática corrige los exámenes.;rechaza
+C04;52;El examen que Jaime corrigió asustó a Jose.;rechaza
+C05;53;Escribimos el parser.;rechaza
+C06;54;Come Marcela los dulces.;rechaza
+C07;55;La profesora dijo que Jaime corrigió los exámenes.;acepta
+C08;56;Ana dijo que Diego dijo que ella escribe el código.;acepta
+C09;57;Marcela dijo que ellos dibujaron los fantasmas.;acepta
+C10;58;Mateo dijo que nosotros escribimos las cartas.;acepta
+C11;59;Los fantasmas que vio Marcela comen los dulces.;rechaza
+C12;60;Los libros que leyó la profesora los guardó Diego.;rechaza
+C13;61;Anoche los esqueletos comieron los dulces.;rechaza
+C14;62;En la clase Jaime explica la gramática.;rechaza
+C15;63;Las manzanas las comieron los niños.;rechaza
+C16;64;Ana guardó las manzanas en la caja cuidadosamente ayer.;rechaza
+C17;65;Jaime dijo que corrigió los exámenes.;rechaza
+C18;66;Marcela vio rápidamente al fantasma con el telescopio.;rechaza
+C19;67;La niña de la mochila blanca compró unas cartas.;rechaza
+C20;68;Jaime dijo que nosotros corrigen los exámenes en la clase.;acepta
+C21;69;Yo come los dulces.;acepta
+C22;70;Ellos escribimos el código.;acepta
+C23;71;Nosotras duermen afuera.;acepta
+C24;72;Ana come que Diego duerme.;acepta
+C25;73;Marcela vio a el fantasma.;acepta
+C26;74;Ana dijo que los niños come los dulces.;rechaza
+C27;75;Los fantasmas que vio Marcela come los dulces.;rechaza
+C28;76;La niña de la mochila blanca compraron unas cartas.;rechaza

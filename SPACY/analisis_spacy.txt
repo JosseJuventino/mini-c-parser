@@ -1,0 +1,1940 @@
+ANÁLISIS DE spaCy
+Corpus: benchmark/corpus_fase2.csv  (76 oraciones)
+spaCy 3.8.18  |  modelo es_core_news_sm 3.8.0
+Fecha: 2026-11-19 05:28
+Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz verbal
+======================================================================
+
+[S01] (nivel 1) Marcela come los dulces.
+    ¿gramatical?: si
+    fenómeno: SVO en presente con nombre propio.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Marcela        PROPN      nsubj       come          
+    come           VERB       ROOT        come          Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         come          Gender=Masc|Number=Plur
+    .              PUNCT      punct       come          PunctType=Peri
+
+    Árbol de dependencias:
+        come  (ROOT, VERB)
+            Marcela  (nsubj, PROPN)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[S02] (nivel 1) El profesor corrige los exámenes.
+    ¿gramatical?: si
+    fenómeno: SVO en presente con sujeto nominal.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         profesor      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    profesor       NOUN       nsubj       corrige       Gender=Masc|Number=Sing
+    corrige        VERB       ROOT        corrige       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrige       Gender=Masc|Number=Plur
+    .              PUNCT      punct       corrige       PunctType=Peri
+
+    Árbol de dependencias:
+        corrige  (ROOT, VERB)
+            profesor  (nsubj, NOUN)
+                El  (det, DET)
+            exámenes  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[S03] (nivel 1) Los fantasmas ven las calabazas.
+    ¿gramatical?: si
+    fenómeno: SVO en presente con sujeto plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       nsubj       ven           Number=Plur
+    ven            VERB       ROOT        ven           Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    las            DET        det         calabazas     Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    calabazas      NOUN       obj         ven           Gender=Fem|Number=Plur
+    .              PUNCT      punct       ven           PunctType=Peri
+
+    Árbol de dependencias:
+        ven  (ROOT, VERB)
+            fantasmas  (nsubj, NOUN)
+                Los  (det, DET)
+            calabazas  (obj, NOUN)
+                las  (det, DET)
+
+----------------------------------------------------------------------
+
+[S04] (nivel 1) El profesor corrigió los exámenes.
+    ¿gramatical?: si
+    fenómeno: Pretérito del caso S02.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         profesor      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    profesor       NOUN       nsubj       corrigió      Gender=Masc|Number=Sing
+    corrigió       VERB       ROOT        corrigió      Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrigió      Gender=Masc|Number=Plur
+    .              PUNCT      punct       corrigió      PunctType=Peri
+
+    Árbol de dependencias:
+        corrigió  (ROOT, VERB)
+            profesor  (nsubj, NOUN)
+                El  (det, DET)
+            exámenes  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[S05] (nivel 1) Marcela comió los dulces.
+    ¿gramatical?: si
+    fenómeno: Pretérito del caso S01.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Marcela        PROPN      nsubj       comió         
+    comió          VERB       ROOT        comió         Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         comió         Gender=Masc|Number=Plur
+    .              PUNCT      punct       comió         PunctType=Peri
+
+    Árbol de dependencias:
+        comió  (ROOT, VERB)
+            Marcela  (nsubj, PROPN)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[S06] (nivel 1) Los esqueletos dibujaron las calabazas.
+    ¿gramatical?: si
+    fenómeno: SVO en pretérito con sujeto plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         esqueletos    Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    esqueletos     NOUN       nsubj       dibujaron     Gender=Masc|Number=Plur
+    dibujaron      VERB       ROOT        dibujaron     Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         calabazas     Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    calabazas      NOUN       obj         dibujaron     Gender=Fem|Number=Plur
+    .              PUNCT      punct       dibujaron     PunctType=Peri
+
+    Árbol de dependencias:
+        dibujaron  (ROOT, VERB)
+            esqueletos  (nsubj, NOUN)
+                Los  (det, DET)
+            calabazas  (obj, NOUN)
+                las  (det, DET)
+
+----------------------------------------------------------------------
+
+[S07] (nivel 1) La niña vio los fantasmas.
+    ¿gramatical?: si
+    fenómeno: SVO en pretérito con objeto plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN       nsubj       vio           Gender=Fem|Number=Sing
+    vio            VERB       ROOT        vio           Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       obj         vio           Number=Plur
+    .              PUNCT      punct       vio           PunctType=Peri
+
+    Árbol de dependencias:
+        vio  (ROOT, VERB)
+            niña  (nsubj, NOUN)
+                La  (det, DET)
+            fantasmas  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[S08] (nivel 1) Los niños compraron unas calabazas.
+    ¿gramatical?: si
+    fenómeno: Determinante indefinido en el objeto.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         niños         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    niños          NOUN       nsubj       compraron     Gender=Masc|Number=Plur
+    compraron      VERB       ROOT        compraron     Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    unas           DET        det         calabazas     Definite=Ind|Gender=Fem|Number=Plur|PronType=Art
+    calabazas      NOUN       obj         compraron     Gender=Fem|Number=Plur
+    .              PUNCT      punct       compraron     PunctType=Peri
+
+    Árbol de dependencias:
+        compraron  (ROOT, VERB)
+            niños  (nsubj, NOUN)
+                Los  (det, DET)
+            calabazas  (obj, NOUN)
+                unas  (det, DET)
+
+----------------------------------------------------------------------
+
+[S09] (nivel 1) El esqueleto pinta la calabaza.
+    ¿gramatical?: si
+    fenómeno: SVO en presente con sujeto singular.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         esqueleto     Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    esqueleto      NOUN       nsubj       pinta         Gender=Masc|Number=Sing
+    pinta          VERB       ROOT        pinta         Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET        det         calabaza      Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    calabaza       NOUN       obj         pinta         Gender=Fem|Number=Sing
+    .              PUNCT      punct       pinta         PunctType=Peri
+
+    Árbol de dependencias:
+        pinta  (ROOT, VERB)
+            esqueleto  (nsubj, NOUN)
+                El  (det, DET)
+            calabaza  (obj, NOUN)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[S10] (nivel 1) Los fantasmas comen las manzanas.
+    ¿gramatical?: si
+    fenómeno: Concordancia verbal en plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       nsubj       comen         Number=Plur
+    comen          VERB       ROOT        comen         Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    las            DET        det         manzanas      Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    manzanas       NOUN       obj         comen         Gender=Fem|Number=Plur
+    .              PUNCT      punct       comen         PunctType=Peri
+
+    Árbol de dependencias:
+        comen  (ROOT, VERB)
+            fantasmas  (nsubj, NOUN)
+                Los  (det, DET)
+            manzanas  (obj, NOUN)
+                las  (det, DET)
+
+----------------------------------------------------------------------
+
+[S11] (nivel 1) Jaime escribe el código.
+    ¿gramatical?: si
+    fenómeno: SVO en presente con objeto singular.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Jaime          PROPN      nsubj       escribe       
+    escribe        VERB       ROOT        escribe       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribe       Gender=Masc|Number=Sing
+    .              PUNCT      punct       escribe       PunctType=Peri
+
+    Árbol de dependencias:
+        escribe  (ROOT, VERB)
+            Jaime  (nsubj, PROPN)
+            código  (obj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[S12] (nivel 1) Jaime escribió el código.
+    ¿gramatical?: si
+    fenómeno: Pretérito del caso S11.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Jaime          PROPN      nsubj       escribió      
+    escribió       VERB       ROOT        escribió      Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribió      Gender=Masc|Number=Sing
+    .              PUNCT      punct       escribió      PunctType=Peri
+
+    Árbol de dependencias:
+        escribió  (ROOT, VERB)
+            Jaime  (nsubj, PROPN)
+            código  (obj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[S13] (nivel 1) La profesora explica la gramática.
+    ¿gramatical?: si
+    fenómeno: SVO en presente con sujeto femenino.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    La             DET        det         profesora     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    profesora      NOUN       nsubj       explica       Gender=Fem|Number=Sing
+    explica        VERB       ROOT        explica       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET        det         gramática     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    gramática      NOUN       obj         explica       Gender=Fem|Number=Sing
+    .              PUNCT      punct       explica       PunctType=Peri
+
+    Árbol de dependencias:
+        explica  (ROOT, VERB)
+            profesora  (nsubj, NOUN)
+                La  (det, DET)
+            gramática  (obj, NOUN)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[S14] (nivel 1) Las profesoras corrigen los exámenes.
+    ¿gramatical?: si
+    fenómeno: SVO en presente con sujeto femenino plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Las            DET        det         profesoras    Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    profesoras     NOUN       nsubj       corrigen      Gender=Fem|Number=Plur
+    corrigen       VERB       ROOT        corrigen      Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrigen      Gender=Masc|Number=Plur
+    .              PUNCT      punct       corrigen      PunctType=Peri
+
+    Árbol de dependencias:
+        corrigen  (ROOT, VERB)
+            profesoras  (nsubj, NOUN)
+                Las  (det, DET)
+            exámenes  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[S15] (nivel 1) Él leyó el libro.
+    ¿gramatical?: si
+    fenómeno: Pronombre singular y verbo en pretérito.
+
+    DECISIÓN: ACEPTA  |  C1=si  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Él             PRON       nsubj       leyó          Case=Acc,Nom|Gender=Masc|Number=Sing|Person=3|PronType=Prs
+    leyó           VERB       ROOT        leyó          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    el             DET        det         libro         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN       obj         leyó          Gender=Masc|Number=Sing
+    .              PUNCT      punct       leyó          PunctType=Peri
+
+    Árbol de dependencias:
+        leyó  (ROOT, VERB)
+            Él  (nsubj, PRON)
+            libro  (obj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[S16] (nivel 1) Nosotras escribimos el parser.
+    ¿gramatical?: si
+    fenómeno: Pronombre plural y verbo en plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Nosotras       PROPN      nsubj       escribimos    
+    escribimos     VERB       ROOT        escribimos    Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin
+    el             DET        det         parser        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    parser         NOUN       obj         escribimos    Gender=Masc|Number=Sing
+    .              PUNCT      punct       escribimos    PunctType=Peri
+
+    Árbol de dependencias:
+        escribimos  (ROOT, VERB)
+            Nosotras  (nsubj, PROPN)
+            parser  (obj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[S17] (nivel 1) Ana compra una mochila.
+    ¿gramatical?: si
+    fenómeno: Objeto singular con determinante indefinido.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ana            PROPN      nsubj       compra        
+    compra         VERB       ROOT        compra        Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    una            DET        det         mochila       Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
+    mochila        NOUN       obj         compra        Gender=Fem|Number=Sing
+    .              PUNCT      punct       compra        PunctType=Peri
+
+    Árbol de dependencias:
+        compra  (ROOT, VERB)
+            Ana  (nsubj, PROPN)
+            mochila  (obj, NOUN)
+                una  (det, DET)
+
+----------------------------------------------------------------------
+
+[S18] (nivel 1) Diego guarda los cuadernos.
+    ¿gramatical?: si
+    fenómeno: Sujeto singular y objeto plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Diego          PROPN      nsubj       guarda        
+    guarda         VERB       ROOT        guarda        Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         cuadernos     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    cuadernos      NOUN       obj         guarda        Gender=Masc|Number=Plur
+    .              PUNCT      punct       guarda        PunctType=Peri
+
+    Árbol de dependencias:
+        guarda  (ROOT, VERB)
+            Diego  (nsubj, PROPN)
+            cuadernos  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[S19] (nivel 1) Ellos buscaron las cajas.
+    ¿gramatical?: si
+    fenómeno: Pronombre plural y verbo en pretérito.
+
+    DECISIÓN: ACEPTA  |  C1=si  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ellos          PRON       nsubj       buscaron      Case=Acc,Nom|Gender=Masc|Number=Plur|Person=3|PronType=Prs
+    buscaron       VERB       ROOT        buscaron      Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         cajas         Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    cajas          NOUN       obj         buscaron      Gender=Fem|Number=Plur
+    .              PUNCT      punct       buscaron      PunctType=Peri
+
+    Árbol de dependencias:
+        buscaron  (ROOT, VERB)
+            Ellos  (nsubj, PRON)
+            cajas  (obj, NOUN)
+                las  (det, DET)
+
+----------------------------------------------------------------------
+
+[S20] (nivel 1) Ella pintó la mesa.
+    ¿gramatical?: si
+    fenómeno: Pronombre singular y verbo en pretérito.
+
+    DECISIÓN: ACEPTA  |  C1=si  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ella           PRON       nsubj       pintó         Case=Acc,Nom|Gender=Fem|Number=Sing|Person=3|PronType=Prs
+    pintó          VERB       ROOT        pintó         Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    la             DET        det         mesa          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    mesa           NOUN       obj         pintó         Gender=Fem|Number=Sing
+    .              PUNCT      punct       pintó         PunctType=Peri
+
+    Árbol de dependencias:
+        pintó  (ROOT, VERB)
+            Ella  (nsubj, PRON)
+            mesa  (obj, NOUN)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[I01] (nivel 2) Los fantasmas pequeños comen los dulces nuevos.
+    ¿gramatical?: si
+    fenómeno: Adjetivos en el sujeto y el objeto.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       nsubj       comen         Number=Plur
+    pequeños       ADJ        amod        fantasmas     Gender=Masc|Number=Plur
+    comen          VERB       ROOT        comen         Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         comen         Gender=Masc|Number=Plur
+    nuevos         ADJ        amod        dulces        Gender=Masc|Number=Plur
+    .              PUNCT      punct       comen         PunctType=Peri
+
+    Árbol de dependencias:
+        comen  (ROOT, VERB)
+            fantasmas  (nsubj, NOUN)
+                Los  (det, DET)
+                pequeños  (amod, ADJ)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+                nuevos  (amod, ADJ)
+
+----------------------------------------------------------------------
+
+[I02] (nivel 2) Las calabazas pequeñas duermen furiosamente.
+    ¿gramatical?: si
+    fenómeno: Adjetivo del sujeto y adverbio final.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Las            DET        det         calabazas     Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    calabazas      NOUN       nsubj       duermen       Gender=Fem|Number=Plur
+    pequeñas       ADJ        amod        calabazas     Gender=Fem|Number=Plur
+    duermen        VERB       ROOT        duermen       Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin
+    furiosamente   ADV        advmod      duermen       
+    .              PUNCT      punct       duermen       PunctType=Peri
+
+    Árbol de dependencias:
+        duermen  (ROOT, VERB)
+            calabazas  (nsubj, NOUN)
+                Las  (det, DET)
+                pequeñas  (amod, ADJ)
+            furiosamente  (advmod, ADV)
+
+----------------------------------------------------------------------
+
+[I03] (nivel 2) Los fantasma come los dulces.
+    ¿gramatical?: no
+    fenómeno: Primer fallo en «fantasma». Se espera N_mp.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         fantasma      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasma       NOUN       nsubj       come          Number=Sing
+    come           VERB       ROOT        come          Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         come          Gender=Masc|Number=Plur
+    .              PUNCT      punct       come          PunctType=Peri
+
+    Árbol de dependencias:
+        come  (ROOT, VERB)
+            fantasma  (nsubj, NOUN)
+                Los  (det, DET)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[I04] (nivel 2) El calabaza escribe el código.
+    ¿gramatical?: no
+    fenómeno: Primer fallo en «calabaza». Se espera N_ms.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         calabaza      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    calabaza       PROPN      nsubj       escribe       
+    escribe        VERB       ROOT        escribe       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribe       Gender=Masc|Number=Sing
+    .              PUNCT      punct       escribe       PunctType=Peri
+
+    Árbol de dependencias:
+        escribe  (ROOT, VERB)
+            calabaza  (nsubj, PROPN)
+                El  (det, DET)
+            código  (obj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[I05] (nivel 2) Los esqueletos escribe el código.
+    ¿gramatical?: no
+    fenómeno: Sujeto plural con verbo singular.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         esqueletos    Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    esqueletos     NOUN       nsubj       escribe       Gender=Masc|Number=Plur
+    escribe        VERB       ROOT        escribe       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribe       Gender=Masc|Number=Sing
+    .              PUNCT      punct       escribe       PunctType=Peri
+
+    Árbol de dependencias:
+        escribe  (ROOT, VERB)
+            esqueletos  (nsubj, NOUN)
+                Los  (det, DET)
+            código  (obj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[I06] (nivel 2) Jaime corrige los examen.
+    ¿gramatical?: no
+    fenómeno: El objeto exige N_mp después de «los».
+
+    DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=no  C3=si
+    Motivo: C2: discordancia: número: 'los'=['Plur'] vs 'examen'=['Sing']
+
+    palabra        categoría  función     depende de    rasgos
+    Jaime          PROPN      nsubj       corrige       
+    corrige        VERB       ROOT        corrige       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         examen        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    examen         NOUN       obj         corrige       Gender=Masc|Number=Sing
+    .              PUNCT      punct       corrige       PunctType=Peri
+
+    Árbol de dependencias:
+        corrige  (ROOT, VERB)
+            Jaime  (nsubj, PROPN)
+            examen  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[I07] (nivel 2) Las calabazas pequeños duermen furiosamente.
+    ¿gramatical?: no
+    fenómeno: «Pequeños» tiene género masculino.
+
+    DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=no  C3=si
+    Motivo: C2: discordancia: género: 'pequeños'=['Masc'] vs 'calabazas'=['Fem']
+
+    palabra        categoría  función     depende de    rasgos
+    Las            DET        det         calabazas     Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    calabazas      NOUN       nsubj       duermen       Gender=Fem|Number=Plur
+    pequeños       ADJ        amod        calabazas     Gender=Masc|Number=Plur
+    duermen        VERB       ROOT        duermen       Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    furiosamente   ADV        advmod      duermen       
+    .              PUNCT      punct       duermen       PunctType=Peri
+
+    Árbol de dependencias:
+        duermen  (ROOT, VERB)
+            calabazas  (nsubj, NOUN)
+                Las  (det, DET)
+                pequeños  (amod, ADJ)
+            furiosamente  (advmod, ADV)
+
+----------------------------------------------------------------------
+
+[I08] (nivel 2) El esqueleto pequeño guardó los dulces en la caja.
+    ¿gramatical?: si
+    fenómeno: Adjetivo de sujeto y frase de lugar.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         esqueleto     Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    esqueleto      NOUN       nsubj       guardó        Gender=Masc|Number=Sing
+    pequeño        ADJ        amod        esqueleto     Gender=Masc|Number=Sing
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         guardó        Gender=Masc|Number=Plur
+    en             ADP        case        caja          
+    la             DET        det         caja          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    caja           NOUN       obl         guardó        Gender=Fem|Number=Sing
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            esqueleto  (nsubj, NOUN)
+                El  (det, DET)
+                pequeño  (amod, ADJ)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+            caja  (obl, NOUN)
+                en  (case, ADP)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[I09] (nivel 2) Las niñas dibujaron unos fantasmas blancos ayer.
+    ¿gramatical?: si
+    fenómeno: Adjetivo de objeto y adverbio final.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Las            DET        det         niñas         Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    niñas          NOUN       nsubj       dibujaron     Gender=Fem|Number=Plur
+    dibujaron      VERB       ROOT        dibujaron     Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    unos           DET        det         fantasmas     Definite=Ind|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       obj         dibujaron     Number=Plur
+    blancos        ADJ        amod        fantasmas     Gender=Masc|Number=Plur
+    ayer           ADV        advmod      dibujaron     
+    .              PUNCT      punct       dibujaron     PunctType=Peri
+
+    Árbol de dependencias:
+        dibujaron  (ROOT, VERB)
+            niñas  (nsubj, NOUN)
+                Las  (det, DET)
+            fantasmas  (obj, NOUN)
+                unos  (det, DET)
+                blancos  (amod, ADJ)
+            ayer  (advmod, ADV)
+
+----------------------------------------------------------------------
+
+[I10] (nivel 2) El fantasma duerme bajo la mesa hoy.
+    ¿gramatical?: si
+    fenómeno: Frase preposicional y adverbio final.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         fantasma      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    fantasma       NOUN       nsubj       duerme        Number=Sing
+    duerme         VERB       ROOT        duerme        Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    bajo           ADP        case        mesa          
+    la             DET        det         mesa          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    mesa           NOUN       obl         duerme        Gender=Fem|Number=Sing
+    hoy            ADV        advmod      duerme        
+    .              PUNCT      punct       duerme        PunctType=Peri
+
+    Árbol de dependencias:
+        duerme  (ROOT, VERB)
+            fantasma  (nsubj, NOUN)
+                El  (det, DET)
+            mesa  (obl, NOUN)
+                bajo  (case, ADP)
+                la  (det, DET)
+            hoy  (advmod, ADV)
+
+----------------------------------------------------------------------
+
+[I11] (nivel 2) Ellas pintaron las calabazas rojas con los niños.
+    ¿gramatical?: si
+    fenómeno: Pronombre plural
+
+    DECISIÓN: ACEPTA  |  C1=si  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ellas          PRON       nsubj       pintaron      Case=Acc,Nom|Gender=Fem|Number=Plur|Person=3|PronType=Prs
+    pintaron       VERB       ROOT        pintaron      Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         calabazas     Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    calabazas      NOUN       obj         pintaron      Gender=Fem|Number=Plur
+    rojas          ADJ        amod        calabazas     Gender=Fem|Number=Plur
+    con            ADP        case        niños         
+    los            DET        det         niños         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    niños          NOUN       nmod        calabazas     Gender=Masc|Number=Plur
+    .              PUNCT      punct       pintaron      PunctType=Peri
+
+    Árbol de dependencias:
+        pintaron  (ROOT, VERB)
+            Ellas  (nsubj, PRON)
+            calabazas  (obj, NOUN)
+                las  (det, DET)
+                rojas  (amod, ADJ)
+                niños  (nmod, NOUN)
+                    con  (case, ADP)
+                    los  (det, DET)
+
+----------------------------------------------------------------------
+
+[I12] (nivel 2) Jaime corrigió los exámenes en la clase ayer.
+    ¿gramatical?: si
+    fenómeno: Frase de lugar seguida de adverbio.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Jaime          PROPN      nsubj       corrigió      
+    corrigió       VERB       ROOT        corrigió      Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrigió      Gender=Masc|Number=Plur
+    en             ADP        case        clase         
+    la             DET        det         clase         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    clase          NOUN       obl         corrigió      Gender=Fem|Number=Sing
+    ayer           ADV        advmod      clase         
+    .              PUNCT      punct       corrigió      PunctType=Peri
+
+    Árbol de dependencias:
+        corrigió  (ROOT, VERB)
+            Jaime  (nsubj, PROPN)
+            exámenes  (obj, NOUN)
+                los  (det, DET)
+            clase  (obl, NOUN)
+                en  (case, ADP)
+                la  (det, DET)
+                ayer  (advmod, ADV)
+
+----------------------------------------------------------------------
+
+[I13] (nivel 2) La profesora nueva explica la gramática en la clase.
+    ¿gramatical?: si
+    fenómeno: Adjetivo del sujeto y frase de lugar.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    La             DET        det         profesora     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    profesora      NOUN       nsubj       explica       Gender=Fem|Number=Sing
+    nueva          ADJ        amod        profesora     Gender=Fem|Number=Sing
+    explica        VERB       ROOT        explica       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET        det         gramática     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    gramática      NOUN       obj         explica       Gender=Fem|Number=Sing
+    en             ADP        case        clase         
+    la             DET        det         clase         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    clase          NOUN       obl         explica       Gender=Fem|Number=Sing
+    .              PUNCT      punct       explica       PunctType=Peri
+
+    Árbol de dependencias:
+        explica  (ROOT, VERB)
+            profesora  (nsubj, NOUN)
+                La  (det, DET)
+                nueva  (amod, ADJ)
+            gramática  (obj, NOUN)
+                la  (det, DET)
+            clase  (obl, NOUN)
+                en  (case, ADP)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[I14] (nivel 2) Nosotros escribimos el código nuevo en la clase.
+    ¿gramatical?: si
+    fenómeno: Pronombre plural y adjetivo de objeto.
+
+    DECISIÓN: ACEPTA  |  C1=si  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Nosotros       PRON       nsubj       escribimos    Case=Acc,Nom|Gender=Masc|Number=Plur|Person=1|PronType=Prs
+    escribimos     VERB       ROOT        escribimos    Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribimos    Gender=Masc|Number=Sing
+    nuevo          ADJ        amod        código        
+    en             ADP        case        clase         
+    la             DET        det         clase         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    clase          NOUN       obl         escribimos    Gender=Fem|Number=Sing
+    .              PUNCT      punct       escribimos    PunctType=Peri
+
+    Árbol de dependencias:
+        escribimos  (ROOT, VERB)
+            Nosotros  (nsubj, PRON)
+            código  (obj, NOUN)
+                el  (det, DET)
+                nuevo  (amod, ADJ)
+            clase  (obl, NOUN)
+                en  (case, ADP)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[I15] (nivel 2) Usted lee el libro cuidadosamente.
+    ¿gramatical?: si
+    fenómeno: Pronombre singular y adverbio final.
+
+    DECISIÓN: RECHAZA  |  C1=no  C2=si  C3=si
+    Motivo: C1: discordancia sujeto 'Usted'–raíz 'lee': persona: sujeto=['2'] vs raíz=['3']
+
+    palabra        categoría  función     depende de    rasgos
+    Usted          PRON       nsubj       lee           Case=Acc,Nom|Number=Sing|Person=2|Polite=Form|PronType=Prs
+    lee            VERB       ROOT        lee           Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET        det         libro         Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    libro          NOUN       obj         lee           Gender=Masc|Number=Sing
+    cuidadosamente ADV        advmod      lee           
+    .              PUNCT      punct       lee           PunctType=Peri
+
+    Árbol de dependencias:
+        lee  (ROOT, VERB)
+            Usted  (nsubj, PRON)
+            libro  (obj, NOUN)
+                el  (det, DET)
+            cuidadosamente  (advmod, ADV)
+
+----------------------------------------------------------------------
+
+[I16] (nivel 2) Ella guardó el cuaderno en la mochila con una carta.
+    ¿gramatical?: si
+    fenómeno: Dos frases preposicionales consecutivas.
+
+    DECISIÓN: ACEPTA  |  C1=si  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ella           PRON       nsubj       guardó        Case=Acc,Nom|Gender=Fem|Number=Sing|Person=3|PronType=Prs
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    el             DET        det         cuaderno      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    cuaderno       NOUN       obj         guardó        Gender=Masc|Number=Sing
+    en             ADP        case        mochila       
+    la             DET        det         mochila       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    mochila        NOUN       obl         guardó        Gender=Fem|Number=Sing
+    con            ADP        case        carta         
+    una            DET        det         carta         Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
+    carta          NOUN       obl         guardó        Gender=Fem|Number=Sing
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            Ella  (nsubj, PRON)
+            cuaderno  (obj, NOUN)
+                el  (det, DET)
+            mochila  (obl, NOUN)
+                en  (case, ADP)
+                la  (det, DET)
+            carta  (obl, NOUN)
+                con  (case, ADP)
+                una  (det, DET)
+
+----------------------------------------------------------------------
+
+[I17] (nivel 2) Ana compró una mochila bonita para Mateo.
+    ¿gramatical?: si
+    fenómeno: Adjetivo de objeto y frase con «para».
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ana            PROPN      nsubj       compró        
+    compró         VERB       ROOT        compró        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    una            DET        det         mochila       Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
+    mochila        NOUN       obj         compró        Gender=Fem|Number=Sing
+    bonita         ADJ        amod        mochila       Gender=Fem|Number=Sing
+    para           ADP        case        Mateo         
+    Mateo          PROPN      nmod        mochila       
+    .              PUNCT      punct       compró        PunctType=Peri
+
+    Árbol de dependencias:
+        compró  (ROOT, VERB)
+            Ana  (nsubj, PROPN)
+            mochila  (obj, NOUN)
+                una  (det, DET)
+                bonita  (amod, ADJ)
+                Mateo  (nmod, PROPN)
+                    para  (case, ADP)
+
+----------------------------------------------------------------------
+
+[I18] (nivel 2) Mateo guardó las manzanas rojas en una caja.
+    ¿gramatical?: si
+    fenómeno: Adjetivo de objeto y frase de lugar.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Mateo          PROPN      nsubj       guardó        
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         manzanas      Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    manzanas       NOUN       obj         guardó        Gender=Fem|Number=Plur
+    rojas          ADJ        amod        manzanas      Gender=Fem|Number=Plur
+    en             ADP        case        caja          
+    una            DET        det         caja          Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
+    caja           NOUN       obl         guardó        Gender=Fem|Number=Sing
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            Mateo  (nsubj, PROPN)
+            manzanas  (obj, NOUN)
+                las  (det, DET)
+                rojas  (amod, ADJ)
+            caja  (obl, NOUN)
+                en  (case, ADP)
+                una  (det, DET)
+
+----------------------------------------------------------------------
+
+[I19] (nivel 2) Los gatos blancos duermen afuera.
+    ¿gramatical?: si
+    fenómeno: Adjetivo del sujeto y adverbio final.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         gatos         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    gatos          NOUN       nsubj       duermen       Gender=Masc|Number=Plur
+    blancos        ADJ        amod        gatos         Gender=Masc|Number=Plur
+    duermen        VERB       ROOT        duermen       Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    afuera         ADJ        obj         duermen       Gender=Fem|Number=Sing
+    .              PUNCT      punct       duermen       PunctType=Peri
+
+    Árbol de dependencias:
+        duermen  (ROOT, VERB)
+            gatos  (nsubj, NOUN)
+                Los  (det, DET)
+                blancos  (amod, ADJ)
+            afuera  (obj, ADJ)
+
+----------------------------------------------------------------------
+
+[I20] (nivel 2) Ellos guardó las cartas en la caja.
+    ¿gramatical?: no
+    fenómeno: Pronombre plural con verbo singular.
+
+    DECISIÓN: RECHAZA  |  C1=no  C2=si  C3=si
+    Motivo: C1: discordancia sujeto 'Ellos'–raíz 'guardó': número: sujeto=['Plur'] vs raíz=['Sing']
+
+    palabra        categoría  función     depende de    rasgos
+    Ellos          PRON       nsubj       guardó        Case=Acc,Nom|Gender=Masc|Number=Plur|Person=3|PronType=Prs
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         cartas        Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    cartas         NOUN       obj         guardó        Gender=Fem|Number=Plur
+    en             ADP        case        caja          
+    la             DET        det         caja          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    caja           NOUN       obl         guardó        Gender=Fem|Number=Sing
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            Ellos  (nsubj, PRON)
+            cartas  (obj, NOUN)
+                las  (det, DET)
+            caja  (obl, NOUN)
+                en  (case, ADP)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[I21] (nivel 2) La niña compró un mochila.
+    ¿gramatical?: no
+    fenómeno: Error de género entre determinante y sustantivo en el objeto. Se espera N_ms.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN       nsubj       compró        Gender=Fem|Number=Sing
+    compró         VERB       ROOT        compró        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    un             DET        det         mochila       Definite=Ind|Gender=Masc|Number=Sing|PronType=Art
+    mochila        NOUN       obj         compró        Gender=Masc|Number=Sing
+    .              PUNCT      punct       compró        PunctType=Peri
+
+    Árbol de dependencias:
+        compró  (ROOT, VERB)
+            niña  (nsubj, NOUN)
+                La  (det, DET)
+            mochila  (obj, NOUN)
+                un  (det, DET)
+
+----------------------------------------------------------------------
+
+[I22] (nivel 2) Los gatos blanco duermen afuera.
+    ¿gramatical?: no
+    fenómeno: Error de número entre sustantivo y adjetivo en el sujeto.
+
+    DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=no  C3=no
+    Motivo: C3: raíz 'duermen' es PROPN (esperado VERB o AUX) | C2: discordancia: número: 'blanco'=['Sing'] vs 'gatos'=['Plur']
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         gatos         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    gatos          NOUN       nsubj       duermen       Gender=Masc|Number=Plur
+    blanco         ADJ        amod        gatos         Gender=Masc|Number=Sing
+    duermen        PROPN      ROOT        duermen       
+    afuera         ADJ        obj         duermen       Gender=Fem|Number=Sing
+    .              PUNCT      punct       duermen       PunctType=Peri
+
+    Árbol de dependencias:
+        duermen  (ROOT, PROPN)
+            gatos  (nsubj, NOUN)
+                Los  (det, DET)
+                blanco  (amod, ADJ)
+            afuera  (obj, ADJ)
+
+----------------------------------------------------------------------
+
+[I23] (nivel 2) Mateo guardó las manzanas rojos en una caja.
+    ¿gramatical?: no
+    fenómeno: Error de género entre sustantivo y adjetivo en el objeto.
+
+    DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=no  C3=si
+    Motivo: C2: discordancia: género: 'rojos'=['Masc'] vs 'manzanas'=['Fem']
+
+    palabra        categoría  función     depende de    rasgos
+    Mateo          PROPN      nsubj       guardó        
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         manzanas      Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    manzanas       NOUN       obj         guardó        Gender=Fem|Number=Plur
+    rojos          ADJ        amod        manzanas      Gender=Masc|Number=Plur
+    en             ADP        case        caja          
+    una            DET        det         caja          Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
+    caja           NOUN       obl         guardó        Gender=Fem|Number=Sing
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            Mateo  (nsubj, PROPN)
+            manzanas  (obj, NOUN)
+                las  (det, DET)
+                rojos  (amod, ADJ)
+            caja  (obl, NOUN)
+                en  (case, ADP)
+                una  (det, DET)
+
+----------------------------------------------------------------------
+
+[I24] (nivel 2) El esqueleto guardó los dulces en las caja.
+    ¿gramatical?: no
+    fenómeno: Error de número dentro de la frase preposicional. Se espera N_fp.
+
+    DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=no  C3=si
+    Motivo: C2: discordancia: número: 'las'=['Plur'] vs 'caja'=['Sing']
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         esqueleto     Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    esqueleto      NOUN       nsubj       guardó        Gender=Masc|Number=Sing
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         guardó        Gender=Masc|Number=Plur
+    en             ADP        case        caja          
+    las            DET        det         caja          Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    caja           NOUN       obl         guardó        Gender=Fem|Number=Sing
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            esqueleto  (nsubj, NOUN)
+                El  (det, DET)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+            caja  (obl, NOUN)
+                en  (case, ADP)
+                las  (det, DET)
+
+----------------------------------------------------------------------
+
+[I25] (nivel 2) Las profesoras explica la gramática.
+    ¿gramatical?: no
+    fenómeno: Sujeto femenino plural con verbo singular.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Las            DET        det         profesoras    Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    profesoras     NOUN       nsubj       explica       Gender=Fem|Number=Plur
+    explica        VERB       ROOT        explica       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET        det         gramática     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    gramática      NOUN       obj         explica       Gender=Fem|Number=Sing
+    .              PUNCT      punct       explica       PunctType=Peri
+
+    Árbol de dependencias:
+        explica  (ROOT, VERB)
+            profesoras  (nsubj, NOUN)
+                Las  (det, DET)
+            gramática  (obj, NOUN)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[I26] (nivel 2) Diego guardan los cuadernos.
+    ¿gramatical?: no
+    fenómeno: Nombre propio singular con verbo plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Diego          PROPN      nsubj       guardan       
+    guardan        VERB       ROOT        guardan       Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         cuadernos     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    cuadernos      NOUN       obj         guardan       Gender=Masc|Number=Plur
+    .              PUNCT      punct       guardan       PunctType=Peri
+
+    Árbol de dependencias:
+        guardan  (ROOT, VERB)
+            Diego  (nsubj, PROPN)
+            cuadernos  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[I27] (nivel 2) Una niñas dibujaron los fantasmas.
+    ¿gramatical?: no
+    fenómeno: Error de número entre determinante indefinido y sustantivo. Se espera N_fs.
+
+    DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=no  C3=si
+    Motivo: C2: discordancia: número: 'Una'=['Sing'] vs 'niñas'=['Plur']
+
+    palabra        categoría  función     depende de    rasgos
+    Una            DET        det         niñas         Definite=Ind|Gender=Fem|Number=Sing|PronType=Art
+    niñas          NOUN       nsubj       dibujaron     Gender=Fem|Number=Plur
+    dibujaron      VERB       ROOT        dibujaron     Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       obj         dibujaron     Number=Plur
+    .              PUNCT      punct       dibujaron     PunctType=Peri
+
+    Árbol de dependencias:
+        dibujaron  (ROOT, VERB)
+            niñas  (nsubj, NOUN)
+                Una  (det, DET)
+            fantasmas  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[I28] (nivel 2) Ana guardó las manzanas en.
+    ¿gramatical?: no
+    fenómeno: Frase preposicional incompleta. Falta el sintagma nominal después de la preposición.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ana            PROPN      nsubj       guardó        
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         manzanas      Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    manzanas       NOUN       obj         guardó        Gender=Fem|Number=Plur
+    en             ADP        advmod      guardó        
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            Ana  (nsubj, PROPN)
+            manzanas  (obj, NOUN)
+                las  (det, DET)
+            en  (advmod, ADP)
+
+----------------------------------------------------------------------
+
+[C01] (nivel 3) El esqueleto pequeño escribe rápidamente el código nuevo en la clase.
+    ¿gramatical?: si
+    fenómeno: Se continua la oración luego de un adverbio
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         esqueleto     Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    esqueleto      NOUN       nsubj       escribe       Gender=Masc|Number=Sing
+    pequeño        ADJ        amod        esqueleto     Gender=Masc|Number=Sing
+    escribe        VERB       ROOT        escribe       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    rápidamente    ADV        advmod      escribe       
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribe       Gender=Masc|Number=Sing
+    nuevo          ADJ        amod        código        
+    en             ADP        case        clase         
+    la             DET        det         clase         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    clase          NOUN       nmod        código        Gender=Fem|Number=Sing
+    .              PUNCT      punct       escribe       PunctType=Peri
+
+    Árbol de dependencias:
+        escribe  (ROOT, VERB)
+            esqueleto  (nsubj, NOUN)
+                El  (det, DET)
+                pequeño  (amod, ADJ)
+            rápidamente  (advmod, ADV)
+            código  (obj, NOUN)
+                el  (det, DET)
+                nuevo  (amod, ADJ)
+                clase  (nmod, NOUN)
+                    en  (case, ADP)
+                    la  (det, DET)
+
+----------------------------------------------------------------------
+
+[C02] (nivel 3) Marcela vio al fantasma con el telescopio.
+    ¿gramatical?: si
+    fenómeno: «Con el telescopio» admite dos lecturas. La CFG agrupa ambas frases en la secuencia de SP.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Marcela        PROPN      nsubj       vio           
+    vio            VERB       ROOT        vio           Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    al             ADP        case        fantasma      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    fantasma       NOUN       obj         vio           Number=Sing
+    con            ADP        case        telescopio    
+    el             DET        det         telescopio    Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    telescopio     NOUN       obl         vio           Gender=Masc|Number=Sing
+    .              PUNCT      punct       vio           PunctType=Peri
+
+    Árbol de dependencias:
+        vio  (ROOT, VERB)
+            Marcela  (nsubj, PROPN)
+            fantasma  (obj, NOUN)
+                al  (case, ADP)
+            telescopio  (obl, NOUN)
+                con  (case, ADP)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[C03] (nivel 3) El profesor que explica la gramática corrige los exámenes.
+    ¿gramatical?: si
+    fenómeno: Relativa en el sujeto. Ante «que» se espera el verbo principal.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         profesor      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    profesor       NOUN       nsubj       corrige       Gender=Masc|Number=Sing
+    que            PRON       nsubj       explica       PronType=Int,Rel
+    explica        VERB       acl         profesor      Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET        det         gramática     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    gramática      NOUN       nsubj       explica       Gender=Fem|Number=Sing
+    corrige        VERB       ROOT        corrige       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrige       Gender=Masc|Number=Plur
+    .              PUNCT      punct       corrige       PunctType=Peri
+
+    Árbol de dependencias:
+        corrige  (ROOT, VERB)
+            profesor  (nsubj, NOUN)
+                El  (det, DET)
+                explica  (acl, VERB)
+                    que  (nsubj, PRON)
+                    gramática  (nsubj, NOUN)
+                        la  (det, DET)
+            exámenes  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C04] (nivel 3) El examen que Jaime corrigió asustó a Jose.
+    ¿gramatical?: si
+    fenómeno: Relativa en el sujeto con objeto omitido dentro de la relativa.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    El             DET        det         examen        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    examen         NOUN       nsubj       asustó        Gender=Masc|Number=Sing
+    que            PRON       obj         corrigió      PronType=Int,Rel
+    Jaime          PROPN      nsubj       corrigió      
+    corrigió       VERB       acl         examen        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    asustó         VERB       ROOT        asustó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    a              ADP        case        Jose          
+    Jose           PROPN      obj         asustó        
+    .              PUNCT      punct       asustó        PunctType=Peri
+
+    Árbol de dependencias:
+        asustó  (ROOT, VERB)
+            examen  (nsubj, NOUN)
+                El  (det, DET)
+                corrigió  (acl, VERB)
+                    que  (obj, PRON)
+                    Jaime  (nsubj, PROPN)
+            Jose  (obj, PROPN)
+                a  (case, ADP)
+
+----------------------------------------------------------------------
+
+[C05] (nivel 3) Escribimos el parser.
+    ¿gramatical?: si
+    fenómeno: Sujeto tácito no se acepta por regla gramatical. La oración comienza con V_p.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Escribimos     VERB       ROOT        Escribimos    Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin
+    el             DET        det         parser        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    parser         NOUN       nsubj       Escribimos    Gender=Masc|Number=Sing
+    .              PUNCT      punct       Escribimos    PunctType=Peri
+
+    Árbol de dependencias:
+        Escribimos  (ROOT, VERB)
+            parser  (nsubj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[C06] (nivel 3) Come Marcela los dulces.
+    ¿gramatical?: si
+    fenómeno: La oración comienza con V_s, debería ser con sujeto
+
+    DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=si  C3=no
+    Motivo: C3: raíz 'dulces' es NOUN (esperado VERB o AUX)
+
+    palabra        categoría  función     depende de    rasgos
+    Come           PROPN      nsubj       dulces        
+    Marcela        PROPN      flat        Come          
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       ROOT        dulces        Gender=Masc|Number=Plur
+    .              PUNCT      punct       dulces        PunctType=Peri
+
+    Árbol de dependencias:
+        dulces  (ROOT, NOUN)
+            Come  (nsubj, PROPN)
+                Marcela  (flat, PROPN)
+            los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C07] (nivel 3) La profesora dijo que Jaime corrigió los exámenes.
+    ¿gramatical?: si
+    fenómeno: Utilización de "que" para unir dos oraciones que sí acepta
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    La             DET        det         profesora     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    profesora      NOUN       nsubj       dijo          Gender=Fem|Number=Sing
+    dijo           VERB       ROOT        dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        corrigió      
+    Jaime          PROPN      nsubj       corrigió      
+    corrigió       VERB       ccomp       dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrigió      Gender=Masc|Number=Plur
+    .              PUNCT      punct       dijo          PunctType=Peri
+
+    Árbol de dependencias:
+        dijo  (ROOT, VERB)
+            profesora  (nsubj, NOUN)
+                La  (det, DET)
+            corrigió  (ccomp, VERB)
+                que  (mark, SCONJ)
+                Jaime  (nsubj, PROPN)
+                exámenes  (obj, NOUN)
+                    los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C08] (nivel 3) Ana dijo que Diego dijo que ella escribe el código.
+    ¿gramatical?: si
+    fenómeno: Doble uso de "que"
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ana            PROPN      nsubj       dijo          
+    dijo           VERB       ROOT        dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        dijo          
+    Diego          PROPN      nsubj       dijo          
+    dijo           VERB       ccomp       dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        escribe       
+    ella           PRON       nsubj       escribe       Case=Acc,Nom|Gender=Fem|Number=Sing|Person=3|PronType=Prs
+    escribe        VERB       ccomp       dijo          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribe       Gender=Masc|Number=Sing
+    .              PUNCT      punct       dijo          PunctType=Peri
+
+    Árbol de dependencias:
+        dijo  (ROOT, VERB)
+            Ana  (nsubj, PROPN)
+            dijo  (ccomp, VERB)
+                que  (mark, SCONJ)
+                Diego  (nsubj, PROPN)
+                escribe  (ccomp, VERB)
+                    que  (mark, SCONJ)
+                    ella  (nsubj, PRON)
+                    código  (obj, NOUN)
+                        el  (det, DET)
+
+----------------------------------------------------------------------
+
+[C09] (nivel 3) Marcela dijo que ellos dibujaron los fantasmas.
+    ¿gramatical?: si
+    fenómeno: uso de "que" conn sujeto plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Marcela        PROPN      nsubj       dijo          
+    dijo           VERB       ROOT        dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        dibujaron     
+    ellos          PRON       nsubj       dibujaron     Case=Acc,Nom|Gender=Masc|Number=Plur|Person=3|PronType=Prs
+    dibujaron      VERB       ccomp       dijo          Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       obj         dibujaron     Number=Plur
+    .              PUNCT      punct       dijo          PunctType=Peri
+
+    Árbol de dependencias:
+        dijo  (ROOT, VERB)
+            Marcela  (nsubj, PROPN)
+            dibujaron  (ccomp, VERB)
+                que  (mark, SCONJ)
+                ellos  (nsubj, PRON)
+                fantasmas  (obj, NOUN)
+                    los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C10] (nivel 3) Mateo dijo que nosotros escribimos las cartas.
+    ¿gramatical?: si
+    fenómeno: uso de "que" con pronombre plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Mateo          PROPN      nsubj       dijo          
+    dijo           VERB       ROOT        dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        escribimos    
+    nosotros       PRON       nsubj       escribimos    Case=Acc,Nom|Gender=Masc|Number=Plur|Person=1|PronType=Prs
+    escribimos     VERB       ccomp       dijo          Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin
+    las            DET        det         cartas        Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    cartas         NOUN       obj         escribimos    Gender=Fem|Number=Plur
+    .              PUNCT      punct       dijo          PunctType=Peri
+
+    Árbol de dependencias:
+        dijo  (ROOT, VERB)
+            Mateo  (nsubj, PROPN)
+            escribimos  (ccomp, VERB)
+                que  (mark, SCONJ)
+                nosotros  (nsubj, PRON)
+                cartas  (obj, NOUN)
+                    las  (det, DET)
+
+----------------------------------------------------------------------
+
+[C11] (nivel 3) Los fantasmas que vio Marcela comen los dulces.
+    ¿gramatical?: si
+    fenómeno: Es semánticamente incorrecta y usa un verbo luego del que
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       nsubj       comen         Number=Plur
+    que            PRON       obj         vio           PronType=Int,Rel
+    vio            VERB       acl         fantasmas     Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    Marcela        PROPN      nsubj       vio           
+    comen          VERB       ROOT        comen         Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         comen         Gender=Masc|Number=Plur
+    .              PUNCT      punct       comen         PunctType=Peri
+
+    Árbol de dependencias:
+        comen  (ROOT, VERB)
+            fantasmas  (nsubj, NOUN)
+                Los  (det, DET)
+                vio  (acl, VERB)
+                    que  (obj, PRON)
+                    Marcela  (nsubj, PROPN)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C12] (nivel 3) Los libros que leyó la profesora los guardó Diego.
+    ¿gramatical?: si
+    fenómeno: Usa verbo luego de uqe
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         libros        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    libros         NOUN       iobj        guardó        Gender=Masc|Number=Plur
+    que            PRON       nsubj       leyó          PronType=Int,Rel
+    leyó           VERB       acl         libros        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    la             DET        det         profesora     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    profesora      NOUN       obj         leyó          Gender=Fem|Number=Sing
+    los            PRON       obj         guardó        Case=Acc|Gender=Masc|Number=Plur|Person=3|PrepCase=Npr|PronType=Prs
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    Diego          PROPN      nsubj       guardó        
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            libros  (iobj, NOUN)
+                Los  (det, DET)
+                leyó  (acl, VERB)
+                    que  (nsubj, PRON)
+                    profesora  (obj, NOUN)
+                        la  (det, DET)
+            los  (obj, PRON)
+            Diego  (nsubj, PROPN)
+
+----------------------------------------------------------------------
+
+[C13] (nivel 3) Anoche los esqueletos comieron los dulces.
+    ¿gramatical?: si
+    fenómeno: Adverbio al inicio. La CFG espera un sujeto.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Anoche         ADV        advmod      comieron      
+    los            DET        det         esqueletos    Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    esqueletos     NOUN       nsubj       comieron      Gender=Masc|Number=Plur
+    comieron       VERB       ROOT        comieron      Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         comieron      Gender=Masc|Number=Plur
+    .              PUNCT      punct       comieron      PunctType=Peri
+
+    Árbol de dependencias:
+        comieron  (ROOT, VERB)
+            Anoche  (advmod, ADV)
+            esqueletos  (nsubj, NOUN)
+                los  (det, DET)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C14] (nivel 3) En la clase Jaime explica la gramática.
+    ¿gramatical?: si
+    fenómeno: Preposición al inicio.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    En             ADP        case        clase         
+    la             DET        det         clase         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    clase          NOUN       obl         explica       Gender=Fem|Number=Sing
+    Jaime          PROPN      nsubj       explica       
+    explica        VERB       ROOT        explica       Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    la             DET        det         gramática     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    gramática      NOUN       obj         explica       Gender=Fem|Number=Sing
+    .              PUNCT      punct       explica       PunctType=Peri
+
+    Árbol de dependencias:
+        explica  (ROOT, VERB)
+            clase  (obl, NOUN)
+                En  (case, ADP)
+                la  (det, DET)
+            Jaime  (nsubj, PROPN)
+            gramática  (obj, NOUN)
+                la  (det, DET)
+
+----------------------------------------------------------------------
+
+[C15] (nivel 3) Las manzanas las comieron los niños.
+    ¿gramatical?: si
+    fenómeno: Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Las            DET        det         manzanas      Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    manzanas       NOUN       iobj        comieron      Gender=Fem|Number=Plur
+    las            PRON       obj         comieron      Case=Acc|Gender=Fem|Number=Plur|Person=3|PrepCase=Npr|PronType=Prs
+    comieron       VERB       ROOT        comieron      Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         niños         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    niños          NOUN       nsubj       comieron      Gender=Masc|Number=Plur
+    .              PUNCT      punct       comieron      PunctType=Peri
+
+    Árbol de dependencias:
+        comieron  (ROOT, VERB)
+            manzanas  (iobj, NOUN)
+                Las  (det, DET)
+            las  (obj, PRON)
+            niños  (nsubj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C16] (nivel 3) Ana guardó las manzanas en la caja cuidadosamente ayer.
+    ¿gramatical?: si
+    fenómeno: La CFG permite un solo adverbio final.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ana            PROPN      nsubj       guardó        
+    guardó         VERB       ROOT        guardó        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    las            DET        det         manzanas      Definite=Def|Gender=Fem|Number=Plur|PronType=Art
+    manzanas       NOUN       obj         guardó        Gender=Fem|Number=Plur
+    en             ADP        case        caja          
+    la             DET        det         caja          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    caja           NOUN       obl         guardó        Gender=Fem|Number=Sing
+    cuidadosamente ADV        advmod      ayer          
+    ayer           ADV        advmod      caja          
+    .              PUNCT      punct       guardó        PunctType=Peri
+
+    Árbol de dependencias:
+        guardó  (ROOT, VERB)
+            Ana  (nsubj, PROPN)
+            manzanas  (obj, NOUN)
+                las  (det, DET)
+            caja  (obl, NOUN)
+                en  (case, ADP)
+                la  (det, DET)
+                ayer  (advmod, ADV)
+                    cuidadosamente  (advmod, ADV)
+
+----------------------------------------------------------------------
+
+[C17] (nivel 3) Jaime dijo que corrigió los exámenes.
+    ¿gramatical?: si
+    fenómeno: Sujeto tácito dentro de una completiva.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Jaime          PROPN      nsubj       dijo          
+    dijo           VERB       ROOT        dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        corrigió      
+    corrigió       VERB       ccomp       dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrigió      Gender=Masc|Number=Plur
+    .              PUNCT      punct       dijo          PunctType=Peri
+
+    Árbol de dependencias:
+        dijo  (ROOT, VERB)
+            Jaime  (nsubj, PROPN)
+            corrigió  (ccomp, VERB)
+                que  (mark, SCONJ)
+                exámenes  (obj, NOUN)
+                    los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C18] (nivel 3) Marcela vio rápidamente al fantasma con el telescopio.
+    ¿gramatical?: si
+    fenómeno: La CFG consume el adverbio antes de encontrar la primera preposición.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Marcela        PROPN      nsubj       vio           
+    vio            VERB       ROOT        vio           Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    rápidamente    ADV        advmod      vio           
+    al             ADP        case        fantasma      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    fantasma       NOUN       obj         vio           Number=Sing
+    con            ADP        case        telescopio    
+    el             DET        det         telescopio    Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    telescopio     NOUN       obl         vio           Gender=Masc|Number=Sing
+    .              PUNCT      punct       vio           PunctType=Peri
+
+    Árbol de dependencias:
+        vio  (ROOT, VERB)
+            Marcela  (nsubj, PROPN)
+            rápidamente  (advmod, ADV)
+            fantasma  (obj, NOUN)
+                al  (case, ADP)
+            telescopio  (obl, NOUN)
+                con  (case, ADP)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[C19] (nivel 3) La niña de la mochila blanca compró unas cartas.
+    ¿gramatical?: si
+    fenómeno: Frase preposicional dentro del sujeto.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN       nsubj       compró        Gender=Fem|Number=Sing
+    de             ADP        case        mochila       
+    la             DET        det         mochila       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    mochila        ADJ        nmod        niña          Gender=Fem|Number=Sing
+    blanca         PROPN      flat        mochila       
+    compró         VERB       ROOT        compró        Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    unas           DET        det         cartas        Definite=Ind|Gender=Fem|Number=Plur|PronType=Art
+    cartas         NOUN       obj         compró        Gender=Fem|Number=Plur
+    .              PUNCT      punct       compró        PunctType=Peri
+
+    Árbol de dependencias:
+        compró  (ROOT, VERB)
+            niña  (nsubj, NOUN)
+                La  (det, DET)
+                mochila  (nmod, ADJ)
+                    de  (case, ADP)
+                    la  (det, DET)
+                    blanca  (flat, PROPN)
+            cartas  (obj, NOUN)
+                unas  (det, DET)
+
+----------------------------------------------------------------------
+
+[C20] (nivel 3) Jaime dijo que nosotros corrigen los exámenes en la clase.
+    ¿gramatical?: no
+    fenómeno: Control de persona en sujeto plural.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Jaime          PROPN      nsubj       dijo          
+    dijo           VERB       ROOT        dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        corrigen      
+    nosotros       PRON       nsubj       corrigen      Case=Acc,Nom|Gender=Masc|Number=Plur|Person=1|PronType=Prs
+    corrigen       VERB       ccomp       dijo          Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         exámenes      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    exámenes       NOUN       obj         corrigen      Gender=Masc|Number=Plur
+    en             ADP        case        clase         
+    la             DET        det         clase         Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    clase          NOUN       obl         corrigen      Gender=Fem|Number=Sing
+    .              PUNCT      punct       dijo          PunctType=Peri
+
+    Árbol de dependencias:
+        dijo  (ROOT, VERB)
+            Jaime  (nsubj, PROPN)
+            corrigen  (ccomp, VERB)
+                que  (mark, SCONJ)
+                nosotros  (nsubj, PRON)
+                exámenes  (obj, NOUN)
+                    los  (det, DET)
+                clase  (obl, NOUN)
+                    en  (case, ADP)
+                    la  (det, DET)
+
+----------------------------------------------------------------------
+
+[C21] (nivel 3) Yo come los dulces.
+    ¿gramatical?: no
+    fenómeno: Control de persona en singular. La CFG solo comprueba el número.
+
+    DECISIÓN: RECHAZA  |  C1=no  C2=si  C3=si
+    Motivo: C1: discordancia sujeto 'Yo'–raíz 'come': persona: sujeto=['1'] vs raíz=['3']
+
+    palabra        categoría  función     depende de    rasgos
+    Yo             PRON       nsubj       come          Case=Nom|Number=Sing|Person=1|PronType=Prs
+    come           VERB       ROOT        come          Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         come          Gender=Masc|Number=Plur
+    .              PUNCT      punct       come          PunctType=Peri
+
+    Árbol de dependencias:
+        come  (ROOT, VERB)
+            Yo  (nsubj, PRON)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C22] (nivel 3) Ellos escribimos el código.
+    ¿gramatical?: no
+    fenómeno: Uso de diferente persona. La CFG solo comprueba el número.
+
+    DECISIÓN: RECHAZA  |  C1=no  C2=si  C3=si
+    Motivo: C1: discordancia sujeto 'Ellos'–raíz 'escribimos': persona: sujeto=['3'] vs raíz=['1']
+
+    palabra        categoría  función     depende de    rasgos
+    Ellos          PRON       nsubj       escribimos    Case=Acc,Nom|Gender=Masc|Number=Plur|Person=3|PronType=Prs
+    escribimos     VERB       ROOT        escribimos    Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin
+    el             DET        det         código        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    código         NOUN       obj         escribimos    Gender=Masc|Number=Sing
+    .              PUNCT      punct       escribimos    PunctType=Peri
+
+    Árbol de dependencias:
+        escribimos  (ROOT, VERB)
+            Ellos  (nsubj, PRON)
+            código  (obj, NOUN)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[C23] (nivel 3) Nosotras duermen afuera.
+    ¿gramatical?: no
+    fenómeno: Control de persona con verbo sin objeto.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Nosotras       PROPN      nsubj       duermen       
+    duermen        VERB       ROOT        duermen       Mood=Sub|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin
+    afuera         ADJ        obj         duermen       Gender=Fem|Number=Sing
+    .              PUNCT      punct       duermen       PunctType=Peri
+
+    Árbol de dependencias:
+        duermen  (ROOT, VERB)
+            Nosotras  (nsubj, PROPN)
+            afuera  (obj, ADJ)
+
+----------------------------------------------------------------------
+
+[C24] (nivel 3) Ana come que Diego duerme.
+    ¿gramatical?: no
+    fenómeno: El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ana            PROPN      nsubj       come          
+    come           VERB       ROOT        come          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        duerme        
+    Diego          PROPN      nsubj       duerme        
+    duerme         VERB       ccomp       come          Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    .              PUNCT      punct       come          PunctType=Peri
+
+    Árbol de dependencias:
+        come  (ROOT, VERB)
+            Ana  (nsubj, PROPN)
+            duerme  (ccomp, VERB)
+                que  (mark, SCONJ)
+                Diego  (nsubj, PROPN)
+
+----------------------------------------------------------------------
+
+[C25] (nivel 3) Marcela vio a el fantasma.
+    ¿gramatical?: no
+    fenómeno: Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Marcela        PROPN      nsubj       vio           
+    vio            VERB       ROOT        vio           Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    a              ADP        case        fantasma      
+    el             DET        det         fantasma      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
+    fantasma       NOUN       obj         vio           Number=Sing
+    .              PUNCT      punct       vio           PunctType=Peri
+
+    Árbol de dependencias:
+        vio  (ROOT, VERB)
+            Marcela  (nsubj, PROPN)
+            fantasma  (obj, NOUN)
+                a  (case, ADP)
+                el  (det, DET)
+
+----------------------------------------------------------------------
+
+[C26] (nivel 3) Ana dijo que los niños come los dulces.
+    ¿gramatical?: no
+    fenómeno: Error de concordancia sujeto-verbo dentro de la subordinada.
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Ana            PROPN      nsubj       dijo          
+    dijo           VERB       ROOT        dijo          Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    que            SCONJ      mark        come          
+    los            DET        det         niños         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    niños          NOUN       nsubj       come          Gender=Masc|Number=Plur
+    come           VERB       ccomp       dijo          Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         come          Gender=Masc|Number=Plur
+    .              PUNCT      punct       dijo          PunctType=Peri
+
+    Árbol de dependencias:
+        dijo  (ROOT, VERB)
+            Ana  (nsubj, PROPN)
+            come  (ccomp, VERB)
+                que  (mark, SCONJ)
+                niños  (nsubj, NOUN)
+                    los  (det, DET)
+                dulces  (obj, NOUN)
+                    los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C27] (nivel 3) Los fantasmas que vio Marcela come los dulces.
+    ¿gramatical?: no
+    fenómeno: Concordancia a distancia, pero se contal al usar otra cosa que no sea un sujeto luego de "que"
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    fantasmas      NOUN       nsubj       come          Number=Plur
+    que            PRON       obj         vio           PronType=Int,Rel
+    vio            VERB       acl         fantasmas     Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin
+    Marcela        PROPN      nsubj       vio           
+    come           VERB       ROOT        come          Mood=Sub|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin
+    los            DET        det         dulces        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
+    dulces         NOUN       obj         come          Gender=Masc|Number=Plur
+    .              PUNCT      punct       come          PunctType=Peri
+
+    Árbol de dependencias:
+        come  (ROOT, VERB)
+            fantasmas  (nsubj, NOUN)
+                Los  (det, DET)
+                vio  (acl, VERB)
+                    que  (obj, PRON)
+                    Marcela  (nsubj, PROPN)
+            dulces  (obj, NOUN)
+                los  (det, DET)
+
+----------------------------------------------------------------------
+
+[C28] (nivel 3) La niña de la mochila blanca compraron unas cartas.
+    ¿gramatical?: no
+    fenómeno: Concordancia a distancia y error del verbo
+
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
+
+    palabra        categoría  función     depende de    rasgos
+    La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    niña           NOUN       nsubj       compraron     Gender=Fem|Number=Sing
+    de             ADP        case        mochila       
+    la             DET        det         mochila       Definite=Def|Gender=Fem|Number=Sing|PronType=Art
+    mochila        ADJ        nmod        niña          Gender=Fem|Number=Sing
+    blanca         ADJ        amod        mochila       Gender=Fem|Number=Sing
+    compraron      VERB       ROOT        compraron     Mood=Ind|Number=Plur|Person=3|Tense=Past|VerbForm=Fin
+    unas           DET        det         cartas        Definite=Ind|Gender=Fem|Number=Plur|PronType=Art
+    cartas         NOUN       obj         compraron     Gender=Fem|Number=Plur
+    .              PUNCT      punct       compraron     PunctType=Peri
+
+    Árbol de dependencias:
+        compraron  (ROOT, VERB)
+            niña  (nsubj, NOUN)
+                La  (det, DET)
+                mochila  (nmod, ADJ)
+                    de  (case, ADP)
+                    la  (det, DET)
+                    blanca  (amod, ADJ)
+            cartas  (obj, NOUN)
+                unas  (det, DET)
+
+----------------------------------------------------------------------
+
