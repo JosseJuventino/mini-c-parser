@@ -1,0 +1,77 @@
+id;nivel;oracion;salida_cfg;gramatical;dominio;fenomeno;en_fase1
+S01;1;Marcela come los dulces.;acepta;si;Halloween;SVO en presente con nombre propio.;si
+S02;1;El profesor corrige los exámenes.;acepta;si;Académico;SVO en presente con sujeto nominal.;si
+S03;1;Los fantasmas ven las calabazas.;acepta;si;Halloween;SVO en presente con sujeto plural.;si
+S04;1;El profesor corrigió los exámenes.;acepta;si;Académico;Pretérito del caso S02.;no
+S05;1;Marcela comió los dulces.;acepta;si;Halloween;Pretérito del caso S01.;no
+S06;1;Los esqueletos dibujaron las calabazas.;acepta;si;Halloween;SVO en pretérito con sujeto plural.;no
+S07;1;La niña vio los fantasmas.;acepta;si;Halloween;SVO en pretérito con objeto plural.;no
+S08;1;Los niños compraron unas calabazas.;acepta;si;Halloween;Determinante indefinido en el objeto.;no
+S09;1;El esqueleto pinta la calabaza.;acepta;si;Halloween;SVO en presente con sujeto singular.;no
+S10;1;Los fantasmas comen las manzanas.;acepta;si;Halloween;Concordancia verbal en plural.;no
+S11;1;Jaime escribe el código.;acepta;si;Académico;SVO en presente con objeto singular.;no
+S12;1;Jaime escribió el código.;acepta;si;Académico;Pretérito del caso S11.;no
+S13;1;La profesora explica la gramática.;acepta;si;Académico;SVO en presente con sujeto femenino.;no
+S14;1;Las profesoras corrigen los exámenes.;acepta;si;Académico;SVO en presente con sujeto femenino plural.;no
+S15;1;Él leyó el libro.;acepta;si;Académico;Pronombre singular y verbo en pretérito.;no
+S16;1;Nosotras escribimos el parser.;acepta;si;Académico;Pronombre plural y verbo en plural.;no
+S17;1;Ana compra una mochila.;acepta;si;Cotidiano;Objeto singular con determinante indefinido.;no
+S18;1;Diego guarda los cuadernos.;acepta;si;Cotidiano;Sujeto singular y objeto plural.;no
+S19;1;Ellos buscaron las cajas.;acepta;si;Cotidiano;Pronombre plural y verbo en pretérito.;no
+S20;1;Ella pintó la mesa.;acepta;si;Cotidiano;Pronombre singular y verbo en pretérito.;no
+I01;2;Los fantasmas pequeños comen los dulces nuevos.;acepta;si;Halloween;Adjetivos en el sujeto y el objeto.;si
+I02;2;Las calabazas pequeñas duermen furiosamente.;acepta;si;Halloween;Adjetivo del sujeto y adverbio final.;si
+I03;2;Los fantasma come los dulces.;rechaza;no;Halloween;Primer fallo en «fantasma». Se espera N_mp.;si
+I04;2;El calabaza escribe el código.;rechaza;no;Halloween;Primer fallo en «calabaza». Se espera N_ms.;si
+I05;2;Los esqueletos escribe el código.;rechaza;no;Halloween;Sujeto plural con verbo singular.;si
+I06;2;Jaime corrige los examen.;rechaza;no;Académico;El objeto exige N_mp después de «los».;si
+I07;2;Las calabazas pequeños duermen furiosamente.;rechaza;no;Halloween;«Pequeños» tiene género masculino.;si
+I08;2;El esqueleto pequeño guardó los dulces en la caja.;acepta;si;Halloween;Adjetivo de sujeto y frase de lugar.;no
+I09;2;Las niñas dibujaron unos fantasmas blancos ayer.;acepta;si;Halloween;Adjetivo de objeto y adverbio final.;no
+I10;2;El fantasma duerme bajo la mesa hoy.;acepta;si;Halloween;Frase preposicional y adverbio final.;no
+I11;2;Ellas pintaron las calabazas rojas con los niños.;acepta;si;Halloween;Pronombre plural, adjetivo y frase de compañía.;no
+I12;2;Jaime corrigió los exámenes en la clase ayer.;acepta;si;Académico;Frase de lugar seguida de adverbio.;no
+I13;2;La profesora nueva explica la gramática en la clase.;acepta;si;Académico;Adjetivo del sujeto y frase de lugar.;no
+I14;2;Nosotros escribimos el código nuevo en la clase.;acepta;si;Académico;Pronombre plural y adjetivo de objeto.;no
+I15;2;Usted lee el libro cuidadosamente.;acepta;si;Académico;Pronombre singular y adverbio final.;no
+I16;2;Ella guardó el cuaderno en la mochila con una carta.;acepta;si;Académico;Dos frases preposicionales consecutivas.;no
+I17;2;Ana compró una mochila bonita para Mateo.;acepta;si;Cotidiano;Adjetivo de objeto y frase con «para».;no
+I18;2;Mateo guardó las manzanas rojas en una caja.;acepta;si;Cotidiano;Adjetivo de objeto y frase de lugar.;no
+I19;2;Los gatos blancos duermen afuera.;acepta;si;Cotidiano;Adjetivo del sujeto y adverbio final.;no
+I20;2;Ellos guardó las cartas en la caja.;rechaza;no;Cotidiano;Pronombre plural con verbo singular.;no
+I21;2;La niña compró un mochila.;rechaza;no;Cotidiano;Error de género entre determinante y sustantivo en el objeto. Se espera N_ms.;no
+I22;2;Los gatos blanco duermen afuera.;rechaza;no;Cotidiano;Error de número entre sustantivo y adjetivo en el sujeto.;no
+I23;2;Mateo guardó las manzanas rojos en una caja.;rechaza;no;Cotidiano;Error de género entre sustantivo y adjetivo en el objeto.;no
+I24;2;El esqueleto guardó los dulces en las caja.;rechaza;no;Halloween;Error de número dentro de la frase preposicional. Se espera N_fp.;no
+I25;2;Las profesoras explica la gramática.;rechaza;no;Académico;Sujeto femenino plural con verbo singular.;no
+I26;2;Diego guardan los cuadernos.;rechaza;no;Cotidiano;Nombre propio singular con verbo plural.;no
+I27;2;Una niñas dibujaron los fantasmas.;rechaza;no;Halloween;Error de número entre determinante indefinido y sustantivo. Se espera N_fs.;no
+I28;2;Ana guardó las manzanas en.;rechaza;no;Cotidiano;Frase preposicional incompleta. Falta el sintagma nominal después de la preposición.;no
+C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;rechaza;si;Halloween;El adverbio precede al objeto directo.;si
+C02;3;Marcela vio al fantasma con el telescopio.;acepta;si;Halloween;«Con el telescopio» admite dos lecturas. La CFG agrupa ambas frases en la secuencia de SP.;si
+C03;3;El profesor que explica la gramática corrige los exámenes.;rechaza;si;Académico;Relativa en el sujeto. Ante «que» se espera el verbo principal.;si
+C04;3;El examen que Jaime corrigió asustó a Jose.;rechaza;si;Académico;Relativa en el sujeto con objeto omitido dentro de la relativa.;si
+C05;3;Escribimos el parser.;rechaza;si;Académico;Sujeto tácito. La oración comienza con V_p.;si
+C06;3;Come Marcela los dulces.;rechaza;si;Halloween;Sujeto posverbal. La oración comienza con V_s.;si
+C07;3;La profesora dijo que Jaime corrigió los exámenes.;acepta;si;Académico;Completiva introducida por «que».;no
+C08;3;Ana dijo que Diego dijo que ella escribe el código.;acepta;si;Académico;Dos completivas anidadas con sujeto expreso.;no
+C09;3;Marcela dijo que ellos dibujaron los fantasmas.;acepta;si;Halloween;Completiva con sujeto plural.;no
+C10;3;Mateo dijo que nosotros escribimos las cartas.;acepta;si;Cotidiano;Completiva con pronombre plural.;no
+C11;3;Los fantasmas que vio Marcela comen los dulces.;rechaza;si;Halloween;Relativa en el sujeto plural con sujeto posverbal interno.;no
+C12;3;Los libros que leyó la profesora los guardó Diego.;rechaza;si;Académico;Objeto antepuesto con relativa, clítico y sujeto posverbal.;no
+C13;3;Anoche los esqueletos comieron los dulces.;rechaza;si;Halloween;Adverbio al inicio. La CFG espera un sujeto.;no
+C14;3;En la clase Jaime explica la gramática.;rechaza;si;Académico;Frase preposicional al inicio.;no
+C15;3;Las manzanas las comieron los niños.;rechaza;si;Cotidiano;Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.;no
+C16;3;Ana guardó las manzanas en la caja cuidadosamente ayer.;rechaza;si;Cotidiano;La CFG permite un solo adverbio final.;no
+C17;3;Jaime dijo que corrigió los exámenes.;rechaza;si;Académico;Sujeto tácito dentro de una completiva.;no
+C18;3;Marcela vio rápidamente al fantasma con el telescopio.;rechaza;si;Halloween;La CFG consume el adverbio antes de encontrar la primera preposición.;no
+C19;3;La niña de la mochila blanca compró unas cartas.;rechaza;si;Cotidiano;Frase preposicional dentro del sujeto.;no
+C20;3;Jaime dijo que nosotros corrigen los exámenes en la clase.;acepta;no;Académico;Control de persona en sujeto plural.;no
+C21;3;Yo come los dulces.;acepta;no;Halloween;Control de persona en singular. La CFG solo comprueba el número.;no
+C22;3;Ellos escribimos el código.;acepta;no;Académico;Control de persona en plural. La CFG solo comprueba el número.;no
+C23;3;Nosotras duermen afuera.;acepta;no;Cotidiano;Control de persona con verbo sin objeto.;no
+C24;3;Ana come que Diego duerme.;acepta;no;Cotidiano;El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.;no
+C25;3;Marcela vio a el fantasma.;acepta;no;Halloween;Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».;no
+C26;3;Ana dijo que los niños come los dulces.;rechaza;no;Halloween;Error de concordancia sujeto-verbo dentro de la subordinada.;no
+C27;3;Los fantasmas que vio Marcela come los dulces.;rechaza;no;Halloween;Concordancia a distancia: una relativa separa el sujeto plural del verbo singular. La CFG rechaza antes, en «que».;no
+C28;3;La niña de la mochila blanca compraron unas cartas.;rechaza;no;Cotidiano;Concordancia a distancia: una frase preposicional separa el sujeto singular del verbo plural. La CFG rechaza antes, en «de».;no

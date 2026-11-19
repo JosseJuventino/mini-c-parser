@@ -1,0 +1,11 @@
+Fecha de la corrida: 2026-11-15 21:09:58
+Python: 3.14.3
+NLTK: 3.10.4
+Corpus de entrenamiento: cess_esp (6030 oraciones, 188803 palabras)
+Etiquetador: bigrama -> unigrama -> mayúscula inicial -> sufijo de 3 letras -> por defecto
+Exactitud del etiquetador (90 % para entrenar, 10 % para medir): 0.8886
+Corpus de prueba: corpus_fase2.csv (76 oraciones)
+Aceptadas: 38
+Rechazadas: 38
+Rechazos por regla: R1 = 24, R2 = 9, R3 = 10
+Log: nltk.csv

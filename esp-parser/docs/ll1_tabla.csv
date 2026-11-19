@@ -1,0 +1,20 @@
+﻿No terminal;ADV;Adj_cp;Adj_cs;Adj_fp;Adj_fs;Adj_mp;Adj_ms;DET_fp;DET_fs;DET_mp;DET_ms;NP_fs;NP_ms;N_fp;N_fs;N_mp;N_ms;PREP;PRON_p;PRON_s;V_p;V_s;que;EOF
+Programa;;;;;;;;Programa -> Oracion EOF;Programa -> Oracion EOF;Programa -> Oracion EOF;Programa -> Oracion EOF;Programa -> Oracion EOF;Programa -> Oracion EOF;Programa -> Oracion EOF;;Programa -> Oracion EOF;;;Programa -> Oracion EOF;Programa -> Oracion EOF;;;;
+Oracion;;;;;;;;Oracion -> Sujeto_p SV_p;Oracion -> Sujeto_s SV_s;Oracion -> Sujeto_p SV_p;Oracion -> Sujeto_s SV_s;Oracion -> Sujeto_s SV_s;Oracion -> Sujeto_s SV_s;Oracion -> Sujeto_p SV_p;;Oracion -> Sujeto_p SV_p;;;Oracion -> Sujeto_p SV_p;Oracion -> Sujeto_s SV_s;;;;
+Sujeto_s;;;;;;;;;Sujeto_s -> SN_fs;;Sujeto_s -> SN_ms;Sujeto_s -> SN_fs;Sujeto_s -> SN_ms;;;;;;;Sujeto_s -> PRON_s;;;;
+Sujeto_p;;;;;;;;Sujeto_p -> SN_fp;;Sujeto_p -> SN_mp;;;;Sujeto_p -> SN_fp;;Sujeto_p -> SN_mp;;;Sujeto_p -> PRON_p;;;;;
+SN_ms;;;;;;;;;;;SN_ms -> DET_ms N_ms Adjs_ms;;SN_ms -> NP_ms;;;;;;;;;;;
+SN_fs;;;;;;;;;SN_fs -> DET_fs N_fs Adjs_fs;;;SN_fs -> NP_fs;;;;;;;;;;;;
+SN_mp;;;;;;;;;;SN_mp -> DET_mp N_mp Adjs_mp;;;;;;SN_mp -> N_mp Adjs_mp;;;;;;;;
+SN_fp;;;;;;;;SN_fp -> DET_fp N_fp Adjs_fp;;;;;;SN_fp -> N_fp Adjs_fp;;;;;;;;;;
+Adjs_ms;Adjs_ms -> ε;;Adjs_ms -> Adj_cs Adjs_ms;;;;Adjs_ms -> Adj_ms Adjs_ms;;;;;;;;;;;Adjs_ms -> ε;;;;Adjs_ms -> ε;;Adjs_ms -> ε
+Adjs_fs;Adjs_fs -> ε;;Adjs_fs -> Adj_cs Adjs_fs;;Adjs_fs -> Adj_fs Adjs_fs;;;;;;;;;;;;;Adjs_fs -> ε;;;;Adjs_fs -> ε;;Adjs_fs -> ε
+Adjs_mp;Adjs_mp -> ε;Adjs_mp -> Adj_cp Adjs_mp;;;;Adjs_mp -> Adj_mp Adjs_mp;;;;;;;;;;;;Adjs_mp -> ε;;;Adjs_mp -> ε;;;Adjs_mp -> ε
+Adjs_fp;Adjs_fp -> ε;Adjs_fp -> Adj_cp Adjs_fp;;Adjs_fp -> Adj_fp Adjs_fp;;;;;;;;;;;;;;Adjs_fp -> ε;;;Adjs_fp -> ε;;;Adjs_fp -> ε
+SV_s;;;;;;;;;;;;;;;;;;;;;;SV_s -> V_s Complemento;;
+SV_p;;;;;;;;;;;;;;;;;;;;;SV_p -> V_p Complemento;;;
+SN;;;;;;;;SN -> SN_fp;SN -> SN_fs;SN -> SN_mp;SN -> SN_ms;SN -> SN_fs;SN -> SN_ms;SN -> SN_fp;;SN -> SN_mp;;;;;;;;
+Complemento;Complemento -> Complemento2;;;;;;;Complemento -> SN Complemento2;Complemento -> SN Complemento2;Complemento -> SN Complemento2;Complemento -> SN Complemento2;Complemento -> SN Complemento2;Complemento -> SN Complemento2;Complemento -> SN Complemento2;;Complemento -> SN Complemento2;;Complemento -> Complemento2;;;;;Complemento -> que Oracion;Complemento -> Complemento2
+Complemento2;Complemento2 -> Preps Adverbio;;;;;;;;;;;;;;;;;Complemento2 -> Preps Adverbio;;;;;;Complemento2 -> Preps Adverbio
+Preps;Preps -> ε;;;;;;;;;;;;;;;;;Preps -> PREP SN Preps;;;;;;Preps -> ε
+Adverbio;Adverbio -> ADV;;;;;;;;;;;;;;;;;;;;;;;Adverbio -> ε
