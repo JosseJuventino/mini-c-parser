@@ -1,7 +1,7 @@
 ANÁLISIS DE spaCy
 Corpus: benchmark/corpus_fase2.csv  (76 oraciones)
 spaCy 3.8.18  |  modelo es_core_news_sm 3.8.0
-Fecha: 2026-11-17 11:54
+Fecha: 2026-11-19 05:28
 Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz verbal
 ======================================================================
 
@@ -9,8 +9,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en presente con nombre propio.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Marcela' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Marcela        PROPN      nsubj       come          
@@ -31,8 +30,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en presente con sujeto nominal.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesor' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         profesor      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -55,8 +53,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en presente con sujeto plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'fantasmas' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -79,8 +76,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Pretérito del caso S02.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesor' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         profesor      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -103,8 +99,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Pretérito del caso S01.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Marcela' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Marcela        PROPN      nsubj       comió         
@@ -125,8 +120,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en pretérito con sujeto plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'esqueletos' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         esqueletos    Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -149,8 +143,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en pretérito con objeto plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'niña' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
@@ -173,8 +166,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Determinante indefinido en el objeto.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'niños' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         niños         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -197,8 +189,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en presente con sujeto singular.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'esqueleto' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         esqueleto     Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -221,8 +212,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Concordancia verbal en plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'fantasmas' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -245,8 +235,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en presente con objeto singular.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Jaime' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Jaime          PROPN      nsubj       escribe       
@@ -267,8 +256,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Pretérito del caso S11.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Jaime' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Jaime          PROPN      nsubj       escribió      
@@ -289,8 +277,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en presente con sujeto femenino.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesora' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     La             DET        det         profesora     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
@@ -313,8 +300,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: SVO en presente con sujeto femenino plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesoras' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Las            DET        det         profesoras    Definite=Def|Gender=Fem|Number=Plur|PronType=Art
@@ -358,8 +344,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Pronombre plural y verbo en plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Nosotras' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Nosotras       PROPN      nsubj       escribimos    
@@ -380,8 +365,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Objeto singular con determinante indefinido.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Ana' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Ana            PROPN      nsubj       compra        
@@ -402,8 +386,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Sujeto singular y objeto plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Diego' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Diego          PROPN      nsubj       guarda        
@@ -466,8 +449,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivos en el sujeto y el objeto.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'fantasmas' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number | sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -494,8 +476,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivo del sujeto y adverbio final.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'calabazas' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Las            DET        det         calabazas     Definite=Def|Gender=Fem|Number=Plur|PronType=Art
@@ -518,8 +499,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Primer fallo en «fantasma». Se espera N_mp.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'fantasma' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasma' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         fantasma      Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -542,8 +522,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Primer fallo en «calabaza». Se espera N_ms.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'calabaza' (PROPN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'calabaza' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         calabaza      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -566,8 +545,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Sujeto plural con verbo singular.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'esqueletos' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         esqueletos    Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -636,8 +614,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivo de sujeto y frase de lugar.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'esqueleto' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         esqueleto     Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -668,8 +645,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivo de objeto y adverbio final.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'niñas' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number | sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Las            DET        det         niñas         Definite=Def|Gender=Fem|Number=Plur|PronType=Art
@@ -696,8 +672,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Frase preposicional y adverbio final.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'fantasma' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasma' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         fantasma      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -722,7 +697,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [I11] (nivel 2) Ellas pintaron las calabazas rojas con los niños.
     ¿gramatical?: si
-    fenómeno: Pronombre plural, adjetivo y frase de compañía.
+    fenómeno: Pronombre plural
 
     DECISIÓN: ACEPTA  |  C1=si  C2=si  C3=si
 
@@ -753,8 +728,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Frase de lugar seguida de adverbio.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Jaime' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Jaime          PROPN      nsubj       corrigió      
@@ -783,8 +757,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivo del sujeto y frase de lugar.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesora' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     La             DET        det         profesora     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
@@ -815,8 +788,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Pronombre plural y adjetivo de objeto.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=si  C2=no_evaluable  C3=si
-    Motivo: C2 no evaluable: pares sin rasgos: mod 'nuevo' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=si  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Nosotros       PRON       nsubj       escribimos    Case=Acc,Nom|Gender=Masc|Number=Plur|Person=1|PronType=Prs
@@ -902,8 +874,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivo de objeto y frase con «para».
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Ana' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Ana            PROPN      nsubj       compró        
@@ -930,8 +901,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivo de objeto y frase de lugar.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Mateo' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Mateo          PROPN      nsubj       guardó        
@@ -960,8 +930,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adjetivo del sujeto y adverbio final.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'gatos' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         gatos         Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -1012,8 +981,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Error de género entre determinante y sustantivo en el objeto. Se espera N_ms.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'niña' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
@@ -1120,8 +1088,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Sujeto femenino plural con verbo singular.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesoras' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Las            DET        det         profesoras    Definite=Def|Gender=Fem|Number=Plur|PronType=Art
@@ -1144,8 +1111,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Nombre propio singular con verbo plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Diego' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Diego          PROPN      nsubj       guardan       
@@ -1190,8 +1156,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Frase preposicional incompleta. Falta el sintagma nominal después de la preposición.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Ana' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Ana            PROPN      nsubj       guardó        
@@ -1212,10 +1177,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C01] (nivel 3) El esqueleto pequeño escribe rápidamente el código nuevo en la clase.
     ¿gramatical?: si
-    fenómeno: El adverbio precede al objeto directo.
+    fenómeno: Se continua la oración luego de un adverbio
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'esqueleto' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: mod 'nuevo' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         esqueleto     Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -1250,8 +1214,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: «Con el telescopio» admite dos lecturas. La CFG agrupa ambas frases en la secuencia de SP.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Marcela' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Marcela        PROPN      nsubj       vio           
@@ -1278,8 +1241,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Relativa en el sujeto. Ante «que» se espera el verbo principal.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesor' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         profesor      Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -1310,8 +1272,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Relativa en el sujeto con objeto omitido dentro de la relativa.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'examen' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     El             DET        det         examen        Definite=Def|Gender=Masc|Number=Sing|PronType=Art
@@ -1338,10 +1299,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C05] (nivel 3) Escribimos el parser.
     ¿gramatical?: si
-    fenómeno: Sujeto tácito. La oración comienza con V_p.
+    fenómeno: Sujeto tácito no se acepta por regla gramatical. La oración comienza con V_p.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'parser' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Escribimos     VERB       ROOT        Escribimos    Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin
@@ -1358,7 +1318,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C06] (nivel 3) Come Marcela los dulces.
     ¿gramatical?: si
-    fenómeno: Sujeto posverbal. La oración comienza con V_s.
+    fenómeno: La oración comienza con V_s, debería ser con sujeto
 
     DECISIÓN: RECHAZA  |  C1=no_evaluable  C2=si  C3=no
     Motivo: C3: raíz 'dulces' es NOUN (esperado VERB o AUX)
@@ -1380,10 +1340,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C07] (nivel 3) La profesora dijo que Jaime corrigió los exámenes.
     ¿gramatical?: si
-    fenómeno: Completiva introducida por «que».
+    fenómeno: Utilización de "que" para unir dos oraciones que sí acepta
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'profesora' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     La             DET        det         profesora     Definite=Def|Gender=Fem|Number=Sing|PronType=Art
@@ -1410,10 +1369,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C08] (nivel 3) Ana dijo que Diego dijo que ella escribe el código.
     ¿gramatical?: si
-    fenómeno: Dos completivas anidadas con sujeto expreso.
+    fenómeno: Doble uso de "que"
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Ana' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Ana            PROPN      nsubj       dijo          
@@ -1444,10 +1402,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C09] (nivel 3) Marcela dijo que ellos dibujaron los fantasmas.
     ¿gramatical?: si
-    fenómeno: Completiva con sujeto plural.
+    fenómeno: uso de "que" conn sujeto plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'Marcela' (PROPN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Marcela        PROPN      nsubj       dijo          
@@ -1472,10 +1429,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C10] (nivel 3) Mateo dijo que nosotros escribimos las cartas.
     ¿gramatical?: si
-    fenómeno: Completiva con pronombre plural.
+    fenómeno: uso de "que" con pronombre plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Mateo' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Mateo          PROPN      nsubj       dijo          
@@ -1500,10 +1456,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C11] (nivel 3) Los fantasmas que vio Marcela comen los dulces.
     ¿gramatical?: si
-    fenómeno: Relativa en el sujeto plural con sujeto posverbal interno.
+    fenómeno: Es semánticamente incorrecta y usa un verbo luego del que
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'fantasmas' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -1530,10 +1485,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C12] (nivel 3) Los libros que leyó la profesora los guardó Diego.
     ¿gramatical?: si
-    fenómeno: Objeto antepuesto con relativa, clítico y sujeto posverbal.
+    fenómeno: Usa verbo luego de uqe
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Diego' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         libros        Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -1564,8 +1518,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Adverbio al inicio. La CFG espera un sujeto.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'esqueletos' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Anoche         ADV        advmod      comieron      
@@ -1588,10 +1541,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C14] (nivel 3) En la clase Jaime explica la gramática.
     ¿gramatical?: si
-    fenómeno: Frase preposicional al inicio.
+    fenómeno: Preposición al inicio.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Jaime' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     En             ADP        case        clase         
@@ -1618,8 +1570,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'niños' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Las            DET        det         manzanas      Definite=Def|Gender=Fem|Number=Plur|PronType=Art
@@ -1644,8 +1595,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: La CFG permite un solo adverbio final.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Ana' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Ana            PROPN      nsubj       guardó        
@@ -1676,8 +1626,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Sujeto tácito dentro de una completiva.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Jaime' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Jaime          PROPN      nsubj       dijo          
@@ -1702,8 +1651,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: La CFG consume el adverbio antes de encontrar la primera preposición.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Marcela' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Marcela        PROPN      nsubj       vio           
@@ -1732,8 +1680,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: si
     fenómeno: Frase preposicional dentro del sujeto.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'niña' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
@@ -1764,8 +1711,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Control de persona en sujeto plural.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Jaime' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Jaime          PROPN      nsubj       dijo          
@@ -1818,7 +1764,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C22] (nivel 3) Ellos escribimos el código.
     ¿gramatical?: no
-    fenómeno: Control de persona en plural. La CFG solo comprueba el número.
+    fenómeno: Uso de diferente persona. La CFG solo comprueba el número.
 
     DECISIÓN: RECHAZA  |  C1=no  C2=si  C3=si
     Motivo: C1: discordancia sujeto 'Ellos'–raíz 'escribimos': persona: sujeto=['3'] vs raíz=['1']
@@ -1842,8 +1788,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Control de persona con verbo sin objeto.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Nosotras' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Nosotras       PROPN      nsubj       duermen       
@@ -1862,8 +1807,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Ana' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Ana            PROPN      nsubj       come          
@@ -1886,8 +1830,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'Marcela' (PROPN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasma' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Marcela        PROPN      nsubj       vio           
@@ -1910,8 +1853,7 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
     ¿gramatical?: no
     fenómeno: Error de concordancia sujeto-verbo dentro de la subordinada.
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'Ana' (PROPN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Ana            PROPN      nsubj       dijo          
@@ -1938,10 +1880,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C27] (nivel 3) Los fantasmas que vio Marcela come los dulces.
     ¿gramatical?: no
-    fenómeno: Concordancia a distancia: una relativa separa el sujeto plural del verbo singular. La CFG rechaza antes, en «que».
+    fenómeno: Concordancia a distancia, pero se contal al usar otra cosa que no sea un sujeto luego de "que"
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=no_evaluable  C3=si
-    Motivo: C1 no evaluable: sujeto 'fantasmas' (NOUN) sin Person/Number | C2 no evaluable: pares sin rasgos: sust 'fantasmas' sin Gender/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=no_evaluable  C3=si
 
     palabra        categoría  función     depende de    rasgos
     Los            DET        det         fantasmas     Definite=Def|Gender=Masc|Number=Plur|PronType=Art
@@ -1968,10 +1909,9 @@ Criterio: C1=concordancia sujeto-verbo | C2=concordancia det/sust/adj | C3=raíz
 
 [C28] (nivel 3) La niña de la mochila blanca compraron unas cartas.
     ¿gramatical?: no
-    fenómeno: Concordancia a distancia: una frase preposicional separa el sujeto singular del verbo plural. La CFG rechaza antes, en «de».
+    fenómeno: Concordancia a distancia y error del verbo
 
-    DECISIÓN: ACEPTA_PARCIAL  |  C1=no_evaluable  C2=si  C3=si
-    Motivo: C1 no evaluable: sujeto 'niña' (NOUN) sin Person/Number
+    DECISIÓN: ACEPTA  |  C1=no_evaluable  C2=si  C3=si
 
     palabra        categoría  función     depende de    rasgos
     La             DET        det         niña          Definite=Def|Gender=Fem|Number=Sing|PronType=Art
