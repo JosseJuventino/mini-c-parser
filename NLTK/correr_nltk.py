@@ -1,42 +1,4 @@
-"""
-correr_nltk.py
-
-Segunda herramienta de NLP del benchmark: NLTK.
-
-Pasa las oraciones de benchmark/corpus_fase2.csv por NLTK y guarda el
-resultado de cada una en NLTK/logs/nltk.csv. El script solo lee las columnas
-"id" y "oracion" del corpus; no mira las etiquetas esperadas.
-
-NLTK no trae un analizador de español que diga si una oración es correcta.
-Lo que se hace es:
-
-  1. ETIQUETAR. Se entrena un etiquetador con cess_esp, un corpus de español
-     anotado a mano que viene con NLTK. A cada palabra le asigna una etiqueta
-     EAGLES, que incluye categoría, género, número y persona. Por ejemplo:
-       da0mp0   determinante, masculino, plural
-       ncfs000  nombre común, femenino, singular
-       vmip3s0  verbo, indicativo, presente, 3.ª persona, singular
-
-  2. AGRUPAR. Con nltk.RegexpParser se juntan en un sintagma nominal (SN) el
-     determinante, el nombre y los adjetivos que van seguidos.
-
-  3. DECIDIR. La oración se RECHAZA si incumple alguna de estas reglas y se
-     ACEPTA si las cumple todas:
-       R1  Dentro de un SN, el determinante y los adjetivos concuerdan en
-           género y número con el nombre.
-       R2  Cada verbo conjugado concuerda en persona y número con su sujeto.
-           El sujeto es el SN o pronombre personal más cercano a la izquierda
-           del verbo que no vaya detrás de una preposición, sin pasar de un
-           "que". Si no hay ninguno, el sujeto es tácito y no se comprueba.
-       R3  La oración tiene al menos un verbo conjugado.
-
-Las reglas se fijaron antes de correr el corpus y no se ajustaron después.
-
-Uso, desde la carpeta raíz del repositorio:
-  python NLTK/correr_nltk.py
-
-La primera vez descarga el corpus cess_esp de NLTK (necesita internet).
-"""
+"""Evalúa el corpus de la Fase 2 con NLTK y guarda las decisiones en un CSV."""
 
 import csv
 import platform
@@ -47,22 +9,15 @@ import nltk
 from nltk.corpus import cess_esp
 from nltk.tokenize import RegexpTokenizer
 
-# Esta carpeta (NLTK) guarda el script y sus logs. El corpus es el mismo para
-# todos los enfoques y está en la carpeta benchmark del repositorio.
 CARPETA = Path(__file__).resolve().parent
 RUTA_CORPUS = CARPETA.parent / "benchmark" / "corpus_fase2.csv"
 RUTA_LOG = CARPETA / "logs" / "nltk.csv"
 RUTA_INFO = CARPETA / "logs" / "nltk_ejecucion.txt"
 
-# Separa palabras y signos de puntuación.
 TOKENIZADOR = RegexpTokenizer(r"\w+|[^\w\s]")
-
-# Sintagma nominal: determinante opcional, adjetivos, un nombre y adjetivos.
-# En las etiquetas EAGLES, "d" es determinante, "a" adjetivo y "n" nombre.
 AGRUPADOR = nltk.RegexpParser("SN: {<d.*>?<a.*>*<n.*><a.*>*}")
 
-# Valores de género o número que concuerdan con cualquier otro:
-# "c" común, "n" invariable o neutro, "0" sin dato.
+# Los rasgos comunes, invariables o sin dato no indican discordancia.
 COMODINES = "cn0"
 
 NOMBRES_DE_RASGOS = {
@@ -71,18 +26,7 @@ NOMBRES_DE_RASGOS = {
 }
 
 
-# ---------------------------------------------------------------------
-# Paso 1: etiquetador
-# ---------------------------------------------------------------------
-
 def cargar_entrenamiento():
-    """
-    Devuelve las oraciones anotadas de cess_esp como listas de pares
-    (palabra, etiqueta).
-
-    Se quitan los elementos vacíos del corpus (por ejemplo "*0*", que marca
-    un sujeto omitido): no son palabras y su etiqueta empieza con "sn".
-    """
     try:
         cess_esp.ensure_loaded()
     except LookupError:
@@ -90,6 +34,7 @@ def cargar_entrenamiento():
 
     oraciones = []
     for oracion in cess_esp.tagged_sents():
+        # Las etiquetas «sn» marcan elementos vacíos, como el sujeto omitido *0*.
         limpia = [
             (palabra, etiqueta)
             for palabra, etiqueta in oracion
@@ -101,20 +46,7 @@ def cargar_entrenamiento():
 
 
 def entrenar_etiquetador(oraciones):
-    """
-    Entrena una cadena de etiquetadores. Cada uno se usa solo cuando el
-    anterior no sabe qué responder:
-
-      1. Bigrama: la etiqueta más frecuente de la palabra según la etiqueta
-         de la palabra anterior.
-      2. Unigrama: la etiqueta más frecuente de la palabra.
-      3. Mayúscula inicial: una palabra desconocida que empieza con mayúscula
-         se toma como nombre propio.
-      4. Sufijo: una palabra desconocida recibe la etiqueta más frecuente
-         entre las palabras que terminan con sus mismas tres letras.
-      5. Por defecto: nombre común masculino singular, la etiqueta más
-         frecuente entre los nombres.
-    """
+    # El bigrama se consulta primero. La cadena se construye en orden inverso.
     por_defecto = nltk.DefaultTagger("ncms000")
     sufijo = nltk.AffixTagger(oraciones, affix_length=-3, backoff=por_defecto)
     mayuscula = nltk.RegexpTagger([(r"^[A-ZÁÉÍÓÚÑ]", "np00000")], backoff=sufijo)
@@ -124,25 +56,15 @@ def entrenar_etiquetador(oraciones):
 
 
 def medir_exactitud(oraciones):
-    """
-    Mide qué tan bien etiqueta la cadena: se entrena con el primer 90 % de
-    cess_esp y se cuenta la proporción de etiquetas acertadas en el 10 %
-    restante, que el etiquetador no vio.
-    """
     corte = len(oraciones) * 9 // 10
     etiquetador = entrenar_etiquetador(oraciones[:corte])
     return etiquetador.accuracy(oraciones[corte:])
 
 
 def etiquetar(oracion, etiquetador, vocabulario):
-    """
-    Devuelve la oración como lista de pares (palabra, etiqueta).
-
-    La primera palabra lleva mayúscula solo por ir al inicio. Si el
-    etiquetador no la conoce así, se le consulta en minúscula.
-    """
     palabras = TOKENIZADOR.tokenize(oracion)
     consulta = list(palabras)
+    # La mayúscula de inicio de oración puede confundirse con la de un nombre propio.
     if consulta and consulta[0] not in vocabulario:
         consulta[0] = consulta[0].lower()
 
@@ -150,16 +72,7 @@ def etiquetar(oracion, etiquetador, vocabulario):
     return list(zip(palabras, etiquetas))
 
 
-# ---------------------------------------------------------------------
-# Paso 2: agrupar en sintagmas nominales
-# ---------------------------------------------------------------------
-
 def agrupar(etiquetadas):
-    """
-    Aplica el agrupador y devuelve una lista de elementos en orden. Cada
-    elemento es ("SN", [(palabra, etiqueta), ...]) o ("palabra", (palabra,
-    etiqueta)).
-    """
     elementos = []
     for nodo in AGRUPADOR.parse(etiquetadas):
         if isinstance(nodo, nltk.Tree):
@@ -169,12 +82,8 @@ def agrupar(etiquetadas):
     return elementos
 
 
-# ---------------------------------------------------------------------
-# Paso 3: reglas de decisión
-# ---------------------------------------------------------------------
-
 def genero_y_numero(etiqueta):
-    """Género y número de un nombre, un determinante o un adjetivo."""
+    # En EAGLES estos rasgos ocupan posiciones distintas según la categoría.
     if etiqueta.startswith("n"):
         return etiqueta[2], etiqueta[3]
     return etiqueta[3], etiqueta[4]
@@ -189,18 +98,16 @@ def describir(genero, numero):
 
 
 def es_verbo_conjugado(etiqueta):
-    # Modo indicativo (i), subjuntivo (s) o imperativo (m).
+    # Indicativo, subjuntivo o imperativo.
     return etiqueta.startswith("v") and etiqueta[2] in "ism"
 
 
 def es_pronombre_sujeto(etiqueta):
-    # Pronombre personal en caso nominativo (n) o sin caso marcado (0).
-    # Quedan fuera los de objeto, como "las" en "las comieron".
+    # Caso nominativo o sin marcar. Así se excluye «las» en «las comieron».
     return etiqueta.startswith("pp") and etiqueta[5] in "n0"
 
 
 def nombre_del_sn(sintagma):
-    """El nombre de un SN: la única palabra cuya etiqueta empieza con "n"."""
     for palabra, etiqueta in sintagma:
         if etiqueta.startswith("n"):
             return palabra, etiqueta
@@ -228,18 +135,14 @@ def regla_1(elementos):
 
 
 def buscar_sujeto(elementos, posicion_verbo):
-    """
-    Busca el sujeto de un verbo hacia la izquierda. Devuelve (texto, persona,
-    número) o None si el sujeto es tácito.
-    """
+    """Busca el sujeto a la izquierda y descarta los complementos de preposición."""
     posicion = posicion_verbo - 1
     while posicion >= 0:
         tipo, contenido = elementos[posicion]
 
         if tipo == "palabra":
             etiqueta = contenido[1]
-            # "que" (conjunción o relativo) marca el inicio de la subordinada:
-            # el sujeto no puede estar antes.
+            # Una conjunción subordinante o un relativo limita la búsqueda a esa cláusula.
             if etiqueta == "cs" or etiqueta.startswith("pr"):
                 return None
 
@@ -256,7 +159,7 @@ def buscar_sujeto(elementos, posicion_verbo):
                     nombre, etiqueta = nombre_del_sn(contenido)
                     numero = genero_y_numero(etiqueta)[1]
                     if etiqueta.startswith("np"):
-                        numero = "s"  # un nombre propio es singular
+                        numero = "s"  # El criterio trata los nombres propios como singulares.
                     return nombre, "3", numero
 
                 palabra, etiqueta = contenido
@@ -276,7 +179,7 @@ def regla_2(elementos):
         if tipo != "palabra":
             continue
         verbo, etiqueta = contenido
-        # Solo indicativo y subjuntivo: el imperativo no lleva sujeto expreso.
+        # El imperativo cuenta para R3, pero queda fuera de R2.
         if not (etiqueta.startswith("v") and etiqueta[2] in "is"):
             continue
 
@@ -303,22 +206,13 @@ def regla_3(etiquetadas):
 
 
 def decidir(etiquetadas):
-    """
-    Devuelve la decisión ("acepta" o "rechaza"), la lista de fallos y los
-    elementos agrupados.
-    """
     elementos = agrupar(etiquetadas)
     fallos = regla_1(elementos) + regla_2(elementos) + regla_3(etiquetadas)
     decision = "rechaza" if fallos else "acepta"
     return decision, fallos, elementos
 
 
-# ---------------------------------------------------------------------
-# Textos del log
-# ---------------------------------------------------------------------
-
 def texto_analisis(elementos):
-    """Palabra/etiqueta de toda la oración, con cada SN entre corchetes."""
     partes = []
     for tipo, contenido in elementos:
         if tipo == "SN":
@@ -331,10 +225,7 @@ def texto_analisis(elementos):
 
 
 def categoria(palabra, etiqueta):
-    """
-    Traduce la etiqueta EAGLES a las categorías de la gramática del proyecto,
-    para poder comparar el etiquetado. Devuelve None para la puntuación.
-    """
+    """Traduce una etiqueta EAGLES a la categoría usada por la gramática del equipo."""
     if etiqueta.startswith("F"):
         return None
     if palabra.lower() == "que":
@@ -355,10 +246,6 @@ def texto_categorias(etiquetadas):
     categorias = [categoria(palabra, etiqueta) for palabra, etiqueta in etiquetadas]
     return " ".join(c for c in categorias if c is not None)
 
-
-# ---------------------------------------------------------------------
-# Programa principal
-# ---------------------------------------------------------------------
 
 def main():
     entrenamiento = cargar_entrenamiento()
