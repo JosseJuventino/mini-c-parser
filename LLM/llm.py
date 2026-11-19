@@ -74,7 +74,7 @@ def analisisOraciones(tipoPrompt, tipo):
     directorio_actual = os.path.dirname(os.path.abspath(__file__))
 
     #Se obtiene la fecha y hora actual
-    timestamp = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+    timestamp = datetime.now().strftime("%d-%m-%Y_%H-%M")
 
     #Se crea un archivo de logs con el nombre del tipo de prompt y se guarda la respuesta generada por la API (un archivo por cada tipo de prompt Zero-Shot y Few-Shot)
     archivoLogs = os.path.join(directorio_actual, f"logs_{tipo.lower().replace('-', '_')}_{timestamp}.txt")
