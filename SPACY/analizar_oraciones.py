@@ -29,6 +29,7 @@ Uso:
 """
 
 import csv
+from pathlib import Path
 import sys
 from datetime import datetime
 
@@ -40,8 +41,8 @@ import spacy
 # ---------------------------------------------------------------------
 
 CORPUS_POR_DEFECTO = "benchmark/corpus_fase2.csv"
-SALIDA_TXT_POR_DEFECTO = "spacy/analisis_spacy.txt"
-SALIDA_CSV_POR_DEFECTO = "spacy/logs/spacy.csv"
+SALIDA_TXT_POR_DEFECTO = "SPACY/analisis_spacy.txt"
+SALIDA_CSV_POR_DEFECTO = "SPACY/logs/spacy.csv"
 MODELO = "es_core_news_sm"
 
 
@@ -327,9 +328,8 @@ def main():
     oraciones = leer_oraciones(corpus)
     nlp = spacy.load(MODELO)
 
-    # Crear directorio de salida CSV si no existe
-    import os
-    os.makedirs(os.path.dirname(salida_csv), exist_ok=True)
+    Path(salida_txt).parent.mkdir(parents=True, exist_ok=True)
+    Path(salida_csv).parent.mkdir(parents=True, exist_ok=True)
 
     filas_csv = []
 

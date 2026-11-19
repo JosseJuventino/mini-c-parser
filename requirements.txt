@@ -14,3 +14,6 @@ es_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/es
 # descarga solo la primera vez que se ejecuta NLTK/correr_nltk.py.
 # También se puede descargar con:  python -m nltk.downloader cess_esp
 nltk==3.10.4
+
+# Cliente para nuevas llamadas a la API de Gemini.
+google-genai==3.6.1

@@ -17,7 +17,7 @@ El programa aplica un criterio de aceptación y rechazo definido por el equipo (
 | `logs/spacy.csv` | CSV con la decisión por oración (`acepta` o `rechaza`) y el detalle de cada criterio. |
 | `demo_nlp.py` | Demostración en vivo: muestra en pantalla el análisis de spaCy de oraciones seleccionadas del corpus o de una oración escrita por el usuario. |
 
-El archivo `analisis_spacy.txt` no se incluye en el repositorio: se produce al ejecutar el script y está contemplado en `.gitignore`.
+El archivo `analisis_spacy.txt` contiene el análisis detallado que acompaña al CSV de decisiones.
 
 ## Requisitos
 
