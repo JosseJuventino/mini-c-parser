@@ -31,19 +31,19 @@ NLTK;CFG;I21;2;La niña compró un mochila.;rechaza;acepta;FP;Error de género e
 NLTK;ESPAÑOL;I21;2;La niña compró un mochila.;rechaza;acepta;FP;Error de género entre determinante y sustantivo en el objeto. Se espera N_ms.
 NLTK;CFG;I28;2;Ana guardó las manzanas en.;rechaza;acepta;FP;Frase preposicional incompleta. Falta el sintagma nominal después de la preposición.
 NLTK;ESPAÑOL;I28;2;Ana guardó las manzanas en.;rechaza;acepta;FP;Frase preposicional incompleta. Falta el sintagma nominal después de la preposición.
-NLTK;CFG;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;rechaza;acepta;FP;El adverbio precede al objeto directo.
+NLTK;CFG;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;rechaza;acepta;FP;Se continua la oración luego de un adverbio
 NLTK;ESPAÑOL;C03;3;El profesor que explica la gramática corrige los exámenes.;acepta;rechaza;FN;Relativa en el sujeto. Ante «que» se espera el verbo principal.
 NLTK;CFG;C04;3;El examen que Jaime corrigió asustó a Jose.;rechaza;acepta;FP;Relativa en el sujeto con objeto omitido dentro de la relativa.
-NLTK;CFG;C05;3;Escribimos el parser.;rechaza;acepta;FP;Sujeto tácito. La oración comienza con V_p.
-NLTK;CFG;C06;3;Come Marcela los dulces.;rechaza;acepta;FP;Sujeto posverbal. La oración comienza con V_s.
-NLTK;CFG;C07;3;La profesora dijo que Jaime corrigió los exámenes.;acepta;rechaza;FN;Completiva introducida por «que».
-NLTK;ESPAÑOL;C07;3;La profesora dijo que Jaime corrigió los exámenes.;acepta;rechaza;FN;Completiva introducida por «que».
-NLTK;CFG;C09;3;Marcela dijo que ellos dibujaron los fantasmas.;acepta;rechaza;FN;Completiva con sujeto plural.
-NLTK;ESPAÑOL;C09;3;Marcela dijo que ellos dibujaron los fantasmas.;acepta;rechaza;FN;Completiva con sujeto plural.
-NLTK;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Relativa en el sujeto plural con sujeto posverbal interno.
-NLTK;CFG;C12;3;Los libros que leyó la profesora los guardó Diego.;rechaza;acepta;FP;Objeto antepuesto con relativa, clítico y sujeto posverbal.
+NLTK;CFG;C05;3;Escribimos el parser.;rechaza;acepta;FP;Sujeto tácito no se acepta por regla gramatical. La oración comienza con V_p.
+NLTK;CFG;C06;3;Come Marcela los dulces.;rechaza;acepta;FP;La oración comienza con V_s, debería ser con sujeto
+NLTK;CFG;C07;3;La profesora dijo que Jaime corrigió los exámenes.;acepta;rechaza;FN;"Utilización de ""que"" para unir dos oraciones que sí acepta"
+NLTK;ESPAÑOL;C07;3;La profesora dijo que Jaime corrigió los exámenes.;acepta;rechaza;FN;"Utilización de ""que"" para unir dos oraciones que sí acepta"
+NLTK;CFG;C09;3;Marcela dijo que ellos dibujaron los fantasmas.;acepta;rechaza;FN;"uso de ""que"" conn sujeto plural."
+NLTK;ESPAÑOL;C09;3;Marcela dijo que ellos dibujaron los fantasmas.;acepta;rechaza;FN;"uso de ""que"" conn sujeto plural."
+NLTK;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Es semánticamente incorrecta y usa un verbo luego del que
+NLTK;CFG;C12;3;Los libros que leyó la profesora los guardó Diego.;rechaza;acepta;FP;Usa verbo luego de uqe
 NLTK;CFG;C13;3;Anoche los esqueletos comieron los dulces.;rechaza;acepta;FP;Adverbio al inicio. La CFG espera un sujeto.
-NLTK;CFG;C14;3;En la clase Jaime explica la gramática.;rechaza;acepta;FP;Frase preposicional al inicio.
+NLTK;CFG;C14;3;En la clase Jaime explica la gramática.;rechaza;acepta;FP;Preposición al inicio.
 NLTK;CFG;C15;3;Las manzanas las comieron los niños.;rechaza;acepta;FP;Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.
 NLTK;CFG;C16;3;Ana guardó las manzanas en la caja cuidadosamente ayer.;rechaza;acepta;FP;La CFG permite un solo adverbio final.
 NLTK;ESPAÑOL;C17;3;Jaime dijo que corrigió los exámenes.;acepta;rechaza;FN;Sujeto tácito dentro de una completiva.
@@ -51,19 +51,19 @@ NLTK;CFG;C18;3;Marcela vio rápidamente al fantasma con el telescopio.;rechaza;a
 NLTK;CFG;C19;3;La niña de la mochila blanca compró unas cartas.;rechaza;acepta;FP;Frase preposicional dentro del sujeto.
 NLTK;CFG;C20;3;Jaime dijo que nosotros corrigen los exámenes en la clase.;acepta;rechaza;FN;Control de persona en sujeto plural.
 NLTK;CFG;C21;3;Yo come los dulces.;acepta;rechaza;FN;Control de persona en singular. La CFG solo comprueba el número.
-NLTK;CFG;C22;3;Ellos escribimos el código.;acepta;rechaza;FN;Control de persona en plural. La CFG solo comprueba el número.
+NLTK;CFG;C22;3;Ellos escribimos el código.;acepta;rechaza;FN;Uso de diferente persona. La CFG solo comprueba el número.
 NLTK;CFG;C23;3;Nosotras duermen afuera.;acepta;rechaza;FN;Control de persona con verbo sin objeto.
 NLTK;ESPAÑOL;C24;3;Ana come que Diego duerme.;rechaza;acepta;FP;El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.
 NLTK;ESPAÑOL;C25;3;Marcela vio a el fantasma.;rechaza;acepta;FP;Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».
-Parser propio;ESPAÑOL;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;acepta;rechaza;FN;El adverbio precede al objeto directo.
+Parser propio;ESPAÑOL;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;acepta;rechaza;FN;Se continua la oración luego de un adverbio
 Parser propio;ESPAÑOL;C03;3;El profesor que explica la gramática corrige los exámenes.;acepta;rechaza;FN;Relativa en el sujeto. Ante «que» se espera el verbo principal.
 Parser propio;ESPAÑOL;C04;3;El examen que Jaime corrigió asustó a Jose.;acepta;rechaza;FN;Relativa en el sujeto con objeto omitido dentro de la relativa.
-Parser propio;ESPAÑOL;C05;3;Escribimos el parser.;acepta;rechaza;FN;Sujeto tácito. La oración comienza con V_p.
-Parser propio;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;Sujeto posverbal. La oración comienza con V_s.
-Parser propio;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Relativa en el sujeto plural con sujeto posverbal interno.
-Parser propio;ESPAÑOL;C12;3;Los libros que leyó la profesora los guardó Diego.;acepta;rechaza;FN;Objeto antepuesto con relativa, clítico y sujeto posverbal.
+Parser propio;ESPAÑOL;C05;3;Escribimos el parser.;acepta;rechaza;FN;Sujeto tácito no se acepta por regla gramatical. La oración comienza con V_p.
+Parser propio;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;La oración comienza con V_s, debería ser con sujeto
+Parser propio;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Es semánticamente incorrecta y usa un verbo luego del que
+Parser propio;ESPAÑOL;C12;3;Los libros que leyó la profesora los guardó Diego.;acepta;rechaza;FN;Usa verbo luego de uqe
 Parser propio;ESPAÑOL;C13;3;Anoche los esqueletos comieron los dulces.;acepta;rechaza;FN;Adverbio al inicio. La CFG espera un sujeto.
-Parser propio;ESPAÑOL;C14;3;En la clase Jaime explica la gramática.;acepta;rechaza;FN;Frase preposicional al inicio.
+Parser propio;ESPAÑOL;C14;3;En la clase Jaime explica la gramática.;acepta;rechaza;FN;Preposición al inicio.
 Parser propio;ESPAÑOL;C15;3;Las manzanas las comieron los niños.;acepta;rechaza;FN;Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.
 Parser propio;ESPAÑOL;C16;3;Ana guardó las manzanas en la caja cuidadosamente ayer.;acepta;rechaza;FN;La CFG permite un solo adverbio final.
 Parser propio;ESPAÑOL;C17;3;Jaime dijo que corrigió los exámenes.;acepta;rechaza;FN;Sujeto tácito dentro de una completiva.
@@ -71,21 +71,21 @@ Parser propio;ESPAÑOL;C18;3;Marcela vio rápidamente al fantasma con el telesco
 Parser propio;ESPAÑOL;C19;3;La niña de la mochila blanca compró unas cartas.;acepta;rechaza;FN;Frase preposicional dentro del sujeto.
 Parser propio;ESPAÑOL;C20;3;Jaime dijo que nosotros corrigen los exámenes en la clase.;rechaza;acepta;FP;Control de persona en sujeto plural.
 Parser propio;ESPAÑOL;C21;3;Yo come los dulces.;rechaza;acepta;FP;Control de persona en singular. La CFG solo comprueba el número.
-Parser propio;ESPAÑOL;C22;3;Ellos escribimos el código.;rechaza;acepta;FP;Control de persona en plural. La CFG solo comprueba el número.
+Parser propio;ESPAÑOL;C22;3;Ellos escribimos el código.;rechaza;acepta;FP;Uso de diferente persona. La CFG solo comprueba el número.
 Parser propio;ESPAÑOL;C23;3;Nosotras duermen afuera.;rechaza;acepta;FP;Control de persona con verbo sin objeto.
 Parser propio;ESPAÑOL;C24;3;Ana come que Diego duerme.;rechaza;acepta;FP;El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.
 Parser propio;ESPAÑOL;C25;3;Marcela vio a el fantasma.;rechaza;acepta;FP;Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».
-Gemini zero-shot;ESPAÑOL;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;acepta;rechaza;FN;El adverbio precede al objeto directo.
+Gemini zero-shot;ESPAÑOL;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;acepta;rechaza;FN;Se continua la oración luego de un adverbio
 Gemini zero-shot;CFG;C02;3;Marcela vio al fantasma con el telescopio.;acepta;rechaza;FN;«Con el telescopio» admite dos lecturas. La CFG agrupa ambas frases en la secuencia de SP.
 Gemini zero-shot;ESPAÑOL;C02;3;Marcela vio al fantasma con el telescopio.;acepta;rechaza;FN;«Con el telescopio» admite dos lecturas. La CFG agrupa ambas frases en la secuencia de SP.
 Gemini zero-shot;ESPAÑOL;C03;3;El profesor que explica la gramática corrige los exámenes.;acepta;rechaza;FN;Relativa en el sujeto. Ante «que» se espera el verbo principal.
 Gemini zero-shot;ESPAÑOL;C04;3;El examen que Jaime corrigió asustó a Jose.;acepta;rechaza;FN;Relativa en el sujeto con objeto omitido dentro de la relativa.
-Gemini zero-shot;ESPAÑOL;C05;3;Escribimos el parser.;acepta;rechaza;FN;Sujeto tácito. La oración comienza con V_p.
-Gemini zero-shot;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;Sujeto posverbal. La oración comienza con V_s.
-Gemini zero-shot;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Relativa en el sujeto plural con sujeto posverbal interno.
-Gemini zero-shot;ESPAÑOL;C12;3;Los libros que leyó la profesora los guardó Diego.;acepta;rechaza;FN;Objeto antepuesto con relativa, clítico y sujeto posverbal.
+Gemini zero-shot;ESPAÑOL;C05;3;Escribimos el parser.;acepta;rechaza;FN;Sujeto tácito no se acepta por regla gramatical. La oración comienza con V_p.
+Gemini zero-shot;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;La oración comienza con V_s, debería ser con sujeto
+Gemini zero-shot;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Es semánticamente incorrecta y usa un verbo luego del que
+Gemini zero-shot;ESPAÑOL;C12;3;Los libros que leyó la profesora los guardó Diego.;acepta;rechaza;FN;Usa verbo luego de uqe
 Gemini zero-shot;ESPAÑOL;C13;3;Anoche los esqueletos comieron los dulces.;acepta;rechaza;FN;Adverbio al inicio. La CFG espera un sujeto.
-Gemini zero-shot;ESPAÑOL;C14;3;En la clase Jaime explica la gramática.;acepta;rechaza;FN;Frase preposicional al inicio.
+Gemini zero-shot;ESPAÑOL;C14;3;En la clase Jaime explica la gramática.;acepta;rechaza;FN;Preposición al inicio.
 Gemini zero-shot;ESPAÑOL;C15;3;Las manzanas las comieron los niños.;acepta;rechaza;FN;Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.
 Gemini zero-shot;ESPAÑOL;C16;3;Ana guardó las manzanas en la caja cuidadosamente ayer.;acepta;rechaza;FN;La CFG permite un solo adverbio final.
 Gemini zero-shot;ESPAÑOL;C17;3;Jaime dijo que corrigió los exámenes.;acepta;rechaza;FN;Sujeto tácito dentro de una completiva.
@@ -93,19 +93,19 @@ Gemini zero-shot;ESPAÑOL;C18;3;Marcela vio rápidamente al fantasma con el tele
 Gemini zero-shot;ESPAÑOL;C19;3;La niña de la mochila blanca compró unas cartas.;acepta;rechaza;FN;Frase preposicional dentro del sujeto.
 Gemini zero-shot;ESPAÑOL;C20;3;Jaime dijo que nosotros corrigen los exámenes en la clase.;rechaza;acepta;FP;Control de persona en sujeto plural.
 Gemini zero-shot;ESPAÑOL;C21;3;Yo come los dulces.;rechaza;acepta;FP;Control de persona en singular. La CFG solo comprueba el número.
-Gemini zero-shot;ESPAÑOL;C22;3;Ellos escribimos el código.;rechaza;acepta;FP;Control de persona en plural. La CFG solo comprueba el número.
+Gemini zero-shot;ESPAÑOL;C22;3;Ellos escribimos el código.;rechaza;acepta;FP;Uso de diferente persona. La CFG solo comprueba el número.
 Gemini zero-shot;ESPAÑOL;C23;3;Nosotras duermen afuera.;rechaza;acepta;FP;Control de persona con verbo sin objeto.
 Gemini zero-shot;ESPAÑOL;C24;3;Ana come que Diego duerme.;rechaza;acepta;FP;El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.
 Gemini zero-shot;ESPAÑOL;C25;3;Marcela vio a el fantasma.;rechaza;acepta;FP;Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».
-Gemini few-shot;ESPAÑOL;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;acepta;rechaza;FN;El adverbio precede al objeto directo.
+Gemini few-shot;ESPAÑOL;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;acepta;rechaza;FN;Se continua la oración luego de un adverbio
 Gemini few-shot;ESPAÑOL;C03;3;El profesor que explica la gramática corrige los exámenes.;acepta;rechaza;FN;Relativa en el sujeto. Ante «que» se espera el verbo principal.
 Gemini few-shot;ESPAÑOL;C04;3;El examen que Jaime corrigió asustó a Jose.;acepta;rechaza;FN;Relativa en el sujeto con objeto omitido dentro de la relativa.
-Gemini few-shot;ESPAÑOL;C05;3;Escribimos el parser.;acepta;rechaza;FN;Sujeto tácito. La oración comienza con V_p.
-Gemini few-shot;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;Sujeto posverbal. La oración comienza con V_s.
-Gemini few-shot;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Relativa en el sujeto plural con sujeto posverbal interno.
-Gemini few-shot;ESPAÑOL;C12;3;Los libros que leyó la profesora los guardó Diego.;acepta;rechaza;FN;Objeto antepuesto con relativa, clítico y sujeto posverbal.
+Gemini few-shot;ESPAÑOL;C05;3;Escribimos el parser.;acepta;rechaza;FN;Sujeto tácito no se acepta por regla gramatical. La oración comienza con V_p.
+Gemini few-shot;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;La oración comienza con V_s, debería ser con sujeto
+Gemini few-shot;ESPAÑOL;C11;3;Los fantasmas que vio Marcela comen los dulces.;acepta;rechaza;FN;Es semánticamente incorrecta y usa un verbo luego del que
+Gemini few-shot;ESPAÑOL;C12;3;Los libros que leyó la profesora los guardó Diego.;acepta;rechaza;FN;Usa verbo luego de uqe
 Gemini few-shot;ESPAÑOL;C13;3;Anoche los esqueletos comieron los dulces.;acepta;rechaza;FN;Adverbio al inicio. La CFG espera un sujeto.
-Gemini few-shot;ESPAÑOL;C14;3;En la clase Jaime explica la gramática.;acepta;rechaza;FN;Frase preposicional al inicio.
+Gemini few-shot;ESPAÑOL;C14;3;En la clase Jaime explica la gramática.;acepta;rechaza;FN;Preposición al inicio.
 Gemini few-shot;ESPAÑOL;C15;3;Las manzanas las comieron los niños.;acepta;rechaza;FN;Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.
 Gemini few-shot;ESPAÑOL;C16;3;Ana guardó las manzanas en la caja cuidadosamente ayer.;acepta;rechaza;FN;La CFG permite un solo adverbio final.
 Gemini few-shot;ESPAÑOL;C17;3;Jaime dijo que corrigió los exámenes.;acepta;rechaza;FN;Sujeto tácito dentro de una completiva.
@@ -113,7 +113,7 @@ Gemini few-shot;ESPAÑOL;C18;3;Marcela vio rápidamente al fantasma con el teles
 Gemini few-shot;ESPAÑOL;C19;3;La niña de la mochila blanca compró unas cartas.;acepta;rechaza;FN;Frase preposicional dentro del sujeto.
 Gemini few-shot;ESPAÑOL;C20;3;Jaime dijo que nosotros corrigen los exámenes en la clase.;rechaza;acepta;FP;Control de persona en sujeto plural.
 Gemini few-shot;ESPAÑOL;C21;3;Yo come los dulces.;rechaza;acepta;FP;Control de persona en singular. La CFG solo comprueba el número.
-Gemini few-shot;ESPAÑOL;C22;3;Ellos escribimos el código.;rechaza;acepta;FP;Control de persona en plural. La CFG solo comprueba el número.
+Gemini few-shot;ESPAÑOL;C22;3;Ellos escribimos el código.;rechaza;acepta;FP;Uso de diferente persona. La CFG solo comprueba el número.
 Gemini few-shot;ESPAÑOL;C23;3;Nosotras duermen afuera.;rechaza;acepta;FP;Control de persona con verbo sin objeto.
 Gemini few-shot;ESPAÑOL;C24;3;Ana come que Diego duerme.;rechaza;acepta;FP;El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.
 Gemini few-shot;ESPAÑOL;C25;3;Marcela vio a el fantasma.;rechaza;acepta;FP;Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».
@@ -133,15 +133,15 @@ spaCy;CFG;I26;2;Diego guardan los cuadernos.;rechaza;acepta;FP;Nombre propio sin
 spaCy;ESPAÑOL;I26;2;Diego guardan los cuadernos.;rechaza;acepta;FP;Nombre propio singular con verbo plural.
 spaCy;CFG;I28;2;Ana guardó las manzanas en.;rechaza;acepta;FP;Frase preposicional incompleta. Falta el sintagma nominal después de la preposición.
 spaCy;ESPAÑOL;I28;2;Ana guardó las manzanas en.;rechaza;acepta;FP;Frase preposicional incompleta. Falta el sintagma nominal después de la preposición.
-spaCy;CFG;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;rechaza;acepta;FP;El adverbio precede al objeto directo.
+spaCy;CFG;C01;3;El esqueleto pequeño escribe rápidamente el código nuevo en la clase.;rechaza;acepta;FP;Se continua la oración luego de un adverbio
 spaCy;CFG;C03;3;El profesor que explica la gramática corrige los exámenes.;rechaza;acepta;FP;Relativa en el sujeto. Ante «que» se espera el verbo principal.
 spaCy;CFG;C04;3;El examen que Jaime corrigió asustó a Jose.;rechaza;acepta;FP;Relativa en el sujeto con objeto omitido dentro de la relativa.
-spaCy;CFG;C05;3;Escribimos el parser.;rechaza;acepta;FP;Sujeto tácito. La oración comienza con V_p.
-spaCy;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;Sujeto posverbal. La oración comienza con V_s.
-spaCy;CFG;C11;3;Los fantasmas que vio Marcela comen los dulces.;rechaza;acepta;FP;Relativa en el sujeto plural con sujeto posverbal interno.
-spaCy;CFG;C12;3;Los libros que leyó la profesora los guardó Diego.;rechaza;acepta;FP;Objeto antepuesto con relativa, clítico y sujeto posverbal.
+spaCy;CFG;C05;3;Escribimos el parser.;rechaza;acepta;FP;Sujeto tácito no se acepta por regla gramatical. La oración comienza con V_p.
+spaCy;ESPAÑOL;C06;3;Come Marcela los dulces.;acepta;rechaza;FN;La oración comienza con V_s, debería ser con sujeto
+spaCy;CFG;C11;3;Los fantasmas que vio Marcela comen los dulces.;rechaza;acepta;FP;Es semánticamente incorrecta y usa un verbo luego del que
+spaCy;CFG;C12;3;Los libros que leyó la profesora los guardó Diego.;rechaza;acepta;FP;Usa verbo luego de uqe
 spaCy;CFG;C13;3;Anoche los esqueletos comieron los dulces.;rechaza;acepta;FP;Adverbio al inicio. La CFG espera un sujeto.
-spaCy;CFG;C14;3;En la clase Jaime explica la gramática.;rechaza;acepta;FP;Frase preposicional al inicio.
+spaCy;CFG;C14;3;En la clase Jaime explica la gramática.;rechaza;acepta;FP;Preposición al inicio.
 spaCy;CFG;C15;3;Las manzanas las comieron los niños.;rechaza;acepta;FP;Objeto antepuesto con clítico. El léxico etiqueta «las» como DET_fp.
 spaCy;CFG;C16;3;Ana guardó las manzanas en la caja cuidadosamente ayer.;rechaza;acepta;FP;La CFG permite un solo adverbio final.
 spaCy;CFG;C17;3;Jaime dijo que corrigió los exámenes.;rechaza;acepta;FP;Sujeto tácito dentro de una completiva.
@@ -149,13 +149,13 @@ spaCy;CFG;C18;3;Marcela vio rápidamente al fantasma con el telescopio.;rechaza;
 spaCy;CFG;C19;3;La niña de la mochila blanca compró unas cartas.;rechaza;acepta;FP;Frase preposicional dentro del sujeto.
 spaCy;ESPAÑOL;C20;3;Jaime dijo que nosotros corrigen los exámenes en la clase.;rechaza;acepta;FP;Control de persona en sujeto plural.
 spaCy;CFG;C21;3;Yo come los dulces.;acepta;rechaza;FN;Control de persona en singular. La CFG solo comprueba el número.
-spaCy;CFG;C22;3;Ellos escribimos el código.;acepta;rechaza;FN;Control de persona en plural. La CFG solo comprueba el número.
+spaCy;CFG;C22;3;Ellos escribimos el código.;acepta;rechaza;FN;Uso de diferente persona. La CFG solo comprueba el número.
 spaCy;ESPAÑOL;C23;3;Nosotras duermen afuera.;rechaza;acepta;FP;Control de persona con verbo sin objeto.
 spaCy;ESPAÑOL;C24;3;Ana come que Diego duerme.;rechaza;acepta;FP;El verbo «come» no admite una subordinada con «que». La CFG no distingue clases de verbos.
 spaCy;ESPAÑOL;C25;3;Marcela vio a el fantasma.;rechaza;acepta;FP;Falta la contracción obligatoria «al». El lexer trata «a el» igual que «al».
 spaCy;CFG;C26;3;Ana dijo que los niños come los dulces.;rechaza;acepta;FP;Error de concordancia sujeto-verbo dentro de la subordinada.
 spaCy;ESPAÑOL;C26;3;Ana dijo que los niños come los dulces.;rechaza;acepta;FP;Error de concordancia sujeto-verbo dentro de la subordinada.
-spaCy;CFG;C27;3;Los fantasmas que vio Marcela come los dulces.;rechaza;acepta;FP;Concordancia a distancia: una relativa separa el sujeto plural del verbo singular. La CFG rechaza antes, en «que».
-spaCy;ESPAÑOL;C27;3;Los fantasmas que vio Marcela come los dulces.;rechaza;acepta;FP;Concordancia a distancia: una relativa separa el sujeto plural del verbo singular. La CFG rechaza antes, en «que».
-spaCy;CFG;C28;3;La niña de la mochila blanca compraron unas cartas.;rechaza;acepta;FP;Concordancia a distancia: una frase preposicional separa el sujeto singular del verbo plural. La CFG rechaza antes, en «de».
-spaCy;ESPAÑOL;C28;3;La niña de la mochila blanca compraron unas cartas.;rechaza;acepta;FP;Concordancia a distancia: una frase preposicional separa el sujeto singular del verbo plural. La CFG rechaza antes, en «de».
+spaCy;CFG;C27;3;Los fantasmas que vio Marcela come los dulces.;rechaza;acepta;FP;"Concordancia a distancia, pero se contal al usar otra cosa que no sea un sujeto luego de ""que"""
+spaCy;ESPAÑOL;C27;3;Los fantasmas que vio Marcela come los dulces.;rechaza;acepta;FP;"Concordancia a distancia, pero se contal al usar otra cosa que no sea un sujeto luego de ""que"""
+spaCy;CFG;C28;3;La niña de la mochila blanca compraron unas cartas.;rechaza;acepta;FP;Concordancia a distancia y error del verbo
+spaCy;ESPAÑOL;C28;3;La niña de la mochila blanca compraron unas cartas.;rechaza;acepta;FP;Concordancia a distancia y error del verbo

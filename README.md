@@ -2,6 +2,8 @@
 
 La Fase 2 compara el parser del equipo, spaCy, NLTK y Gemini sobre [76 oraciones](benchmark/corpus_fase2.csv). Cada oración tiene dos referencias. La columna `salida_cfg` indica si la gramática del equipo la acepta. La columna `gramatical` indica si es correcta en español.
 
+Para correr las pruebas unitarias y todos los scripts del benchmark, consulte [PRUEBAS.md](PRUEBAS.md).
+
 ## Reproducir la tabla del informe
 
 Desde la raíz del repositorio, ejecute los siguientes comandos con Python. Usan la biblioteca estándar y las respuestas de Gemini que se entregan con el informe.
